@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angelo Grossi - Coaching & Prise de Parole</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            background: #0f0f0f;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Top Banner */
+        .top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #161616;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 1000;
+            border-bottom: 2px solid #ff6b35;
+        }
+
+        .top-banner span {
+            color: #ff6b35;
+        }
+
+        /* Main content offset for fixed banner */
+        main {
+            margin-top: 50px;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            background: #0f0f0f;
+            position: relative;
+            overflow: hidden;
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ff9f1c, #ff6b35);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            padding-right: 40px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fff;
+            border-bottom: 2px solid #ff6b35;
+            display: inline-block;
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero-title em {
+            color: #ff6b35;
+            font-style: normal;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #888;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: 'Inter', sans-serif;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #ff9f1c;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ccc;
+            border: 2px solid #444;
+        }
+
+        .btn-secondary:hover {
+            border-color: #ff6b35;
+            color: #ff6b35;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 320px;
+            height: 400px;
+            object-fit: cover;
+            clip-path: polygon(0 0, 100% 4%, 100% 96%, 0% 100%);
+            filter: contrast(1.05);
+        }
+
+        /* === SOCIAL PROOF SECTION === */
+        .social-proof {
+            background: #161616;
+            border-top: 1px solid #222;
+            padding: 60px 20px;
+        }
+
+        .social-proof-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .proof-item {
+            padding: 20px;
+        }
+
+        .proof-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .proof-label {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* === SERVICES SECTION === */
+        .services {
+            background: #f5f5f0;
+            padding: 80px 20px;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #0f0f0f;
+            margin-bottom: 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: #ff6b35;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background: #ff6b35;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        .service-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f0f0f;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* === METHODE SECTION === */
+        .methode {
+            background: #0f0f0f;
+            padding: 80px 20px;
+        }
+
+        .methode-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .methode-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .methode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .methode-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 40px 30px;
+            position: relative;
+            border-top: 3px solid #ff6b35;
+        }
+
+        .methode-letter {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b35, #ff9f1c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .methode-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .methode-description {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+                min-height: auto;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content {
+                padding-right: 0;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-image img {
+                width: 100%;
+                max-width: 320px;
+                height: 400px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .social-proof-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .services-grid,
+            .methode-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .top-banner {
+                font-size: 11px;
+                padding: 10px 15px;
+            }
+
+            main {
+                margin-top: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 15px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .services,
+            .methode {
+                padding: 60px 15px;
+            }
+
+            .proof-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        Proposition design — <span>Variante 3 : Bold & Cinétique</span>
+    </div>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">Coaching · Prise de Parole</div>
+                    <h1 class="hero-title">Cessez de réciter. <em>Incarnez.</em></h1>
+                    <p class="hero-subtitle">25 ans en entreprise. 15 ans d'impro. Un objectif : que votre présence marque les esprits avant même vos mots.</p>
+                    <div class="hero-ctas">
+                        <button class="btn btn-primary">Réserver mon RDV</button>
+                        <button class="btn btn-secondary">Découvrir l'approche</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="/images/hero-portrait.jpg" alt="Angelo Grossi">
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL PROOF SECTION -->
+        <section class="social-proof">
+            <div class="social-proof-container">
+                <div class="proof-item">
+                    <div class="proof-number">25 ans</div>
+                    <div class="proof-label">d'expérience en entreprise</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">15 ans</div>
+                    <div class="proof-label">de pratique théâtrale</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-number">RNCP 7</div>
+                    <div class="proof-label">Certification coaching</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section class="services">
+            <div class="services-container">
+                <div class="section-eyebrow">Services</div>
+                <h2 class="section-title">Le ThéâtroCoaching</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="8" r="4" fill="white"/>
+                                <path d="M 12 14 C 8 14 4 16 4 18 L 4 20 L 20 20 L 20 18 C 20 16 16 14 12 14 Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Coaching individuel</h3>
+                        <p class="service-description">Séances personnalisées pour développer votre présence et authenticité.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="6" cy="8" r="3" fill="white"/>
+                                <circle cx="18" cy="8" r="3" fill="white"/>
+                                <circle cx="12" cy="14" r="3" fill="white"/>
+                                <path d="M 6 11 L 18 11" stroke="white" stroke-width="2" fill="none"/>
+                                <path d="M 6 11 L 12 17" stroke="white" stroke-width="2" fill="none"/>
+                                <path d="M 18 11 L 12 17" stroke="white" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Ateliers improvisation</h3>
+                        <p class="service-description">Explorez votre créativité et dépassez vos blocages en groupe.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 12 2 L 15 8 L 22 8 L 17 12 L 19 18 L 12 14 L 5 18 L 7 12 L 2 8 L 9 8 Z" fill="white"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Préparation fort enjeu</h3>
+                        <p class="service-description">Préparez vos présentations critiques avec confiance et impact.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="8" fill="none" stroke="white" stroke-width="1.5"/>
+                                <circle cx="12" cy="12" r="3" fill="white"/>
+                                <circle cx="12" cy="7" r="1.5" fill="white"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Communication non-verbale</h3>
+                        <p class="service-description">Maîtrisez votre langage corporel et votre énergie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- METHODE SECTION -->
+        <section class="methode">
+            <div class="methode-container">
+                <h2 class="methode-title">La méthode H2S</h2>
+                <div class="methode-grid">
+                    <div class="methode-card">
+                        <div class="methode-letter">H</div>
+                        <div class="methode-label">Happy</div>
+                        <div class="methode-description">Trouvez la joie authentique dans votre discours et votre présence. La connexion commence par votre enthousiasme.</div>
+                    </div>
+                    <div class="methode-card">
+                        <div class="methode-letter">H</div>
+                        <div class="methode-label">Healthy</div>
+                        <div class="methode-description">Développez une relation saine avec vos émotions et votre corps. La présence commence par l'équilibre intérieur.</div>
+                    </div>
+                    <div class="methode-card">
+                        <div class="methode-letter">S</div>
+                        <div class="methode-label">Sexy</div>
+                        <div class="methode-description">Incarnez votre charisme naturel et votre magnétisme. Laissez votre personnalité authentique briller.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

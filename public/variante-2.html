@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angelo Grossi — Coach en Prise de Parole | Variante 2 : Crème Prestige</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'DM Sans', sans-serif;
+            color: #1a1a2e;
+            background-color: #faf9f6;
+            line-height: 1.6;
+        }
+
+        /* Fixed top banner */
+        .design-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #1a1a2e;
+            color: #faf9f6;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 1000;
+            border-bottom: 2px solid #daa520;
+        }
+
+        body {
+            padding-top: 50px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #b8860b;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        em {
+            font-style: italic;
+            color: #8b6914;
+        }
+
+        /* CTA Buttons */
+        .button {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .button-primary {
+            background-color: #1a1a2e;
+            color: #faf9f6;
+            margin-right: 20px;
+            margin-bottom: 15px;
+        }
+
+        .button-primary:hover {
+            background-color: #2a2a3e;
+        }
+
+        .button-secondary {
+            border: 2px solid #1a1a2e;
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .button-secondary:hover {
+            background-color: #1a1a2e;
+            color: #faf9f6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #faf9f6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #b8860b, #daa520, #b8860b);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 25px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: #1a1a2e;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 300px;
+            height: 420px;
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 2px solid #b8860b;
+            z-index: -1;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            background-color: #1a1a2e;
+            color: #faf9f6;
+            padding: 80px 60px;
+        }
+
+        .social-proof-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .proof-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            color: #daa520;
+            margin-bottom: 12px;
+        }
+
+        .proof-item p {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #faf9f6;
+            padding: 80px 60px;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background-color: white;
+            border: 1px solid #e8e2d8;
+            padding: 40px;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #b8860b, #daa520, #b8860b);
+        }
+
+        .service-card h3 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #1a1a2e;
+        }
+
+        /* Méthode H2S Section */
+        .methode {
+            background-color: #1a1a2e;
+            color: #faf9f6;
+            padding: 80px 60px;
+        }
+
+        .methode-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .methode h2 {
+            text-align: center;
+            color: #faf9f6;
+            margin-bottom: 60px;
+        }
+
+        .methode-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .methode-card {
+            border: 1px solid #daa520;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .method-letter {
+            width: 80px;
+            height: 80px;
+            background-color: #daa520;
+            color: #1a1a2e;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .methode-card h3 {
+            color: #faf9f6;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .methode-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #faf9f6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                padding: 60px 40px;
+                gap: 40px;
+            }
+
+            .hero-image {
+                display: flex;
+                justify-content: center;
+            }
+
+            .social-proof-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .methode-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-primary {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .design-banner {
+                padding: 10px 15px;
+                font-size: 11px;
+            }
+
+            body {
+                padding-top: 45px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 18px;
+            }
+
+            .hero-container {
+                padding: 40px 20px;
+            }
+
+            .social-proof {
+                padding: 60px 20px;
+            }
+
+            .services {
+                padding: 60px 20px;
+            }
+
+            .service-card {
+                padding: 30px;
+            }
+
+            .methode {
+                padding: 60px 20px;
+            }
+
+            .methode-card {
+                padding: 30px;
+            }
+
+            .proof-item h3 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 14px;
+            }
+
+            .button {
+                padding: 12px 24px;
+                font-size: 12px;
+            }
+
+            .hero-image img {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+                aspect-ratio: 300 / 420;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Design Banner -->
+    <div class="design-banner">
+        Proposition design — Variante 2 : Crème Prestige
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="eyebrow">Coach en prise de parole · Île-de-France</p>
+                <h1>L'art de <em>convaincre</em> s'apprend sur scène</h1>
+                <p class="hero-subtitle">Dirigeants, experts — découvrez le ThéâtroCoaching. 25 ans d'expérience corporate et 15 ans d'improvisation théâtrale au service de votre prise de parole.</p>
+                <div class="hero-ctas">
+                    <a href="#" class="button button-primary">Réserver un créneau</a>
+                    <a href="#" class="button button-secondary">Mon approche</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/images/hero-portrait.jpg" alt="Angelo Grossi - Coach en Prise de Parole">
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="social-proof-container">
+            <div class="proof-item">
+                <h3>25 ans</h3>
+                <p>d'expérience en entreprise</p>
+            </div>
+            <div class="proof-item">
+                <h3>15 ans</h3>
+                <p>de pratique théâtrale</p>
+            </div>
+            <div class="proof-item">
+                <h3>RNCP 7</h3>
+                <p>Certification coaching</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="services-container">
+            <p class="eyebrow" style="text-align: center;">Services</p>
+            <h2>Une approche unique : le ThéâtroCoaching</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Débloquer votre présence</h3>
+                    <p>Retrouvez confiance et naturel face à un auditoire. Apprenez à occuper l'espace, maîtriser le trac et transformer votre énergie en impact.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Maîtriser votre voix</h3>
+                    <p>Développez une diction claire, un rythme captivant et une modulation qui retient l'attention. Votre voix devient votre outil de persuasion.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Structurer votre message</h3>
+                    <p>Organisez vos idées pour convaincre. Du discours au pitch, maîtrisez l'art de la narration en accord avec votre authenticité.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Performer en audience</h3>
+                    <p>Incarnez votre parole sur scène, en réunion ou en visio. Gérez les situations difficiles avec élégance et présence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Méthode H2S Section -->
+    <section class="methode">
+        <div class="methode-container">
+            <h2>La méthode H2S : incarnez votre parole</h2>
+            <div class="methode-grid">
+                <div class="methode-card">
+                    <div class="method-letter">H</div>
+                    <h3>Happy</h3>
+                    <p>Retrouvez le plaisir de prendre la parole. Transformez le stress en énergie positive et communicative.</p>
+                </div>
+                <div class="methode-card">
+                    <div class="method-letter">H</div>
+                    <h3>Healthy</h3>
+                    <p>Développez une présence grounded, ancrée et authentique. Prenez soin de votre respiration et de votre équilibre.</p>
+                </div>
+                <div class="methode-card">
+                    <div class="method-letter">S</div>
+                    <h3>Sexy</h3>
+                    <p>Rayonnez avec charisme. Créez une connexion magnétique avec votre audience par votre présence et votre engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
