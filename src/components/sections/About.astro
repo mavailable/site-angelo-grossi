@@ -14,9 +14,15 @@ const about = getAbout();
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center">
       <!-- Photo -->
       <div class="lg:col-span-2">
-        <!-- TODO: Remplacer par la photo portrait du client (portrait-about.jpg) -->
-        <div class="w-full aspect-[3/4] max-w-sm mx-auto bg-primary-100 rounded-2xl flex items-center justify-center">
-          <span class="text-primary-500 text-sm">Photo à venir</span>
+        <div class="w-full aspect-[3/4] max-w-sm mx-auto rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="/images/portrait-about.jpg"
+            alt="Angelo Grossi en réflexion — coach certifié RNCP 7"
+            width="384"
+            height="512"
+            class="w-full h-full object-cover object-top"
+            loading="lazy"
+          />
         </div>
       </div>
 

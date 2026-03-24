@@ -46,11 +46,18 @@ const hero = getHero();
         )}
       </div>
 
-      <!-- Photo / Placeholder -->
+      <!-- Photo portrait -->
       <div class="hidden lg:flex justify-center">
-        <!-- TODO: Remplacer par la photo portrait du client (hero-portrait.jpg) -->
-        <div class="w-80 h-96 bg-primary-800 rounded-2xl flex items-center justify-center border border-primary-700">
-          <span class="text-primary-500 text-sm">Photo à venir</span>
+        <div class="w-80 h-96 rounded-2xl overflow-hidden shadow-2xl">
+          <img
+            src="/images/hero-portrait.jpg"
+            alt="Angelo Grossi, coach en prise de parole en public"
+            width="320"
+            height="384"
+            class="w-full h-full object-cover object-top"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
       </div>
     </div>
