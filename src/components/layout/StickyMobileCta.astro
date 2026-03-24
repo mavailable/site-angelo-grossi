@@ -7,7 +7,7 @@ import { getHero } from '@data/content';
 const hero = getHero();
 ---
 
-<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-neutral-200 px-4 py-3 safe-area-bottom">
+<div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-neutral-200 px-4 py-3 safe-area-bottom transition-transform duration-300 translate-y-full">
   <a href={hero.ctaLink}
      class="block w-full bg-accent-500 text-primary-950 font-semibold text-center py-3 rounded-lg hover:bg-accent-400 transition-colors min-h-[44px]">
     {hero.ctaText}
@@ -19,3 +19,18 @@ const hero = getHero();
     padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
   }
 </style>
+
+<script>
+  const stickyCta = document.getElementById('sticky-cta');
+  if (stickyCta) {
+    const show = () => {
+      if (window.scrollY > window.innerHeight * 0.8) {
+        stickyCta.classList.remove('translate-y-full');
+      } else {
+        stickyCta.classList.add('translate-y-full');
+      }
+    };
+    window.addEventListener('scroll', show, { passive: true });
+    show();
+  }
+</script>
