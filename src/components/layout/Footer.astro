@@ -5,14 +5,14 @@ const site = getSiteInfo();
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-primary-950 text-neutral-100" role="contentinfo">
+<footer class="bg-primary-950 text-neutral-100 border-t border-accent-500/20" role="contentinfo">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Col 1 : Identité -->
       <div>
         <p class="font-heading font-bold text-lg text-white mb-3">{site.name}</p>
         <p class="text-neutral-300 text-sm leading-relaxed">
-          Coach certifié en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale.
+          Coach certifié en prise de parole en public en Île-de-France. Approche distinctive alliant coaching professionnel et improvisation théâtrale.
         </p>
       </div>
 
@@ -66,7 +66,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <!-- Séparation -->
-    <div class="border-t border-primary-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+    <div class="border-t border-neutral-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="text-neutral-400 text-xs">
         &copy; {currentYear} {site.name} — Coach prise de parole en public
       </p>

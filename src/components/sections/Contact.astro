@@ -11,13 +11,17 @@ const contact = getContact();
 const site = getSiteInfo();
 ---
 
-<section id="contact" class="bg-primary-950 py-16 md:py-24">
+<section id="contact" class="relative bg-primary-950 py-16 md:py-24 overflow-hidden">
+  <!-- Warm glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-accent-500 rounded-full blur-[120px] opacity-10" aria-hidden="true"></div>
+
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
       <!-- Col gauche : texte + CTA Calendly -->
-      <div>
+      <div class="relative">
+        <div class="w-10 h-[2px] bg-accent-500 mb-6" aria-hidden="true"></div>
         <SectionEyebrow text={contact.eyebrow} variant="light" />
-        <h2 class="font-heading font-semibold text-white text-2xl md:text-3xl mb-4">
+        <h2 class="font-heading font-bold text-white text-3xl md:text-4xl mb-4">
           {contact.title}
         </h2>
         <p class="text-neutral-300 leading-relaxed mb-8">
@@ -57,7 +61,7 @@ const site = getSiteInfo();
       </div>
 
       <!-- Col droite : formulaire Web3Forms -->
-      <div class="bg-white rounded-xl p-6 md:p-8">
+      <div class="relative bg-white rounded-xl p-6 md:p-8">
         <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
           <!-- Web3Forms config -->
           <input type="hidden" name="access_key" value={import.meta.env.WEB3FORMS_KEY || 'YOUR_ACCESS_KEY'} />

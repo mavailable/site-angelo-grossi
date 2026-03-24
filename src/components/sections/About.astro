@@ -1,7 +1,6 @@
 ---
 /**
- * À propos — Fond neutral-50 (gris très clair)
- * Layout asymétrique : photo à gauche + texte à droite sur desktop
+ * À propos — Layout asymétrique avec accents décoratifs
  */
 import { getAbout } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
@@ -9,32 +8,39 @@ import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 const about = getAbout();
 ---
 
-<section id="a-propos" class="bg-neutral-50 py-16 md:py-24">
+<section id="a-propos" class="bg-neutral-50 py-20 md:py-28">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center">
-      <!-- Photo -->
-      <div class="lg:col-span-2">
-        <div class="w-full aspect-[3/4] max-w-sm mx-auto rounded-2xl overflow-hidden shadow-lg">
-          <img
-            src="/images/portrait-about.jpg"
-            alt="Angelo Grossi en réflexion — coach certifié RNCP 7"
-            width="384"
-            height="512"
-            class="w-full h-full object-cover object-top"
-            loading="lazy"
-          />
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <!-- Photo with decorative elements -->
+      <div class="lg:col-span-5">
+        <div class="relative max-w-sm mx-auto">
+          <!-- Decorative accent line -->
+          <div class="absolute -left-4 top-8 bottom-8 w-[2px] bg-gradient-to-b from-transparent via-accent-500/40 to-transparent hidden lg:block" aria-hidden="true"></div>
+          <div class="aspect-[3/4] rounded-xl overflow-hidden">
+            <img
+              src="/images/portrait-about.jpg"
+              alt="Angelo Grossi en réflexion — coach certifié RNCP 7"
+              width="384"
+              height="512"
+              class="w-full h-full object-cover object-top"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
 
-      <!-- Texte -->
-      <article class="lg:col-span-3">
+      <!-- Text -->
+      <article class="lg:col-span-7">
         <SectionEyebrow text={about.eyebrow} />
-        <h2 class="font-heading font-semibold text-primary-950 text-2xl md:text-3xl mb-6">
+        <h2 class="font-heading font-bold text-primary-950 text-3xl md:text-4xl leading-tight mb-8">
           {about.title}
         </h2>
-        <div class="space-y-4">
-          {about.paragraphs.map((p) => (
-            <p class="text-neutral-700 leading-relaxed">{p}</p>
+        <div class="space-y-5">
+          {about.paragraphs.map((p, i) => (
+            <p class:list={[
+              'leading-relaxed',
+              i === 0 ? 'text-neutral-800 text-lg' : 'text-neutral-600'
+            ]}>{p}</p>
           ))}
         </div>
       </article>

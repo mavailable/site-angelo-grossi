@@ -1,7 +1,6 @@
 ---
 /**
- * CTA Banner — Bloc accent entre les sections
- * Fond accent-500 avec texte sombre
+ * CTA Banner — Fond sombre avec accent doré, plus atmosphérique
  */
 import Button from '@components/ui/Button.astro';
 
@@ -20,15 +19,19 @@ const {
 } = Astro.props;
 ---
 
-<section class="bg-accent-500 py-12 md:py-16" aria-label="Appel à l'action">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-    <h2 class="font-heading font-semibold text-primary-950 text-xl md:text-2xl mb-3">
+<section class="relative bg-primary-950 py-16 md:py-20 overflow-hidden" aria-label="Appel à l'action">
+  <!-- Warm glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-accent-500 rounded-full blur-[120px] opacity-10" aria-hidden="true"></div>
+
+  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <div class="w-10 h-[2px] bg-accent-500 mx-auto mb-8" aria-hidden="true"></div>
+    <h2 class="font-heading font-bold text-white text-2xl md:text-3xl mb-4">
       {title}
     </h2>
-    <p class="text-primary-800 mb-6">
+    <p class="text-neutral-400 mb-8">
       {subtitle}
     </p>
-    <Button href={ctaLink} variant="secondary" size="lg">
+    <Button href={ctaLink} variant="primary" size="lg">
       {ctaText}
     </Button>
   </div>
