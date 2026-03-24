@@ -23,8 +23,14 @@ const hero = getHero();
 <script>
   const stickyCta = document.getElementById('sticky-cta');
   if (stickyCta) {
+    // Apparaît uniquement quand le bouton CTA du Hero n'est plus visible
+    const heroCta = document.querySelector('#hero a[href*="calendly"], #hero a.bg-accent-500, section:first-of-type a.bg-accent-500');
+    const threshold = heroCta
+      ? () => heroCta.getBoundingClientRect().bottom < 0
+      : () => window.scrollY > window.innerHeight * 2;
+
     const show = () => {
-      if (window.scrollY > window.innerHeight * 0.8) {
+      if (threshold()) {
         stickyCta.classList.remove('translate-y-full');
       } else {
         stickyCta.classList.add('translate-y-full');
