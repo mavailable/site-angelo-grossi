@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angelo Grossi — Coach en Prise de Parole | Variante 2 : Crème Prestige</title>
-
+    <title>Angelo Grossi — Coach en prise de parole publique</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,110 +14,64 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            font-family: 'DM Sans', sans-serif;
-            color: #1a1a2e;
-            background-color: #faf9f6;
-            line-height: 1.6;
+        :root {
+            --bg-cream: #faf9f6;
+            --dark-navy: #1a1a2e;
+            --dark-gold: #b8860b;
+            --medium-gold: #daa520;
+            --light-gold: #c5a44e;
+            --text-dark: #2d2d3a;
+            --text-secondary: #6b6b7a;
+            --white: #ffffff;
         }
 
-        /* Fixed top banner */
-        .design-banner {
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Banner */
+        .banner-variant {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background-color: #1a1a2e;
-            color: #faf9f6;
+            background: var(--dark-navy);
+            color: var(--medium-gold);
             padding: 12px 20px;
             text-align: center;
             font-size: 12px;
+            font-weight: 600;
             letter-spacing: 1px;
-            text-transform: uppercase;
             z-index: 1000;
-            border-bottom: 2px solid #daa520;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
-        body {
-            padding-top: 50px;
+        /* Noise/texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="1"/></filter><rect width="100" height="100" fill="rgba(0,0,0,0.03)" filter="url(%23noise)"/></svg>');
+            pointer-events: none;
+            z-index: -1;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        main {
+            margin-top: 50px;
         }
 
-        h1 {
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 42px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 40px;
-        }
-
-        h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .eyebrow {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #b8860b;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        em {
-            font-style: italic;
-            color: #8b6914;
-        }
-
-        /* CTA Buttons */
-        .button {
-            display: inline-block;
-            padding: 14px 32px;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        .button-primary {
-            background-color: #1a1a2e;
-            color: #faf9f6;
-            margin-right: 20px;
-            margin-bottom: 15px;
-        }
-
-        .button-primary:hover {
-            background-color: #2a2a3e;
-        }
-
-        .button-secondary {
-            border: 2px solid #1a1a2e;
-            color: #1a1a2e;
-            margin-bottom: 15px;
-        }
-
-        .button-secondary:hover {
-            background-color: #1a1a2e;
-            color: #faf9f6;
-        }
-
-        /* Hero Section */
+        /* ===== HERO SECTION ===== */
         .hero {
-            background-color: #faf9f6;
+            background: linear-gradient(135deg, var(--bg-cream) 0%, #fdfbf7 50%, #faf9f6 100%);
+            padding: 100px 40px;
             position: relative;
             overflow: hidden;
         }
@@ -128,395 +80,797 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
             right: 0;
-            height: 6px;
-            background: linear-gradient(90deg, #b8860b, #daa520, #b8860b);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
         }
 
         .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             align-items: center;
-            padding: 80px 60px;
-            max-width: 1400px;
-            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero-content h1 {
-            margin-bottom: 25px;
+        .hero-content {
+            padding: 40px 0;
+        }
+
+        .hero-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--dark-gold);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .hero-eyebrow::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--dark-gold) 0%, transparent 100%);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--dark-navy);
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--medium-gold);
+            font-weight: 400;
         }
 
         .hero-subtitle {
-            font-size: 16px;
-            color: #1a1a2e;
-            margin-bottom: 40px;
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
             line-height: 1.7;
+            max-width: 85%;
+            font-weight: 400;
         }
 
-        .hero-ctas {
+        .hero-subtitle::before {
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 24px;
+            background: var(--dark-gold);
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .hero-cta {
             display: flex;
+            gap: 20px;
             flex-wrap: wrap;
-            gap: 0;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 16px 40px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            font-family: 'DM Sans', sans-serif;
+            position: relative;
+        }
+
+        .btn-primary {
+            background: var(--dark-navy);
+            color: var(--medium-gold);
+            border: 2px solid var(--dark-navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-navy);
+            box-shadow: inset 0 0 20px rgba(218, 165, 32, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark-gold);
+            border: 2px solid var(--dark-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--dark-gold);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
         .hero-image {
             position: relative;
+            padding: 40px;
         }
 
-        .hero-image img {
-            width: 300px;
-            height: 420px;
-            display: block;
-            object-fit: cover;
+        .portrait-frame {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
         }
 
-        .hero-image::before {
+        .portrait-frame::before {
             content: '';
             position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border: 2px solid #b8860b;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            border: 2px solid var(--light-gold);
             z-index: -1;
         }
 
-        /* Social Proof Section */
-        .social-proof {
-            background-color: #1a1a2e;
-            color: #faf9f6;
-            padding: 80px 60px;
+        .portrait-frame::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 1px solid var(--medium-gold);
+            z-index: -2;
         }
 
-        .social-proof-container {
+        .portrait-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid var(--light-gold);
+        }
+
+        /* Decorative corners */
+        .portrait-frame::before {
+            box-shadow:
+                inset 0 0 0 12px var(--bg-cream),
+                0 0 0 2px var(--light-gold);
+        }
+
+        /* ===== SOCIAL PROOF ===== */
+        .social-proof {
+            background: var(--dark-navy);
+            background: linear-gradient(135deg, #1a1a2e 0%, #252545 100%);
+            padding: 80px 40px;
+            margin-top: 0;
+        }
+
+        .proof-container {
+            max-width: 1000px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 60px;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 0;
+        }
+
+        .proof-stat {
             text-align: center;
+            padding: 40px 30px;
+            position: relative;
         }
 
-        .proof-item h3 {
+        .proof-stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: var(--light-gold);
+            opacity: 0.6;
+        }
+
+        .proof-number {
             font-family: 'Playfair Display', serif;
-            font-size: 52px;
-            color: #daa520;
-            margin-bottom: 12px;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--medium-gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(218, 165, 32, 0.4);
         }
 
-        .proof-item p {
-            font-size: 14px;
+        .proof-label {
+            font-size: 13px;
+            color: #a8a8b8;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        /* Services Section */
+        .proof-label::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 1px;
+            background: var(--dark-gold);
+        }
+
+        /* ===== SERVICES SECTION ===== */
         .services {
-            background-color: #faf9f6;
-            padding: 80px 60px;
+            padding: 120px 40px;
+            background-color: var(--bg-cream);
         }
 
         .services-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .services h2 {
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--dark-navy);
             text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 1px;
+            background: var(--medium-gold);
+            transform: translateY(-50%);
+        }
+
+        .section-title::before {
+            left: 0;
+        }
+
+        .section-title::after {
+            right: 0;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 40px;
-            margin-top: 60px;
         }
 
         .service-card {
-            background-color: white;
-            border: 1px solid #e8e2d8;
-            padding: 40px;
+            background: var(--white);
+            padding: 50px 40px;
+            border-left: 3px solid var(--light-gold);
             position: relative;
+            transition: all 0.5s ease;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
         }
 
-        .service-card::before {
+        .service-card:hover {
+            border-left-width: 6px;
+            box-shadow: 0 12px 30px rgba(218, 165, 32, 0.15);
+            transform: translateY(-6px);
+        }
+
+        .service-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--medium-gold);
+            font-weight: 700;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--dark-navy);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-description {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== MÉTHODE H2S SECTION ===== */
+        .methode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a42 100%);
+            padding: 120px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .methode::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #b8860b, #daa520, #b8860b);
-        }
-
-        .service-card h3 {
-            color: #1a1a2e;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .service-card p {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #1a1a2e;
-        }
-
-        /* Méthode H2S Section */
-        .methode {
-            background-color: #1a1a2e;
-            color: #faf9f6;
-            padding: 80px 60px;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
         }
 
         .methode-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .methode h2 {
+        .methode-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--white);
             text-align: center;
-            color: #faf9f6;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .methode-title::before,
+        .methode-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 1px;
+            background: var(--medium-gold);
+            transform: translateY(-50%);
+        }
+
+        .methode-title::before {
+            left: 0;
+        }
+
+        .methode-title::after {
+            right: 0;
         }
 
         .methode-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 60px;
+            position: relative;
+        }
+
+        /* Connecting line */
+        .methode-grid::before {
+            content: '';
+            position: absolute;
+            top: 80px;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--dark-gold) 25%, var(--dark-gold) 75%, transparent 100%);
+            z-index: 0;
         }
 
         .methode-card {
-            border: 1px solid #daa520;
-            padding: 40px;
+            background: transparent;
+            border-top: 2px solid var(--light-gold);
+            padding: 40px 30px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        .method-letter {
+        .methode-letter {
             width: 80px;
             height: 80px;
-            background-color: #daa520;
-            color: #1a1a2e;
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            font-weight: 700;
+            border: 2px solid var(--medium-gold);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 25px;
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--medium-gold);
+            margin: 0 auto 30px;
+            background: transparent;
+            position: relative;
+            z-index: 2;
         }
 
-        .methode-card h3 {
-            color: #faf9f6;
+        .methode-letter::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 88px;
+            height: 88px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a42 100%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .methode-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
             margin-bottom: 15px;
-            font-size: 22px;
+            font-family: 'Playfair Display', serif;
         }
 
-        .methode-card p {
+        .methode-description {
             font-size: 14px;
+            color: #b8b8c8;
             line-height: 1.7;
-            color: #faf9f6;
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            h1 {
-                font-size: 36px;
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--bg-cream);
+            padding: 80px 40px;
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark-navy);
+            position: relative;
+            padding: 0 60px;
+            display: inline-block;
+        }
+
+        .footer-signature::before,
+        .footer-signature::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 1px;
+            background: var(--dark-gold);
+            transform: translateY(-50%);
+        }
+
+        .footer-signature::before {
+            left: 0;
+        }
+
+        .footer-signature::after {
+            right: 0;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .banner-variant {
+                font-size: 10px;
+                padding: 10px 15px;
             }
 
-            h2 {
-                font-size: 32px;
+            main {
+                margin-top: 45px;
+            }
+
+            .hero {
+                padding: 60px 20px;
             }
 
             .hero-container {
                 grid-template-columns: 1fr;
-                padding: 60px 40px;
                 gap: 40px;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
             }
 
             .hero-image {
-                display: flex;
-                justify-content: center;
+                padding: 20px;
             }
 
-            .social-proof-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .portrait-frame::before {
+                top: -8px;
+                left: -8px;
+                right: -8px;
+                bottom: -8px;
+            }
+
+            .portrait-frame::after {
+                top: -4px;
+                left: -4px;
+                right: -4px;
+                bottom: -4px;
+            }
+
+            .section-title {
+                font-size: 36px;
+                margin-bottom: 50px;
+                padding: 0 30px;
+            }
+
+            .section-title::before,
+            .section-title::after {
+                width: 40px;
+            }
+
+            .services {
+                padding: 80px 20px;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .proof-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .proof-stat:not(:last-child)::after {
+                display: none;
+            }
+
+            .methode {
+                padding: 80px 20px;
+            }
+
+            .methode-title {
+                font-size: 36px;
+                padding: 0 20px;
             }
 
             .methode-grid {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .button-primary {
-                margin-right: 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .design-banner {
-                padding: 10px 15px;
-                font-size: 11px;
-            }
-
-            body {
-                padding-top: 45px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            h2 {
-                font-size: 24px;
-            }
-
-            h3 {
-                font-size: 18px;
-            }
-
-            .hero-container {
-                padding: 40px 20px;
-            }
-
-            .social-proof {
-                padding: 60px 20px;
-            }
-
-            .services {
-                padding: 60px 20px;
-            }
-
-            .service-card {
-                padding: 30px;
-            }
-
-            .methode {
-                padding: 60px 20px;
+            .methode-grid::before {
+                display: none;
             }
 
             .methode-card {
-                padding: 30px;
+                border-top: 1px solid rgba(218, 165, 32, 0.3);
+                padding: 30px 20px;
             }
 
-            .proof-item h3 {
-                font-size: 36px;
+            .footer {
+                padding: 60px 20px;
+            }
+
+            .footer-signature {
+                font-size: 18px;
+                padding: 0 40px;
+            }
+
+            .footer-signature::before,
+            .footer-signature::after {
+                width: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 32px;
             }
 
             .hero-subtitle {
                 font-size: 14px;
             }
 
-            .button {
-                padding: 12px 24px;
-                font-size: 12px;
+            .section-title {
+                font-size: 28px;
             }
 
-            .hero-image img {
-                width: 100%;
-                max-width: 300px;
-                height: auto;
-                aspect-ratio: 300 / 420;
+            .methode-title {
+                font-size: 28px;
+            }
+
+            .proof-number {
+                font-size: 36px;
+            }
+
+            .service-title {
+                font-size: 18px;
+            }
+
+            .footer-signature {
+                font-size: 16px;
+                padding: 0 30px;
+            }
+
+            .social-proof {
+                padding: 60px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Design Banner -->
-    <div class="design-banner">
+    <div class="banner-variant">
         Proposition design — Variante 2 : Crème Prestige
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <p class="eyebrow">Coach en prise de parole · Île-de-France</p>
-                <h1>L'art de <em>convaincre</em> s'apprend sur scène</h1>
-                <p class="hero-subtitle">Dirigeants, experts — découvrez le ThéâtroCoaching. 25 ans d'expérience corporate et 15 ans d'improvisation théâtrale au service de votre prise de parole.</p>
-                <div class="hero-ctas">
-                    <a href="#" class="button button-primary">Réserver un créneau</a>
-                    <a href="#" class="button button-secondary">Mon approche</a>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero fade-in">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">Coach en prise de parole · Île-de-France</div>
+                    <h1 class="hero-title">L'art de <em>convaincre</em> s'apprend sur scène</h1>
+                    <p class="hero-subtitle">Dirigeants, experts — découvrez le ThéâtroCoaching, la méthode qui transforme votre présence en puissance.</p>
+                    <div class="hero-cta">
+                        <button class="btn-primary">Prenez rendez-vous</button>
+                        <button class="btn-secondary">En savoir plus</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="portrait-frame">
+                        <img src="/images/hero-portrait.jpg" alt="Angelo Grossi - Coach en prise de parole">
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="/images/hero-portrait.jpg" alt="Angelo Grossi - Coach en Prise de Parole">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Social Proof Section -->
-    <section class="social-proof">
-        <div class="social-proof-container">
-            <div class="proof-item">
-                <h3>25 ans</h3>
-                <p>d'expérience en entreprise</p>
+        <!-- SOCIAL PROOF -->
+        <section class="social-proof fade-in">
+            <div class="proof-container">
+                <div class="proof-stat">
+                    <div class="proof-number">25</div>
+                    <div class="proof-label">Ans d'expérience</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-number">15</div>
+                    <div class="proof-label">Ans de certification</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-number">RNCP<br>7</div>
+                    <div class="proof-label">Titre certifié</div>
+                </div>
             </div>
-            <div class="proof-item">
-                <h3>15 ans</h3>
-                <p>de pratique théâtrale</p>
-            </div>
-            <div class="proof-item">
-                <h3>RNCP 7</h3>
-                <p>Certification coaching</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section class="services">
-        <div class="services-container">
-            <p class="eyebrow" style="text-align: center;">Services</p>
-            <h2>Une approche unique : le ThéâtroCoaching</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Débloquer votre présence</h3>
-                    <p>Retrouvez confiance et naturel face à un auditoire. Apprenez à occuper l'espace, maîtriser le trac et transformer votre énergie en impact.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Maîtriser votre voix</h3>
-                    <p>Développez une diction claire, un rythme captivant et une modulation qui retient l'attention. Votre voix devient votre outil de persuasion.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Structurer votre message</h3>
-                    <p>Organisez vos idées pour convaincre. Du discours au pitch, maîtrisez l'art de la narration en accord avec votre authenticité.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Performer en audience</h3>
-                    <p>Incarnez votre parole sur scène, en réunion ou en visio. Gérez les situations difficiles avec élégance et présence.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Méthode H2S Section -->
-    <section class="methode">
-        <div class="methode-container">
-            <h2>La méthode H2S : incarnez votre parole</h2>
-            <div class="methode-grid">
-                <div class="methode-card">
-                    <div class="method-letter">H</div>
-                    <h3>Happy</h3>
-                    <p>Retrouvez le plaisir de prendre la parole. Transformez le stress en énergie positive et communicative.</p>
-                </div>
-                <div class="methode-card">
-                    <div class="method-letter">H</div>
-                    <h3>Healthy</h3>
-                    <p>Développez une présence grounded, ancrée et authentique. Prenez soin de votre respiration et de votre équilibre.</p>
-                </div>
-                <div class="methode-card">
-                    <div class="method-letter">S</div>
-                    <h3>Sexy</h3>
-                    <p>Rayonnez avec charisme. Créez une connexion magnétique avec votre audience par votre présence et votre engagement.</p>
+        <!-- SERVICES SECTION -->
+        <section class="services fade-in">
+            <div class="services-container">
+                <h2 class="section-title">Nos services</h2>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-number">01</div>
+                        <h3 class="service-title">Débloquer votre présence</h3>
+                        <p class="service-description">Maîtrisez votre position sur scène, votre gestuelle et votre énergie pour captiver votre audience.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-number">02</div>
+                        <h3 class="service-title">Maîtriser votre voix</h3>
+                        <p class="service-description">Développez l'impact sonore de votre discours grâce à des techniques éprouvées d'articulation et de modulation.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-number">03</div>
+                        <h3 class="service-title">Structurer votre message</h3>
+                        <p class="service-description">Organisez vos idées avec clarté pour que votre message résonne et reste mémorable auprès de vos auditeurs.</p>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-number">04</div>
+                        <h3 class="service-title">Performer en audience</h3>
+                        <p class="service-description">Gérez le stress, l'émotion et la pression pour livrer une performance authentique et convaincante.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- MÉTHODE H2S -->
+        <section class="methode fade-in">
+            <div class="methode-container">
+                <h2 class="methode-title">Méthode H2S</h2>
+                <div class="methode-grid">
+                    <div class="methode-card fade-in">
+                        <div class="methode-letter">H</div>
+                        <div class="methode-label">Happy</div>
+                        <p class="methode-description">Retrouvez la joie et l'authenticité de parler en public. Une présence sans artifice.</p>
+                    </div>
+                    <div class="methode-card fade-in">
+                        <div class="methode-letter">H</div>
+                        <div class="methode-label">Healthy</div>
+                        <p class="methode-description">Développez une pratique saine et durable de la communication, sans stress destructeur.</p>
+                    </div>
+                    <div class="methode-card fade-in">
+                        <div class="methode-letter">S</div>
+                        <div class="methode-label">Sexy</div>
+                        <p class="methode-description">Dégagez une présence magnétique, charismatique et irrésistible face à votre audience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer fade-in">
+        <div class="footer-content">
+            <div class="footer-signature">Angelo Grossi — Coach en prise de parole</div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
