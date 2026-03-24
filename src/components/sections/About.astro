@@ -1,0 +1,37 @@
+---
+/**
+ * À propos — Fond neutral-50 (gris très clair)
+ * Layout asymétrique : photo à gauche + texte à droite sur desktop
+ */
+import { getAbout } from '@data/content';
+import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
+
+const about = getAbout();
+---
+
+<section id="a-propos" class="bg-neutral-50 py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center">
+      <!-- Photo -->
+      <div class="lg:col-span-2">
+        <!-- TODO: Remplacer par la photo portrait du client (portrait-about.jpg) -->
+        <div class="w-full aspect-[3/4] max-w-sm mx-auto bg-primary-100 rounded-2xl flex items-center justify-center">
+          <span class="text-primary-500 text-sm">Photo à venir</span>
+        </div>
+      </div>
+
+      <!-- Texte -->
+      <article class="lg:col-span-3">
+        <SectionEyebrow text={about.eyebrow} />
+        <h2 class="font-heading font-semibold text-primary-950 text-2xl md:text-3xl mb-6">
+          {about.title}
+        </h2>
+        <div class="space-y-4">
+          {about.paragraphs.map((p) => (
+            <p class="text-neutral-700 leading-relaxed">{p}</p>
+          ))}
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

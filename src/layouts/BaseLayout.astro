@@ -1,0 +1,107 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogImage = '/images/og-image.jpg',
+  canonical,
+  noindex = false,
+} = Astro.props;
+
+import '../styles/global.css';
+import { getSiteInfo } from '@data/content';
+const site = getSiteInfo();
+const siteUrl = site.siteUrl || 'https://angelogrossi.com';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
+const ogImageUrl = new URL(ogImage, siteUrl).href;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+  <!-- Préchargement police heading (critique pour LCP) -->
+  <link rel="preload" href="/fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageUrl} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content={site.name} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+
+  <!-- Favicon + Apple Touch + Webmanifest -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#ed9813" />
+
+  <!-- Slot pour meta additionnels (Schema.org, etc.) -->
+  <slot name="head" />
+
+</head>
+<body class="bg-white text-neutral-800 font-body antialiased">
+  <!-- Skip-to-content : OBLIGATOIRE pour accessibilité WCAG 2.1 AA -->
+  <a href="#main-content"
+     class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-accent-500 focus:text-primary-950 focus:px-4 focus:py-2 focus:rounded focus:font-semibold">
+    Aller au contenu principal
+  </a>
+
+  <!-- Header -->
+  <slot name="header" />
+
+  <!-- Contenu principal -->
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <slot name="footer" />
+
+  <!-- Umami Analytics — sans cookies, pas de bannière RGPD nécessaire -->
+  <!-- data-website-id sera remplacé en wf-10 lors du déploiement -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="PLACEHOLDER_UMAMI_ID"></script>
+
+  <!-- Umami event tracking : tel, email, CTA -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+          if (typeof umami !== 'undefined') umami.track('phone-click');
+        });
+      });
+      document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', () => {
+          if (typeof umami !== 'undefined') umami.track('email-click');
+        });
+      });
+      document.querySelectorAll('[data-track="cta"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (typeof umami !== 'undefined') umami.track('cta-click');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

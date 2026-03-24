@@ -1,0 +1,116 @@
+---
+/**
+ * Contact — Fond primary-950 (sombre, cohérent avec le Hero)
+ * Layout : texte + CTA Calendly à gauche, formulaire Web3Forms à droite
+ */
+import { getContact, getSiteInfo } from '@data/content';
+import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
+import Button from '@components/ui/Button.astro';
+
+const contact = getContact();
+const site = getSiteInfo();
+---
+
+<section id="contact" class="bg-primary-950 py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <!-- Col gauche : texte + CTA Calendly -->
+      <div>
+        <SectionEyebrow text={contact.eyebrow} variant="light" />
+        <h2 class="font-heading font-semibold text-white text-2xl md:text-3xl mb-4">
+          {contact.title}
+        </h2>
+        <p class="text-neutral-300 leading-relaxed mb-8">
+          {contact.subtitle}
+        </p>
+
+        <!-- CTA Calendly -->
+        {contact.ctaCalendlyText && (
+          <div class="bg-primary-900/60 rounded-xl p-6 border border-primary-800/50 mb-6">
+            <p class="text-white font-semibold mb-2">RDV découverte gratuit</p>
+            <p class="text-neutral-400 text-sm mb-4">30 minutes pour faire le point sur vos besoins, sans engagement.</p>
+            <Button href={contact.ctaCalendlyLink || '#'} variant="primary" size="md">
+              {contact.ctaCalendlyText}
+            </Button>
+          </div>
+        )}
+
+        <!-- Coordonnées directes -->
+        <div class="space-y-3 text-sm">
+          {site.phone && (
+            <a href={`tel:${site.phone.replace(/\s/g, '')}`} class="flex items-center gap-3 text-neutral-300 hover:text-accent-400 transition-colors">
+              <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              {site.phone}
+            </a>
+          )}
+          {site.email && (
+            <a href={`mailto:${site.email}`} class="flex items-center gap-3 text-neutral-300 hover:text-accent-400 transition-colors">
+              <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              {site.email}
+            </a>
+          )}
+        </div>
+      </div>
+
+      <!-- Col droite : formulaire Web3Forms -->
+      <div class="bg-white rounded-xl p-6 md:p-8">
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+          <!-- Web3Forms config -->
+          <input type="hidden" name="access_key" value={import.meta.env.WEB3FORMS_KEY || 'YOUR_ACCESS_KEY'} />
+          <input type="hidden" name="redirect" value="https://angelogrossi.com/merci" />
+          <input type="hidden" name="from_name" value="Angelo Grossi — Site web" />
+          <input type="hidden" name="subject" value="Nouveau message depuis angelogrossi.com" />
+
+          <!-- Honeypot anti-spam -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
+
+          <div>
+            <label for="name" class="block text-sm font-medium text-primary-950 mb-1">
+              Nom complet <span class="text-secondary-600" aria-label="requis">*</span>
+            </label>
+            <input type="text" id="name" name="name" required autocomplete="name"
+              class="w-full px-4 py-3 rounded-lg border border-neutral-200 text-primary-950 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow" />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-primary-950 mb-1">
+              Email <span class="text-secondary-600" aria-label="requis">*</span>
+            </label>
+            <input type="email" id="email" name="email" required autocomplete="email"
+              class="w-full px-4 py-3 rounded-lg border border-neutral-200 text-primary-950 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow" />
+          </div>
+
+          <div>
+            <label for="phone" class="block text-sm font-medium text-primary-950 mb-1">
+              Téléphone <span class="text-neutral-400 font-normal">(optionnel)</span>
+            </label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel"
+              class="w-full px-4 py-3 rounded-lg border border-neutral-200 text-primary-950 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow" />
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-primary-950 mb-1">
+              Votre message <span class="text-secondary-600" aria-label="requis">*</span>
+            </label>
+            <textarea id="message" name="message" rows="4" required
+              class="w-full px-4 py-3 rounded-lg border border-neutral-200 text-primary-950 text-sm focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-shadow resize-y"></textarea>
+          </div>
+
+          <Button type="submit" variant="primary" size="md" class="w-full">
+            {contact.submitText}
+          </Button>
+
+          <p class="text-neutral-700 text-xs leading-relaxed">
+            {contact.rgpdText.split('politique de confidentialité')[0]}
+            <a href="/politique-confidentialite" class="underline hover:text-primary-950 transition-colors">politique de confidentialité</a>.
+            {contact.rgpdText.split('politique de confidentialité')[1]?.replace(/^\.?\s*/, '') || ''}
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

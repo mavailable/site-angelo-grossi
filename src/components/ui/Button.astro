@@ -1,0 +1,52 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  ariaLabel?: string;
+  target?: string;
+  rel?: string;
+  dataTrack?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  class: className = '',
+  ariaLabel,
+  target,
+  rel,
+  dataTrack,
+} = Astro.props;
+
+const baseClasses = 'inline-flex items-center justify-center font-semibold rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2';
+
+const sizeClasses = {
+  sm: 'px-4 py-2 text-sm min-h-[36px]',
+  md: 'px-6 py-3 text-base min-h-[44px]',
+  lg: 'px-8 py-4 text-lg min-h-[52px]',
+};
+
+const variantClasses = {
+  primary: 'bg-accent-500 text-primary-950 hover:bg-accent-400',
+  secondary: 'bg-primary-950 text-white hover:bg-primary-800',
+  outline: 'border-2 border-primary-950 text-primary-950 hover:bg-primary-950 hover:text-white',
+  ghost: 'text-primary-950 hover:bg-primary-100',
+};
+
+const classes = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`.trim();
+---
+
+{href ? (
+  <a href={href} class={classes} aria-label={ariaLabel} target={target} rel={rel} data-track={dataTrack}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes} aria-label={ariaLabel} data-track={dataTrack}>
+    <slot />
+  </button>
+)}

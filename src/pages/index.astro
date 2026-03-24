@@ -1,0 +1,66 @@
+---
+/**
+ * Page d'accueil — Angelo Grossi
+ * One-page avec scroll et ancres
+ * Flux de conversion : Hero → SocialProof → Services → Méthode → À propos → CTA → Témoignages → FAQ → Contact
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import StickyMobileCta from '@components/layout/StickyMobileCta.astro';
+
+import Hero from '@components/sections/Hero.astro';
+import SocialProof from '@components/sections/SocialProof.astro';
+import Services from '@components/sections/Services.astro';
+import Methode from '@components/sections/Methode.astro';
+import About from '@components/sections/About.astro';
+import CtaBanner from '@components/sections/CtaBanner.astro';
+import Testimonials from '@components/sections/Testimonials.astro';
+import FAQ from '@components/sections/FAQ.astro';
+import Contact from '@components/sections/Contact.astro';
+import SchemaOrg from '@components/seo/SchemaOrg.astro';
+---
+
+<BaseLayout
+  title="Angelo Grossi — Coach prise de parole | Île-de-France"
+  description="Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale. RDV découverte gratuit."
+>
+  <Fragment slot="head">
+    <SchemaOrg />
+  </Fragment>
+
+  <Header slot="header" />
+
+  <!-- Sections dans l'ordre du flux de conversion -->
+  <!-- Fond: primary-950 (sombre) -->
+  <Hero />
+
+  <!-- Fond: accent-50 (doré clair) — transition depuis le hero sombre -->
+  <SocialProof />
+
+  <!-- Fond: blanc -->
+  <Services />
+
+  <!-- Fond: secondary-950 (bordeaux sombre) — rupture visuelle forte -->
+  <Methode />
+
+  <!-- Fond: neutral-50 (gris clair) -->
+  <About />
+
+  <!-- Fond: accent-500 (or) — CTA intermédiaire -->
+  <CtaBanner />
+
+  <!-- Fond: blanc -->
+  <Testimonials />
+
+  <!-- Fond: primary-50 (très léger) -->
+  <FAQ />
+
+  <!-- Fond: primary-950 (sombre) — boucle avec le hero -->
+  <Contact />
+
+  <Footer slot="footer" />
+
+  <!-- Sticky CTA mobile -->
+  <StickyMobileCta />
+</BaseLayout>

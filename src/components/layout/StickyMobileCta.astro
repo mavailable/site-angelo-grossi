@@ -1,0 +1,21 @@
+---
+/**
+ * Sticky CTA mobile — fixé en bas d'écran, visible uniquement sur mobile
+ */
+import { getHero } from '@data/content';
+
+const hero = getHero();
+---
+
+<div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-neutral-200 px-4 py-3 safe-area-bottom">
+  <a href={hero.ctaLink}
+     class="block w-full bg-accent-500 text-primary-950 font-semibold text-center py-3 rounded-lg hover:bg-accent-400 transition-colors min-h-[44px]">
+    {hero.ctaText}
+  </a>
+</div>
+
+<style>
+  .safe-area-bottom {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+</style>

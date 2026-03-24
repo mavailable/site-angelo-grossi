@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="Merci — Angelo Grossi"
+  description="Votre message a bien été envoyé. Angelo Grossi vous répondra sous 24 heures."
+  noindex={true}
+>
+  <Header slot="header" />
+
+  <section class="min-h-[60vh] flex items-center justify-center px-4 sm:px-6">
+    <div class="text-center max-w-lg">
+      <!-- Check icon -->
+      <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <h1 class="text-3xl font-heading font-bold text-primary-950 mb-4">
+        Merci pour votre message !
+      </h1>
+      <p class="text-lg text-neutral-600 mb-8 leading-relaxed">
+        J'ai bien reçu votre demande et je vous répondrai sous 24 heures.
+        En attendant, n'hésitez pas à consulter mon profil LinkedIn pour découvrir
+        mes derniers articles sur la prise de parole.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://www.linkedin.com/in/angelogrossi/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 bg-accent-500 text-primary-950 font-semibold px-6 py-3 rounded-lg hover:bg-accent-400 transition-colors min-h-[44px]">
+          Voir mon profil LinkedIn
+        </a>
+        <a href="/"
+           class="inline-flex items-center justify-center bg-primary-100 text-primary-950 font-semibold px-6 py-3 rounded-lg hover:bg-primary-200 transition-colors min-h-[44px]">
+          Retour à l'accueil
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

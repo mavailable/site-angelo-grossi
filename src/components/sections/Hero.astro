@@ -1,0 +1,58 @@
+---
+/**
+ * Hero — Fond sombre primary-950 avec ambiance théâtrale
+ * Layout : texte centré sur mobile, asymétrique (texte gauche + photo droite) sur desktop
+ */
+import { getHero } from '@data/content';
+import Button from '@components/ui/Button.astro';
+
+const hero = getHero();
+---
+
+<section id="hero" class="relative bg-primary-950 overflow-hidden">
+  <!-- Gradient décoratif subtil -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-secondary-950 opacity-80" aria-hidden="true"></div>
+  <!-- Halo doré en haut à droite (effet projecteur) -->
+  <div class="absolute -top-32 -right-32 w-96 h-96 bg-accent-500 rounded-full blur-[120px] opacity-10" aria-hidden="true"></div>
+
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28 lg:py-32">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Texte -->
+      <div class="text-center lg:text-left">
+        <h1 class="font-heading font-bold text-white text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
+          {hero.title}
+        </h1>
+        <p class="text-neutral-300 text-lg md:text-xl leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+          {hero.subtitle}
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 justify-center lg:justify-start mb-6">
+          <Button href={hero.ctaLink} variant="primary" size="md" dataTrack="cta">
+            {hero.ctaText}
+          </Button>
+          {hero.ctaSecondaryText && (
+            <Button href={hero.ctaSecondaryLink} variant="outline" size="md" class="border-white text-white hover:bg-white hover:text-primary-950">
+              {hero.ctaSecondaryText}
+            </Button>
+          )}
+        </div>
+
+        <!-- Réassurance -->
+        {hero.reassurance && (
+          <p class="text-neutral-400 text-sm">
+            {hero.reassurance}
+          </p>
+        )}
+      </div>
+
+      <!-- Photo / Placeholder -->
+      <div class="hidden lg:flex justify-center">
+        <!-- TODO: Remplacer par la photo portrait du client (hero-portrait.jpg) -->
+        <div class="w-80 h-96 bg-primary-800 rounded-2xl flex items-center justify-center border border-primary-700">
+          <span class="text-primary-500 text-sm">Photo à venir</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

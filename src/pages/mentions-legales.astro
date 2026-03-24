@@ -1,0 +1,85 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+---
+
+<BaseLayout
+  title="Mentions légales — Angelo Grossi"
+  description="Mentions légales du site angelogrossi.com — Coach en prise de parole en public."
+>
+  <Header slot="header" />
+
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+    <h1 class="font-heading font-bold text-primary-950 text-3xl mb-10">Mentions légales</h1>
+
+    <div class="space-y-8 text-neutral-700 leading-relaxed text-sm">
+      <section>
+        <h2 class="font-heading font-semibold text-primary-950 text-xl mb-3">Éditeur du site</h2>
+        <p>
+          Le site <strong>angelogrossi.com</strong> est édité par :
+        </p>
+        <p class="mt-2">
+          <strong>Angelo Grossi</strong> — Micro-entreprise<br />
+          Coach certifié en prise de parole en public<br />
+          SIRET : en cours d'obtention<!-- TODO: Remplacer par le vrai SIRET quand disponible --><br />
+          Téléphone : <a href="tel:0769389281" class="text-accent-700 hover:underline">07 69 38 92 81</a><br />
+          Email : <a href="mailto:contact@angelogrossi.com" class="text-accent-700 hover:underline">contact@angelogrossi.com</a>
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading font-semibold text-primary-950 text-xl mb-3">Directeur de la publication</h2>
+        <p>Angelo Grossi</p>
+      </section>
+
+      <section>
+        <h2 class="font-heading font-semibold text-primary-950 text-xl mb-3">Hébergement</h2>
+        <p>
+          Ce site est hébergé par :<br />
+          <strong>Cloudflare, Inc.</strong><br />
+          101 Townsend Street, San Francisco, CA 94107, États-Unis<br />
+          Téléphone : +1 (650) 319-8930<br />
+          Site : <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer" class="text-accent-700 hover:underline">www.cloudflare.com</a>
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading font-semibold text-primary-950 text-xl mb-3">Conception et réalisation</h2>
+        <p>
+          Site conçu et réalisé par <a href="https://marcm.fr/" class="text-accent-700 hover:underline">Marc M.</a> — Création de sites web.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading font-semibold text-primary-950 text-xl mb-3">Propriété intellectuelle</h2>
+        <p>
+          L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, etc.) est la propriété exclusive d'Angelo Grossi, sauf mention contraire. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading font-semibold text-primary-950 text-xl mb-3">Données personnelles</h2>
+        <p>
+          Pour toute information relative à la collecte et au traitement de vos données personnelles, veuillez consulter notre <a href="/politique-confidentialite" class="text-accent-700 hover:underline">politique de confidentialité</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading font-semibold text-primary-950 text-xl mb-3">Cookies</h2>
+        <p>
+          Ce site utilise Umami Analytics, un outil de mesure d'audience qui ne dépose aucun cookie et ne collecte aucune donnée personnelle. Aucune bannière de consentement n'est donc nécessaire pour la navigation sur ce site.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-heading font-semibold text-primary-950 text-xl mb-3">Limitation de responsabilité</h2>
+        <p>
+          Angelo Grossi s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, il ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition. Angelo Grossi décline toute responsabilité pour toute imprécision, inexactitude ou omission portant sur des informations disponibles sur ce site.
+        </p>
+      </section>
+    </div>
+  </article>
+
+  <Footer slot="footer" />
+</BaseLayout>

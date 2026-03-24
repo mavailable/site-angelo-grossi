@@ -1,0 +1,19 @@
+---
+interface Props {
+  text: string;
+  variant?: 'dark' | 'light' | 'accent';
+  class?: string;
+}
+
+const { text, variant = 'dark', class: className = '' } = Astro.props;
+
+const colorClasses = {
+  dark: 'text-secondary-700',
+  light: 'text-accent-300',
+  accent: 'text-accent-700',
+};
+---
+
+<p class:list={['text-xs md:text-sm font-semibold uppercase tracking-wider mb-3', colorClasses[variant], className]}>
+  {text}
+</p>

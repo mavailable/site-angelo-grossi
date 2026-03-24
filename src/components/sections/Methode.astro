@@ -1,0 +1,51 @@
+---
+/**
+ * Méthode H2S — Fond secondary-950 (bordeaux très sombre, ambiance rideau)
+ * Layout : intro + 3 colonnes H/H/S — change le rythme visuel après les cards blanches
+ */
+import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
+
+const steps = [
+  {
+    letter: 'H',
+    label: 'Happy',
+    text: 'Être heureux d\'être là et assumer sa parole. Quand vous montez sur scène avec envie plutôt qu\'avec peur, tout change.',
+  },
+  {
+    letter: 'H',
+    label: 'Healthy',
+    text: 'Être disponible ici et maintenant. Lâcher le contrôle, accueillir l\'imprévu, être pleinement présent face à votre audience.',
+  },
+  {
+    letter: 'S',
+    label: 'Sexy',
+    text: 'Ouvert, vivant, humainement engageant. Pas une question d\'apparence, mais d\'énergie : celle qui donne envie de vous écouter.',
+  },
+];
+---
+
+<section id="methode" class="bg-secondary-950 py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12 max-w-2xl mx-auto">
+      <SectionEyebrow text="Mon approche" variant="light" />
+      <h2 class="font-heading font-semibold text-white text-2xl md:text-3xl mb-4">
+        La méthode H2S : incarnez votre parole
+      </h2>
+      <p class="text-neutral-300 leading-relaxed">
+        La perfection rassure l'orateur. L'incarnation embarque l'auditoire. Ma méthode repose sur un principe simple issu de l'improvisation théâtrale : pour convaincre, il ne suffit pas de maîtriser son discours — il faut l'incarner.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      {steps.map((step) => (
+        <div class="bg-secondary-900/50 backdrop-blur-sm rounded-xl p-6 border border-secondary-800/50 text-center">
+          <div class="w-14 h-14 bg-accent-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="font-heading font-bold text-2xl text-primary-950">{step.letter}</span>
+          </div>
+          <h3 class="font-heading font-semibold text-accent-300 text-lg mb-3">{step.label}</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed">{step.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
