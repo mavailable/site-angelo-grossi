@@ -4,6 +4,11 @@
  * URL secrète, non indexée, non dans le sitemap
  */
 import BaseLayout from '@layouts/BaseLayout.astro';
+
+const REPO = 'https://github.com/mavailable/site-angelo-grossi';
+const BRANCH = 'master';
+const ghEdit = (path: string) => `${REPO}/edit/${BRANCH}/${path}`;
+const ghDir = (path: string) => `${REPO}/tree/${BRANCH}/${path}`;
 ---
 
 <BaseLayout
@@ -40,8 +45,8 @@ import BaseLayout from '@layouts/BaseLayout.astro';
         <div class="mb-8">
           <h1 class="font-heading font-bold text-primary-950 text-2xl md:text-3xl mb-3">Modifier votre site</h1>
           <p class="text-neutral-600 leading-relaxed max-w-2xl">
-            Vous pouvez modifier tous les textes et contenus de votre site via l'éditeur Keystatic.
-            Les modifications sont enregistrées instantanément.
+            Vous pouvez modifier tous les textes et contenus de votre site directement sur GitHub.
+            Cliquez sur une rubrique, modifiez le fichier JSON, puis cliquez sur <strong>Commit changes</strong>. Le site se met à jour automatiquement en ~30 secondes.
           </p>
           <div class="mt-4 flex flex-col sm:flex-row gap-3">
             <span class="inline-flex items-center gap-2 text-sm text-neutral-500">
@@ -50,19 +55,12 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             </span>
             <span class="inline-flex items-center gap-2 text-sm text-neutral-500">
               <span class="w-6 h-6 rounded-full bg-accent-100 text-accent-700 flex items-center justify-center text-xs font-bold">2</span>
-              Modifiez les textes
+              Modifiez le texte entre guillemets
             </span>
             <span class="inline-flex items-center gap-2 text-sm text-neutral-500">
               <span class="w-6 h-6 rounded-full bg-accent-100 text-accent-700 flex items-center justify-center text-xs font-bold">3</span>
-              Cliquez sur Save
+              Commit changes
             </span>
-          </div>
-          <div class="mt-6">
-            <a href="/keystatic" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 bg-accent-500 text-primary-950 font-semibold px-5 py-2.5 rounded-lg hover:bg-accent-400 transition-colors text-sm min-h-[44px]">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-              Ouvrir l'éditeur Keystatic
-            </a>
           </div>
         </div>
 
@@ -75,7 +73,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
             <!-- Services -->
-            <a href="/keystatic/collection/services" target="_blank" rel="noopener noreferrer"
+            <a href={ghDir('src/content/services')} target="_blank" rel="noopener noreferrer"
                class="group block bg-white rounded-xl border border-neutral-200 p-5 hover:border-accent-300 hover:shadow-sm transition-all">
               <div class="flex items-start justify-between mb-3">
                 <div class="w-10 h-10 bg-primary-50 rounded-lg flex items-center justify-center">
@@ -94,7 +92,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             </a>
 
             <!-- Témoignages -->
-            <a href="/keystatic/collection/testimonials" target="_blank" rel="noopener noreferrer"
+            <a href={ghDir('src/content/testimonials')} target="_blank" rel="noopener noreferrer"
                class="group block bg-white rounded-xl border border-neutral-200 p-5 hover:border-accent-300 hover:shadow-sm transition-all">
               <div class="flex items-start justify-between mb-3">
                 <div class="w-10 h-10 bg-primary-50 rounded-lg flex items-center justify-center">
@@ -113,7 +111,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             </a>
 
             <!-- FAQ -->
-            <a href="/keystatic/collection/faq" target="_blank" rel="noopener noreferrer"
+            <a href={ghDir('src/content/faq')} target="_blank" rel="noopener noreferrer"
                class="group block bg-white rounded-xl border border-neutral-200 p-5 hover:border-accent-300 hover:shadow-sm transition-all">
               <div class="flex items-start justify-between mb-3">
                 <div class="w-10 h-10 bg-primary-50 rounded-lg flex items-center justify-center">
@@ -143,7 +141,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
             <!-- Site Info -->
-            <a href="/keystatic/singleton/siteInfo" target="_blank" rel="noopener noreferrer"
+            <a href={ghEdit('src/content/site-info/index.json')} target="_blank" rel="noopener noreferrer"
                class="group flex items-center gap-4 bg-white rounded-xl border border-neutral-200 p-4 hover:border-accent-300 hover:shadow-sm transition-all">
               <div class="w-10 h-10 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg class="w-5 h-5 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/></svg>
@@ -155,7 +153,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             </a>
 
             <!-- Hero -->
-            <a href="/keystatic/singleton/hero" target="_blank" rel="noopener noreferrer"
+            <a href={ghEdit('src/content/hero/index.json')} target="_blank" rel="noopener noreferrer"
                class="group flex items-center gap-4 bg-white rounded-xl border border-neutral-200 p-4 hover:border-accent-300 hover:shadow-sm transition-all">
               <div class="w-10 h-10 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg class="w-5 h-5 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
@@ -167,7 +165,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             </a>
 
             <!-- About -->
-            <a href="/keystatic/singleton/about" target="_blank" rel="noopener noreferrer"
+            <a href={ghEdit('src/content/about/index.json')} target="_blank" rel="noopener noreferrer"
                class="group flex items-center gap-4 bg-white rounded-xl border border-neutral-200 p-4 hover:border-accent-300 hover:shadow-sm transition-all">
               <div class="w-10 h-10 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg class="w-5 h-5 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
@@ -179,7 +177,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             </a>
 
             <!-- Contact -->
-            <a href="/keystatic/singleton/contact" target="_blank" rel="noopener noreferrer"
+            <a href={ghEdit('src/content/contact/index.json')} target="_blank" rel="noopener noreferrer"
                class="group flex items-center gap-4 bg-white rounded-xl border border-neutral-200 p-4 hover:border-accent-300 hover:shadow-sm transition-all">
               <div class="w-10 h-10 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg class="w-5 h-5 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
@@ -200,8 +198,9 @@ import BaseLayout from '@layouts/BaseLayout.astro';
             <div class="text-sm text-neutral-700">
               <p class="font-semibold text-primary-950 mb-1">Conseils</p>
               <ul class="space-y-1 text-neutral-600">
-                <li>Cliquez toujours sur <strong>Save</strong> après chaque modification</li>
-                <li>Si vous faites une erreur, les versions précédentes sont sauvegardées</li>
+                <li>Modifiez uniquement le texte entre <strong>guillemets</strong> — ne touchez pas aux clés JSON</li>
+                <li>Cliquez sur <strong>Commit changes</strong> pour enregistrer — le site se met à jour en ~30s</li>
+                <li>Si vous faites une erreur, chaque version est sauvegardée sur GitHub</li>
                 <li>Besoin d'aide ? Contactez votre webmaster ci-dessous</li>
               </ul>
             </div>
