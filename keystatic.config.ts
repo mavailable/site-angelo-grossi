@@ -1,7 +1,11 @@
 import { config, fields, singleton, collection } from '@keystatic/core';
 
+const isProd = import.meta.env.PROD;
+
 export default config({
-  storage: { kind: 'local' },
+  storage: isProd
+    ? { kind: 'github', repo: 'mavailable/site-angelo-grossi' }
+    : { kind: 'local' },
 
   singletons: {
     siteInfo: singleton({

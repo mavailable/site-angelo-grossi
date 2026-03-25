@@ -10,7 +10,6 @@ const cloudflare = isKeystatic ? (await import('@astrojs/cloudflare')).default :
 
 export default defineConfig({
   site: 'https://angelogrossi.com',
-  output: isKeystatic ? 'hybrid' : 'static',
   adapter: isKeystatic ? cloudflare() : undefined,
   integrations: [
     sitemap({
