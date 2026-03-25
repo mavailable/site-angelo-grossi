@@ -3,10 +3,11 @@
  * Hero — Fond sombre primary-950 avec ambiance théâtrale
  * Layout : texte centré sur mobile, asymétrique (texte gauche + photo droite) sur desktop
  */
-import { getHero } from '@data/content';
+import { getHero, getSiteInfo } from '@data/content';
 import Button from '@components/ui/Button.astro';
 
 const hero = getHero();
+const site = getSiteInfo();
 ---
 
 <section id="hero" class="relative bg-primary-950 overflow-hidden">
@@ -33,7 +34,7 @@ const hero = getHero();
         </div>
 
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 justify-center lg:justify-start mb-6">
-          <Button href={hero.ctaLink} variant="primary" size="md" dataTrack="cta">
+          <Button dataCalLink={site.calUrl} variant="primary" size="md" dataTrack="cta">
             {hero.ctaText}
           </Button>
           {hero.ctaSecondaryText && (

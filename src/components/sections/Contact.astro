@@ -28,13 +28,13 @@ const site = getSiteInfo();
           {contact.subtitle}
         </p>
 
-        <!-- CTA Calendly -->
-        {contact.ctaCalendlyText && (
+        <!-- CTA Cal.com — popup modal -->
+        {contact.ctaCalText && (
           <div class="bg-primary-900/60 rounded-xl p-6 border border-primary-800/50 mb-6">
             <p class="text-white font-semibold mb-2">RDV découverte gratuit</p>
             <p class="text-neutral-400 text-sm mb-4">30 minutes pour faire le point sur vos besoins, sans engagement.</p>
-            <Button href={contact.ctaCalendlyLink || '#'} variant="primary" size="md">
-              {contact.ctaCalendlyText}
+            <Button dataCalLink={contact.ctaCalLink} variant="primary" size="md" dataTrack="cta">
+              {contact.ctaCalText}
             </Button>
           </div>
         )}

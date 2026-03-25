@@ -2,20 +2,21 @@
 /**
  * CTA Banner — Fond sombre avec accent doré, plus atmosphérique
  */
+import { getSiteInfo } from '@data/content';
 import Button from '@components/ui/Button.astro';
 
 interface Props {
   title?: string;
   subtitle?: string;
   ctaText?: string;
-  ctaLink?: string;
 }
+
+const site = getSiteInfo();
 
 const {
   title = 'Prêt à transformer votre prise de parole ?',
   subtitle = 'Réservez votre RDV découverte gratuit — 30 minutes, sans engagement.',
   ctaText = 'Je réserve mon RDV découverte',
-  ctaLink = '#contact',
 } = Astro.props;
 ---
 
@@ -31,7 +32,7 @@ const {
     <p class="text-neutral-400 mb-8">
       {subtitle}
     </p>
-    <Button href={ctaLink} variant="primary" size="lg">
+    <Button dataCalLink={site.calUrl} variant="primary" size="lg" dataTrack="cta">
       {ctaText}
     </Button>
   </div>

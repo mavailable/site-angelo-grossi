@@ -9,6 +9,7 @@ interface Props {
   target?: string;
   rel?: string;
   dataTrack?: string;
+  dataCalLink?: string;
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   target,
   rel,
   dataTrack,
+  dataCalLink,
 } = Astro.props;
 
 const baseClasses = 'inline-flex items-center justify-center font-semibold rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2';
@@ -41,7 +43,11 @@ const variantClasses = {
 const classes = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`.trim();
 ---
 
-{href ? (
+{dataCalLink ? (
+  <button type="button" class={classes} aria-label={ariaLabel} data-cal-link={dataCalLink} data-cal-config='{"layout":"month_view"}' data-track={dataTrack}>
+    <slot />
+  </button>
+) : href ? (
   <a href={href} class={classes} aria-label={ariaLabel} target={target} rel={rel} data-track={dataTrack}>
     <slot />
   </a>

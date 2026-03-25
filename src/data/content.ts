@@ -24,7 +24,7 @@ export interface SiteInfo {
   region: string;
   linkedin: string;
   siteUrl: string;
-  calendlyUrl: string;
+  calUrl: string;
 }
 
 export interface Hero {
@@ -47,8 +47,8 @@ export interface Contact {
   eyebrow: string;
   title: string;
   subtitle: string;
-  ctaCalendlyText: string;
-  ctaCalendlyLink: string;
+  ctaCalText: string;
+  ctaCalLink: string;
   submitText: string;
   rgpdText: string;
 }

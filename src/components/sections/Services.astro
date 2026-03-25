@@ -2,11 +2,12 @@
 /**
  * Services — Editorial layout with stronger typography
  */
-import { getServices } from '@data/content';
+import { getServices, getSiteInfo } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 import Button from '@components/ui/Button.astro';
 
 const services = getServices();
+const site = getSiteInfo();
 ---
 
 <section id="services" class="bg-white py-20 md:py-28">
@@ -37,7 +38,7 @@ const services = getServices();
     </div>
 
     <div class="mt-12 pt-8 border-t border-neutral-100">
-      <Button href="#contact" variant="primary">
+      <Button dataCalLink={site.calUrl} variant="primary" dataTrack="cta">
         Discutons de vos besoins
       </Button>
     </div>

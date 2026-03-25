@@ -4,6 +4,7 @@ import Button from '@components/ui/Button.astro';
 
 const site = getSiteInfo();
 const hero = getHero();
+const calLink = site.calUrl;
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -33,9 +34,9 @@ const navLinks = [
       ))}
     </ul>
 
-    <!-- CTA desktop -->
+    <!-- CTA desktop — Cal.com popup -->
     <div class="hidden lg:block">
-      <Button href={hero.ctaLink} variant="primary" size="sm">
+      <Button dataCalLink={calLink} variant="primary" size="sm">
         {hero.ctaText}
       </Button>
     </div>
@@ -68,7 +69,7 @@ const navLinks = [
         </li>
       ))}
       <li class="pt-3">
-        <Button href={hero.ctaLink} variant="primary" size="md" class="w-full text-center">
+        <Button dataCalLink={calLink} variant="primary" size="md" class="w-full text-center">
           {hero.ctaText}
         </Button>
       </li>
