@@ -5,9 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "dev:cms": "KEYSTATIC=true astro dev",
     "build": "astro build",
-    "build:cms": "KEYSTATIC=true astro build",
     "preview": "astro preview"
   },
   "dependencies": {
