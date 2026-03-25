@@ -17,14 +17,16 @@ const {
 
 import '../styles/global.css';
 import { getSiteInfo } from '@data/content';
+import { locale } from '@data/business';
 const site = getSiteInfo();
+const ogLocale = locale.localeCode.replace('-', '_');
 const siteUrl = site.siteUrl || 'https://angelogrossi.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
 const ogImageUrl = new URL(ogImage, siteUrl).href;
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang={locale.lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,7 +44,7 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:locale" content={ogLocale} />
   <meta property="og:site_name" content={site.name} />
 
   <!-- Twitter Card -->

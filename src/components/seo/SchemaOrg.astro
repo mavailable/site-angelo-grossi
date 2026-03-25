@@ -82,7 +82,24 @@ const webSite = {
   "@type": "WebSite",
   "name": "Angelo Grossi — Coach prise de parole en public",
   "url": site.siteUrl,
-  "description": "Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale. RDV découverte gratuit."
+  "description": "Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale. RDV découverte gratuit.",
+  "inLanguage": "fr-FR"
+};
+
+// AggregateRating (basé sur les témoignages clients)
+const aggregateRating = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Angelo Grossi — Coach prise de parole en public",
+  "url": site.siteUrl,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "3",
+    "reviewCount": "3"
+  }
 };
 
 // BreadcrumbList
@@ -98,4 +115,5 @@ const breadcrumb = {
 <script type="application/ld+json" set:html={JSON.stringify(professionalService)} />
 <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />
 <script type="application/ld+json" set:html={JSON.stringify(webSite)} />
+<script type="application/ld+json" set:html={JSON.stringify(aggregateRating)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />

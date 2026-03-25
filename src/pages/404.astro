@@ -35,4 +35,9 @@ import Footer from '@components/layout/Footer.astro';
   </section>
 
   <Footer slot="footer" />
+
+  <!-- Track 404 errors -->
+  <script>
+    if (typeof umami !== 'undefined') umami.track('404-error', { path: window.location.pathname });
+  </script>
 </BaseLayout>

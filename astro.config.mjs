@@ -13,7 +13,10 @@ export default defineConfig({
   output: isKeystatic ? 'hybrid' : 'static',
   adapter: isKeystatic ? cloudflare() : undefined,
   integrations: [
-    sitemap({ i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR' } } }),
+    sitemap({
+      i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR' } },
+      filter: (page) => !page.includes('/aide-') && !page.includes('/merci'),
+    }),
     ...(isKeystatic && react ? [react()] : []),
     ...(isKeystatic && keystatic ? [keystatic()] : []),
   ],

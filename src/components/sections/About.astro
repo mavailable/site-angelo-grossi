@@ -17,14 +17,17 @@ const about = getAbout();
           <!-- Decorative accent line -->
           <div class="absolute -left-4 top-8 bottom-8 w-[2px] bg-gradient-to-b from-transparent via-accent-500/40 to-transparent hidden lg:block" aria-hidden="true"></div>
           <div class="aspect-[3/4] rounded-xl overflow-hidden">
-            <img
-              src="/images/portrait-about.jpg"
-              alt="Angelo Grossi en réflexion — coach certifié RNCP 7"
-              width="384"
-              height="512"
-              class="w-full h-full object-cover object-top"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset="/images/portrait-about.webp" type="image/webp" />
+              <img
+                src="/images/portrait-about.jpg"
+                alt="Angelo Grossi en réflexion — coach certifié RNCP 7"
+                width="384"
+                height="512"
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+              />
+            </picture>
           </div>
         </div>
       </div>
