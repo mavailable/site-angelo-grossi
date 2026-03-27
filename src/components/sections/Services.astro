@@ -2,21 +2,22 @@
 /**
  * Services — Editorial layout with stronger typography
  */
-import { getServices, getSiteInfo } from '@data/content';
+import { getServices, getSiteInfo, getServicesSection } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 import Button from '@components/ui/Button.astro';
 
 const services = getServices();
 const site = getSiteInfo();
+const section = getServicesSection();
 ---
 
 <section id="services" class="bg-white py-20 md:py-28">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <!-- Section header — left-aligned, not centered -->
     <div class="max-w-2xl mb-16">
-      <SectionEyebrow text="Ce que je vous propose" />
+      <SectionEyebrow text={section.eyebrow} />
       <h2 class="font-heading font-bold text-primary-950 text-3xl md:text-4xl leading-tight">
-        Une approche unique : le ThéâtroCoaching
+        {section.title}
       </h2>
     </div>
 
@@ -39,7 +40,7 @@ const site = getSiteInfo();
 
     <div class="mt-12 pt-8 border-t border-neutral-100">
       <Button dataCalLink={site.calUrl} variant="primary" dataTrack="cta">
-        Discutons de vos besoins
+        {section.ctaText}
       </Button>
     </div>
   </div>

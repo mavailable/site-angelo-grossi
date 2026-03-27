@@ -2,10 +2,11 @@
 /**
  * Témoignages — Layout éditorial, premier témoignage mis en avant
  */
-import { getTestimonials } from '@data/content';
+import { getTestimonials, getTestimonialsSection } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 
 const testimonials = getTestimonials();
+const section = getTestimonialsSection();
 const featured = testimonials[0];
 const others = testimonials.slice(1);
 ---
@@ -13,9 +14,9 @@ const others = testimonials.slice(1);
 <section id="temoignages" class="bg-white py-20 md:py-28">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="max-w-2xl mb-16">
-      <SectionEyebrow text="Ils incarnent leur parole" />
+      <SectionEyebrow text={section.eyebrow} />
       <h2 class="font-heading font-bold text-primary-950 text-3xl md:text-4xl leading-tight">
-        Des résultats concrets, pas des promesses
+        {section.title}
       </h2>
     </div>
 

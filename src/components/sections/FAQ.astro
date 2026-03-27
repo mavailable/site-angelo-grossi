@@ -2,18 +2,19 @@
 /**
  * FAQ — Accordéon natif, fond blanc, typographie plus forte
  */
-import { getFaq } from '@data/content';
+import { getFaq, getFaqSection } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 
 const faqs = getFaq();
+const section = getFaqSection();
 ---
 
 <section id="faq" class="bg-neutral-50 py-20 md:py-28">
   <div class="max-w-3xl mx-auto px-4 sm:px-6">
     <div class="mb-14">
-      <SectionEyebrow text="Questions fréquentes" />
+      <SectionEyebrow text={section.eyebrow} />
       <h2 class="font-heading font-bold text-primary-950 text-3xl md:text-4xl leading-tight">
-        Vos questions, mes réponses
+        {section.title}
       </h2>
     </div>
 

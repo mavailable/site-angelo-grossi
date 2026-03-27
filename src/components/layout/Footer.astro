@@ -1,7 +1,8 @@
 ---
-import { getSiteInfo } from '@data/content';
+import { getSiteInfo, getFooter } from '@data/content';
 
 const site = getSiteInfo();
+const footer = getFooter();
 const currentYear = new Date().getFullYear();
 ---
 
@@ -12,7 +13,7 @@ const currentYear = new Date().getFullYear();
       <div>
         <p class="font-heading font-bold text-lg text-white mb-3">{site.name}</p>
         <p class="text-neutral-300 text-sm leading-relaxed">
-          Coach certifié en prise de parole en public en Île-de-France. Approche distinctive alliant coaching professionnel et improvisation théâtrale.
+          {footer.description}
         </p>
       </div>
 
@@ -35,7 +36,7 @@ const currentYear = new Date().getFullYear();
             </li>
           )}
           <li class="text-neutral-400">
-            Île-de-France · Sur rendez-vous
+            {footer.location}
           </li>
         </ul>
       </div>
@@ -68,7 +69,7 @@ const currentYear = new Date().getFullYear();
     <!-- Séparation -->
     <div class="border-t border-neutral-800 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="text-neutral-400 text-xs">
-        &copy; {currentYear} {site.name} — Coach prise de parole en public
+        &copy; {currentYear} {site.name} — {footer.copyright}
       </p>
       <a href="https://marcm.fr/" class="text-neutral-500 text-xs hover:text-neutral-300 transition-colors">
         Site réalisé par Marc M. · Création de sites web

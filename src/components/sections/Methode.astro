@@ -2,25 +2,11 @@
 /**
  * Méthode H2S — Ambiance théâtrale, fond secondary-950
  */
+import { getMethode } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 
-const steps = [
-  {
-    letter: 'H',
-    label: 'Happy',
-    text: 'Être heureux d\'être là et assumer sa parole. Quand vous montez sur scène avec envie plutôt qu\'avec peur, tout change.',
-  },
-  {
-    letter: 'H',
-    label: 'Healthy',
-    text: 'Être disponible ici et maintenant. Lâcher le contrôle, accueillir l\'imprévu, être pleinement présent face à votre audience.',
-  },
-  {
-    letter: 'S',
-    label: 'Sexy',
-    text: 'Ouvert, vivant, humainement engageant. Pas une question d\'apparence, mais d\'énergie : celle qui donne envie de vous écouter.',
-  },
-];
+const methode = getMethode();
+const steps = methode.steps;
 ---
 
 <section id="methode" class="relative bg-secondary-950 py-20 md:py-28 overflow-hidden">
@@ -29,12 +15,12 @@ const steps = [
 
   <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
     <div class="text-center max-w-2xl mx-auto mb-16">
-      <SectionEyebrow text="Mon approche" variant="light" />
+      <SectionEyebrow text={methode.eyebrow} variant="light" />
       <h2 class="font-heading font-bold text-white text-3xl md:text-4xl leading-tight mb-5">
-        La méthode H2S
+        {methode.title}
       </h2>
       <p class="text-neutral-300 leading-relaxed">
-        La perfection rassure l'orateur. L'incarnation embarque l'auditoire. Pour convaincre, il ne suffit pas de maîtriser son discours — il faut l'incarner.
+        {methode.description}
       </p>
     </div>
 
