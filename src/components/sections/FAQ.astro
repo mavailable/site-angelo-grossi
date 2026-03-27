@@ -2,11 +2,11 @@
 /**
  * FAQ — Accordéon natif, fond blanc, typographie plus forte
  */
-import { getFaq, getFaqSection } from '@data/content';
+import { getFaq, getSections } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 
 const faqs = getFaq();
-const section = getFaqSection();
+const section = getSections().faq;
 ---
 
 <section id="faq" class="bg-neutral-50 py-20 md:py-28">

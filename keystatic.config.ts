@@ -63,60 +63,42 @@ export default config({
         rgpdText: fields.text({ label: 'Mention RGPD', multiline: true }),
       },
     }),
-    servicesSection: singleton({
-      label: 'Section Services',
-      path: 'src/content/services-section/index',
+    sections: singleton({
+      label: 'Titres et textes des sections',
+      path: 'src/content/sections/index',
       format: { data: 'json' },
       schema: {
-        eyebrow: fields.text({ label: 'Surtitre' }),
-        title: fields.text({ label: 'Titre de section' }),
-        ctaText: fields.text({ label: 'Texte bouton CTA' }),
-      },
-    }),
-    methode: singleton({
-      label: 'Section Méthode',
-      path: 'src/content/methode/index',
-      format: { data: 'json' },
-      schema: {
-        eyebrow: fields.text({ label: 'Surtitre' }),
-        title: fields.text({ label: 'Titre de section' }),
-        description: fields.text({ label: 'Description', multiline: true }),
-        steps: fields.array(
-          fields.object({
-            letter: fields.text({ label: 'Lettre' }),
-            label: fields.text({ label: 'Mot-clé' }),
-            text: fields.text({ label: 'Description', multiline: true }),
-          }),
-          { label: 'Étapes', itemLabel: (props) => props.fields.label.value || 'Étape' }
-        ),
-      },
-    }),
-    testimonialsSection: singleton({
-      label: 'Section Témoignages',
-      path: 'src/content/testimonials-section/index',
-      format: { data: 'json' },
-      schema: {
-        eyebrow: fields.text({ label: 'Surtitre' }),
-        title: fields.text({ label: 'Titre de section' }),
-      },
-    }),
-    faqSection: singleton({
-      label: 'Section FAQ',
-      path: 'src/content/faq-section/index',
-      format: { data: 'json' },
-      schema: {
-        eyebrow: fields.text({ label: 'Surtitre' }),
-        title: fields.text({ label: 'Titre de section' }),
-      },
-    }),
-    footer: singleton({
-      label: 'Pied de page',
-      path: 'src/content/footer/index',
-      format: { data: 'json' },
-      schema: {
-        description: fields.text({ label: 'Description', multiline: true }),
-        location: fields.text({ label: 'Localisation' }),
-        copyright: fields.text({ label: 'Texte copyright' }),
+        services: fields.object({
+          eyebrow: fields.text({ label: 'Surtitre' }),
+          title: fields.text({ label: 'Titre' }),
+          ctaText: fields.text({ label: 'Texte bouton CTA' }),
+        }, { label: '— Services' }),
+        methode: fields.object({
+          eyebrow: fields.text({ label: 'Surtitre' }),
+          title: fields.text({ label: 'Titre' }),
+          description: fields.text({ label: 'Description', multiline: true }),
+          steps: fields.array(
+            fields.object({
+              letter: fields.text({ label: 'Lettre' }),
+              label: fields.text({ label: 'Mot-clé' }),
+              text: fields.text({ label: 'Description', multiline: true }),
+            }),
+            { label: 'Étapes H·H·S', itemLabel: (props) => props.fields.label.value || 'Étape' }
+          ),
+        }, { label: '— Méthode H2S' }),
+        testimonials: fields.object({
+          eyebrow: fields.text({ label: 'Surtitre' }),
+          title: fields.text({ label: 'Titre' }),
+        }, { label: '— Témoignages' }),
+        faq: fields.object({
+          eyebrow: fields.text({ label: 'Surtitre' }),
+          title: fields.text({ label: 'Titre' }),
+        }, { label: '— FAQ' }),
+        footer: fields.object({
+          description: fields.text({ label: 'Description', multiline: true }),
+          location: fields.text({ label: 'Localisation' }),
+          copyright: fields.text({ label: 'Texte copyright' }),
+        }, { label: '— Pied de page' }),
       },
     }),
   },

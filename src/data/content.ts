@@ -55,39 +55,17 @@ export interface Contact {
   rgpdText: string;
 }
 
-export interface ServicesSection {
-  eyebrow: string;
-  title: string;
-  ctaText: string;
-}
-
-export interface MethodeStep {
-  letter: string;
-  label: string;
-  text: string;
-}
-
-export interface Methode {
-  eyebrow: string;
-  title: string;
-  description: string;
-  steps: MethodeStep[];
-}
-
-export interface TestimonialsSection {
-  eyebrow: string;
-  title: string;
-}
-
-export interface FaqSection {
-  eyebrow: string;
-  title: string;
-}
-
-export interface Footer {
-  description: string;
-  location: string;
-  copyright: string;
+export interface Sections {
+  services: { eyebrow: string; title: string; ctaText: string };
+  methode: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: { letter: string; label: string; text: string }[];
+  };
+  testimonials: { eyebrow: string; title: string };
+  faq: { eyebrow: string; title: string };
+  footer: { description: string; location: string; copyright: string };
 }
 
 export interface Service {
@@ -126,24 +104,8 @@ export function getContact(): Contact {
   return readJson<Contact>('src/content/contact/index.json');
 }
 
-export function getServicesSection(): ServicesSection {
-  return readJson<ServicesSection>('src/content/services-section/index.json');
-}
-
-export function getMethode(): Methode {
-  return readJson<Methode>('src/content/methode/index.json');
-}
-
-export function getTestimonialsSection(): TestimonialsSection {
-  return readJson<TestimonialsSection>('src/content/testimonials-section/index.json');
-}
-
-export function getFaqSection(): FaqSection {
-  return readJson<FaqSection>('src/content/faq-section/index.json');
-}
-
-export function getFooter(): Footer {
-  return readJson<Footer>('src/content/footer/index.json');
+export function getSections(): Sections {
+  return readJson<Sections>('src/content/sections/index.json');
 }
 
 export function getServices(): Service[] {

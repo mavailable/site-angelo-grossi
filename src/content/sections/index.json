@@ -1,0 +1,42 @@
+{
+  "services": {
+    "eyebrow": "Ce que je vous propose",
+    "title": "Une approche unique : le ThéâtroCoaching",
+    "ctaText": "Discutons de vos besoins"
+  },
+  "methode": {
+    "eyebrow": "Mon approche",
+    "title": "La méthode H2S",
+    "description": "La perfection rassure l'orateur. L'incarnation embarque l'auditoire. Pour convaincre, il ne suffit pas de maîtriser son discours — il faut l'incarner.",
+    "steps": [
+      {
+        "letter": "H",
+        "label": "Happy",
+        "text": "Être heureux d'être là et assumer sa parole. Quand vous montez sur scène avec envie plutôt qu'avec peur, tout change."
+      },
+      {
+        "letter": "H",
+        "label": "Healthy",
+        "text": "Être disponible ici et maintenant. Lâcher le contrôle, accueillir l'imprévu, être pleinement présent face à votre audience."
+      },
+      {
+        "letter": "S",
+        "label": "Sexy",
+        "text": "Ouvert, vivant, humainement engageant. Pas une question d'apparence, mais d'énergie : celle qui donne envie de vous écouter."
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Ils incarnent leur parole",
+    "title": "Des résultats concrets, pas des promesses"
+  },
+  "faq": {
+    "eyebrow": "Questions fréquentes",
+    "title": "Vos questions, mes réponses"
+  },
+  "footer": {
+    "description": "Coach certifié en prise de parole en public en Île-de-France. Approche distinctive alliant coaching professionnel et improvisation théâtrale.",
+    "location": "Île-de-France · Sur rendez-vous",
+    "copyright": "Coach prise de parole en public"
+  }
+}

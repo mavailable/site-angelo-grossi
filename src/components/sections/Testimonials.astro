@@ -2,11 +2,11 @@
 /**
  * Témoignages — Layout éditorial, premier témoignage mis en avant
  */
-import { getTestimonials, getTestimonialsSection } from '@data/content';
+import { getTestimonials, getSections } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 
 const testimonials = getTestimonials();
-const section = getTestimonialsSection();
+const section = getSections().testimonials;
 const featured = testimonials[0];
 const others = testimonials.slice(1);
 ---

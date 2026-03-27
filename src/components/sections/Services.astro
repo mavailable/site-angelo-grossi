@@ -2,13 +2,13 @@
 /**
  * Services — Editorial layout with stronger typography
  */
-import { getServices, getSiteInfo, getServicesSection } from '@data/content';
+import { getServices, getSiteInfo, getSections } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 import Button from '@components/ui/Button.astro';
 
 const services = getServices();
 const site = getSiteInfo();
-const section = getServicesSection();
+const section = getSections().services;
 ---
 
 <section id="services" class="bg-white py-20 md:py-28">

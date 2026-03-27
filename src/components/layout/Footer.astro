@@ -1,8 +1,8 @@
 ---
-import { getSiteInfo, getFooter } from '@data/content';
+import { getSiteInfo, getSections } from '@data/content';
 
 const site = getSiteInfo();
-const footer = getFooter();
+const footer = getSections().footer;
 const currentYear = new Date().getFullYear();
 ---
 

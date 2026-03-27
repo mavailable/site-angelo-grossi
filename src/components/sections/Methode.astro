@@ -2,10 +2,10 @@
 /**
  * Méthode H2S — Ambiance théâtrale, fond secondary-950
  */
-import { getMethode } from '@data/content';
+import { getSections } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 
-const methode = getMethode();
+const methode = getSections().methode;
 const steps = methode.steps;
 ---
 
