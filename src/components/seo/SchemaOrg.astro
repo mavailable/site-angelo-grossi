@@ -47,6 +47,12 @@ const professionalService = {
     { "@type": "AdministrativeArea", "name": "Île-de-France" },
     { "@type": "Country", "name": "France" }
   ],
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Île-de-France",
+    "addressCountry": "FR"
+  },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Services de coaching prise de parole",
@@ -58,6 +64,14 @@ const professionalService = {
         "description": s.description.slice(0, 200)
       }
     }))
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "3",
+    "reviewCount": "3"
   },
   "sameAs": [site.linkedin]
 };
@@ -86,22 +100,6 @@ const webSite = {
   "inLanguage": "fr-FR"
 };
 
-// AggregateRating (basé sur les témoignages clients)
-const aggregateRating = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Angelo Grossi — Coach prise de parole en public",
-  "url": site.siteUrl,
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "3",
-    "reviewCount": "3"
-  }
-};
-
 // BreadcrumbList
 const breadcrumb = {
   "@context": "https://schema.org",
@@ -115,5 +113,4 @@ const breadcrumb = {
 <script type="application/ld+json" set:html={JSON.stringify(professionalService)} />
 <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />
 <script type="application/ld+json" set:html={JSON.stringify(webSite)} />
-<script type="application/ld+json" set:html={JSON.stringify(aggregateRating)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
