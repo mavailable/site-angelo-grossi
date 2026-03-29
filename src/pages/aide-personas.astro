@@ -1,0 +1,661 @@
+---
+export const prerender = true;
+/**
+ * Dashboard personas — Angelo Grossi
+ * 20 profils simulés + améliorations proposées
+ * URL privée, non indexée
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Qui pourrait visiter votre site ? — Angelo Grossi"
+  description="20 profils de visiteurs simulés avec leurs parcours et recommandations."
+  noindex={true}
+>
+
+<div class="min-h-screen bg-neutral-50">
+
+  <!-- Hero compact -->
+  <div class="bg-primary-800 py-8 md:py-10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <a href="/aide-027223c3" class="inline-flex items-center gap-1.5 text-sm text-neutral-300 hover:text-white transition-colors mb-4">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Retour à l'espace privé
+      </a>
+      <h1 class="font-heading font-bold text-white text-2xl md:text-3xl mb-2">Qui pourrait visiter votre site ?</h1>
+      <p class="text-neutral-300 max-w-2xl leading-relaxed">
+        20 profils fictifs générés par IA pour simuler des visites sur votre site. Chacun arrive par un chemin différent (Google, réseaux sociaux, bouche-à-oreille, ChatGPT...) et réagit selon ses besoins.
+      </p>
+    </div>
+  </div>
+
+  <!-- Tab bar sticky -->
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-neutral-200" id="tab-bar">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center gap-2 h-12 text-sm">
+      <button data-tab="0" class="tab-btn px-5 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors text-primary-700 bg-primary-50">
+        Visiteurs <span class="ml-1 text-xs text-primary-400">20</span>
+      </button>
+      <button data-tab="1" class="tab-btn px-5 py-1.5 rounded-lg font-medium whitespace-nowrap transition-colors text-neutral-500 hover:text-neutral-700">
+        Améliorations <span class="ml-1 text-xs text-neutral-400">10</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Swipeable Panels -->
+  <div id="panels" class="flex overflow-x-auto snap-x snap-mandatory" style="-webkit-overflow-scrolling: touch; scrollbar-width: none;">
+
+    <!-- ═══ Panel 1 — Visiteurs ═══ -->
+    <section class="tab-panel min-w-full w-full snap-start snap-always shrink-0">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-3 gap-3 mb-8">
+          <div class="bg-green-50 border border-green-200 rounded-xl p-4 text-center">
+            <p class="font-heading font-bold text-green-700 text-2xl">5</p>
+            <p class="text-xs text-green-600 mt-0.5">vous contactent</p>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-center">
+            <p class="font-heading font-bold text-amber-700 text-2xl">7</p>
+            <p class="text-xs text-amber-600 mt-0.5">hésitent</p>
+          </div>
+          <div class="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+            <p class="font-heading font-bold text-red-700 text-2xl">8</p>
+            <p class="text-xs text-red-600 mt-0.5">repartent</p>
+          </div>
+        </div>
+
+        <!-- Section verte : Ceux qui vous contactent -->
+        <div class="mb-10">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+            <h2 class="font-heading font-semibold text-primary-950 text-lg">Ceux qui vous contactent</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <!-- Christine -->
+            <article class="border border-green-200 bg-green-50/40 rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">⚖️</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Christine, 58 ans</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Google</span>
+                </div>
+                <p class="text-xs text-neutral-500 mb-2">Avocate associée, Neuilly-sur-Seine</p>
+                <p class="text-xs text-neutral-600 mb-2.5">Invitée comme keynote speaker devant 500 personnes. Cherche à travailler sa présence scénique.</p>
+                <div class="flex flex-wrap items-center gap-1">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Services</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Méthode</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">À propos</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Témoignages</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded font-medium ml-0.5">Email</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Jean-Pierre -->
+            <article class="border border-green-200 bg-green-50/40 rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">🏭</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Jean-Pierre, 55 ans</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Recommandation</span>
+                </div>
+                <p class="text-xs text-neutral-500 mb-2">DG d'une PME industrielle, Versailles</p>
+                <p class="text-xs text-neutral-600 mb-2.5">Un ami DG l'a recommandé. Veut arrêter de lire ses discours de vœux du personnel.</p>
+                <div class="flex flex-wrap items-center gap-1">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Accueil</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">À propos</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded font-medium ml-0.5">RDV Cal.com</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Marie-Hélène -->
+            <article class="border border-green-200 bg-green-50/40 rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">🎭</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Marie-Hélène, 62 ans</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Recommandation</span>
+                </div>
+                <p class="text-xs text-neutral-500 mb-2">Présidente d'une association culturelle, Morsang-sur-Orge</p>
+                <p class="text-xs text-neutral-600 mb-2.5">Son amie a été coachée par Angelo. Doit prononcer un discours devant 150 adhérents.</p>
+                <div class="flex flex-wrap items-center gap-1">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Accueil</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">À propos</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">FAQ</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded font-medium ml-0.5">Appelle</span>
+                </div>
+                <p class="text-[11px] text-amber-700 mt-2 leading-snug">A noté : elle ne se reconnaît pas dans "dirigeants et experts" — c'est la recommandation de son amie qui l'a convaincue.</p>
+              </div>
+            </article>
+
+            <!-- Isabelle -->
+            <article class="border border-green-200 bg-green-50/40 rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">💊</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Isabelle, 51 ans</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Recommandation</span>
+                </div>
+                <p class="text-xs text-neutral-500 mb-2">Pharmacienne titulaire, Juvisy-sur-Orge</p>
+                <p class="text-xs text-neutral-600 mb-2.5">Une consœur lui a envoyé le lien par WhatsApp. Veut se lancer dans la formation pour pharmaciens.</p>
+                <div class="flex flex-wrap items-center gap-1">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Accueil</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">À propos</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded font-medium ml-0.5">Appelle</span>
+                </div>
+                <p class="text-[11px] text-amber-700 mt-2 leading-snug">A noté : le site parle de "prise de parole" mais pas d'"animation de formation" — elle demandera au téléphone.</p>
+              </div>
+            </article>
+
+            <!-- Philippe -->
+            <article class="border border-green-200 bg-green-50/40 rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">🎤</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Philippe, 60 ans</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Carte de visite</span>
+                </div>
+                <p class="text-xs text-neutral-500 mb-2">Conférencier professionnel, Saint-Germain-en-Laye</p>
+                <p class="text-xs text-neutral-600 mb-2.5">A rencontré Angelo lors d'un dîner networking. 20 conférences/an, veut réinjecter de la fraîcheur.</p>
+                <div class="flex flex-wrap items-center gap-1">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Méthode H2S</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-green-600 text-white px-1.5 py-0.5 rounded font-medium ml-0.5">RDV Cal.com</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Section ambre : Ceux qui hésitent -->
+        <div class="mb-10">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+            <h2 class="font-heading font-semibold text-primary-950 text-lg">Ceux qui hésitent</h2>
+          </div>
+          <div class="space-y-4">
+
+            <!-- Nathalie -->
+            <article class="border border-amber-200 bg-white rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">📊</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Nathalie, 47 ans — Dir. marketing, ETI industrielle</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Google</span>
+                </div>
+                <p class="text-xs text-neutral-600 mb-3">Doit présenter la stratégie annuelle devant 200 personnes dans 6 semaines. Elle a identifié 3 coachs et compare.</p>
+                <div class="flex flex-wrap items-center gap-1 mb-3">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Accueil</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Services</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Témoignages</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">FAQ</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium ml-0.5">Hésite…</span>
+                </div>
+                <div class="bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
+                  <p class="text-xs text-neutral-700 italic mb-1">"Combien ça coûte ? Et est-ce qu'il a déjà accompagné un profil comme moi ?"</p>
+                  <p class="text-xs text-amber-700 font-medium">Pas de tarif affiché, pas de témoignage d'un profil marketing/communication.</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Frédéric -->
+            <article class="border border-amber-200 bg-white rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">🏦</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Frédéric, 53 ans — DRH grand groupe bancaire</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Google Maps</span>
+                </div>
+                <p class="text-xs text-neutral-600 mb-3">Cherche un intervenant pour 3 directeurs qui doivent pitcher devant le comex. Veut un format sur-mesure.</p>
+                <div class="flex flex-wrap items-center gap-1 mb-3">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Services</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">À propos</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Témoignages</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium ml-0.5">Hésite…</span>
+                </div>
+                <div class="bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
+                  <p class="text-xs text-neutral-700 italic mb-1">"Est-ce qu'il peut intervenir pour un petit groupe de dirigeants ?"</p>
+                  <p class="text-xs text-amber-700 font-medium">Pas de format collectif dirigeants, pas de tarif entreprise, pas de plaquette à transmettre en interne.</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Amina -->
+            <article class="border border-amber-200 bg-white rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">💼</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Amina, 34 ans — Consultante en stratégie</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">ChatGPT</span>
+                </div>
+                <p class="text-xs text-neutral-600 mb-3">Promue manager, doit animer des comités de pilotage avec des clients. Brillante à l'écrit mais plate à l'oral.</p>
+                <div class="flex flex-wrap items-center gap-1 mb-3">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Accueil</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Méthode</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">FAQ</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium ml-0.5">Hésite…</span>
+                </div>
+                <div class="bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
+                  <p class="text-xs text-neutral-700 italic mb-1">"C'est aussi pour quelqu'un qui n'est pas encore dirigeant ?"</p>
+                  <p class="text-xs text-amber-700 font-medium">Le site dit "dirigeants et experts" — elle est manager, pas dirigeante. Pas de témoignage de profil mid-career.</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Karim -->
+            <article class="border border-amber-200 bg-white rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">🚀</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Karim, 38 ans — CEO startup SaaS</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Google</span>
+                </div>
+                <p class="text-xs text-neutral-600 mb-3">Série A en cours. Doit pitcher devant 8 fonds d'investissement. Son premier pitch était "plat".</p>
+                <div class="flex flex-wrap items-center gap-1 mb-3">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Services</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Méthode</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">FAQ</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium ml-0.5">Hésite…</span>
+                </div>
+                <div class="bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
+                  <p class="text-xs text-neutral-700 italic mb-1">"Est-ce qu'il a déjà coaché un fondateur de startup pour un pitch investisseur ?"</p>
+                  <p class="text-xs text-amber-700 font-medium">Aucune référence startup. Les clients cités (Vinci, Banque de France) sont des grands groupes.</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Élodie -->
+            <article class="border border-amber-200 bg-white rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">🩺</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Élodie, 31 ans — Médecin hospitalière</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Google</span>
+                </div>
+                <p class="text-xs text-neutral-600 mb-3">Première conférence devant 300 médecins dans 2 mois. Lit ses slides en tremblant.</p>
+                <div class="flex flex-wrap items-center gap-1 mb-3">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Accueil</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">FAQ</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">À propos</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium ml-0.5">Hésite…</span>
+                </div>
+                <div class="bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
+                  <p class="text-xs text-neutral-700 italic mb-1">"Ce coaching peut aider une scientifique, pas seulement des cadres ?"</p>
+                  <p class="text-xs text-amber-700 font-medium">Aucun témoignage du milieu médical ou scientifique. Le vocabulaire est très "entreprise".</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Marc-Antoine -->
+            <article class="border border-amber-200 bg-white rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">🧮</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Marc-Antoine, 49 ans — Expert-comptable associé</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Google</span>
+                </div>
+                <p class="text-xs text-neutral-600 mb-3">Son cabinet a fusionné, il doit désormais animer des réunions de 30 collaborateurs. Nouveau pour lui.</p>
+                <div class="flex flex-wrap items-center gap-1 mb-3">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Services</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Méthode</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">À propos</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">FAQ</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium ml-0.5">Hésite…</span>
+                </div>
+                <div class="bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
+                  <p class="text-xs text-neutral-700 italic mb-1">"Concrètement, comment se passe une séance ? Je ne vais pas faire le clown ?"</p>
+                  <p class="text-xs text-amber-700 font-medium">Le site explique le "pourquoi" mais jamais le "comment". Pas de déroulement concret d'une séance type.</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Antoine -->
+            <article class="border border-amber-200 bg-white rounded-xl p-4 flex gap-3">
+              <div class="text-xl shrink-0 mt-0.5">🏛️</div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-0.5 flex-wrap">
+                  <h3 class="font-semibold text-neutral-900 text-sm">Antoine, 45 ans — Dir. de programme, ministère</h3>
+                  <span class="text-[11px] text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Email interne</span>
+                </div>
+                <p class="text-xs text-neutral-600 mb-3">Newsletter formation interne, note le contact pour ses chefs de projet qui présentent mal.</p>
+                <div class="flex flex-wrap items-center gap-1 mb-3">
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">Services</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] text-primary-700 bg-white border border-primary-100 px-1.5 py-0.5 rounded">À propos</span>
+                  <span class="text-neutral-300 text-[10px]">›</span>
+                  <span class="text-[10px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded font-medium ml-0.5">Bookmark</span>
+                </div>
+                <div class="bg-amber-50 rounded-lg px-3 py-2 border border-amber-100">
+                  <p class="text-xs text-neutral-700 italic mb-1">"Peut-il intervenir dans l'administration ? Quelles sont ses modalités ?"</p>
+                  <p class="text-xs text-amber-700 font-medium">Pas d'infos administratives (devis, convention, Qualiopi). "Ministères" cité sans détail.</p>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Section rouge : Ceux qui repartent -->
+        <div class="mb-8">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+            <h2 class="font-heading font-semibold text-primary-950 text-lg">Ceux qui repartent</h2>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+
+            <!-- Thomas -->
+            <article class="border border-neutral-200 bg-neutral-50/50 rounded-xl p-3.5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">💻</span>
+                <div>
+                  <h3 class="font-semibold text-neutral-800 text-xs">Thomas, 41 ans</h3>
+                  <span class="text-[11px] text-blue-600">LinkedIn</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-500 mb-1.5">Chef de projet IT, évite les présentations en réunion. A vu un post qui l'a touché.</p>
+              <p class="text-[11px] text-red-500 italic">Se sent illégitime : "dirigeants et experts", ce n'est pas pour moi.</p>
+            </article>
+
+            <!-- Julien -->
+            <article class="border border-neutral-200 bg-neutral-50/50 rounded-xl p-3.5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">🎪</span>
+                <div>
+                  <h3 class="font-semibold text-neutral-800 text-xs">Julien, 29 ans</h3>
+                  <span class="text-[11px] text-blue-600">Instagram</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-500 mb-1.5">Étudiant fan d'impro, cherchait des infos sur les spectacles. Pas un client potentiel.</p>
+              <p class="text-[11px] text-red-500 italic">Le site ne parle que de coaching, pas d'impro artistique. Normal et voulu.</p>
+            </article>
+
+            <!-- Sophie -->
+            <article class="border border-neutral-200 bg-neutral-50/50 rounded-xl p-3.5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">📋</span>
+                <div>
+                  <h3 class="font-semibold text-neutral-800 text-xs">Sophie, 44 ans</h3>
+                  <span class="text-[11px] text-blue-600">Perplexity</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-500 mb-1.5">Responsable formation, cherche un prestataire pour former ses managers. Compare 5 prestataires.</p>
+              <p class="text-[11px] text-red-500 italic">Pas de mention Qualiopi, pas de programme téléchargeable, pas de grille tarifaire entreprise.</p>
+            </article>
+
+            <!-- David -->
+            <article class="border border-neutral-200 bg-neutral-50/50 rounded-xl p-3.5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">🎨</span>
+                <div>
+                  <h3 class="font-semibold text-neutral-800 text-xs">David, 36 ans</h3>
+                  <span class="text-[11px] text-blue-600">Facebook</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-500 mb-1.5">Graphiste freelance à Lyon, a cliqué par curiosité. Pas de besoin de prise de parole.</p>
+              <p class="text-[11px] text-red-500 italic">Hors cible et hors zone. Visite par curiosité, rebond normal.</p>
+            </article>
+
+            <!-- Yasmine -->
+            <article class="border border-neutral-200 bg-neutral-50/50 rounded-xl p-3.5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">📚</span>
+                <div>
+                  <h3 class="font-semibold text-neutral-800 text-xs">Yasmine, 27 ans</h3>
+                  <span class="text-[11px] text-blue-600">Claude (IA)</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-500 mb-1.5">Doctorante, prépare sa soutenance de thèse. Intéressée mais budget étudiant très limité.</p>
+              <p class="text-[11px] text-red-500 italic">Aucun tarif affiché. Positionnement "dirigeants" l'intimide. Pas de mention de soutenance.</p>
+            </article>
+
+            <!-- Sandrine -->
+            <article class="border border-neutral-200 bg-neutral-50/50 rounded-xl p-3.5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">🏛️</span>
+                <div>
+                  <h3 class="font-semibold text-neutral-800 text-xs">Sandrine, 42 ans</h3>
+                  <span class="text-[11px] text-blue-600">Google Maps</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-500 mb-1.5">Responsable comm d'une mairie voisine. Cherche un coach pour le nouveau maire.</p>
+              <p class="text-[11px] text-red-500 italic">Aucune mention d'élus, de collectivités ou de secteur public sur le site.</p>
+            </article>
+
+            <!-- Lucas -->
+            <article class="border border-neutral-200 bg-neutral-50/50 rounded-xl p-3.5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">🎓</span>
+                <div>
+                  <h3 class="font-semibold text-neutral-800 text-xs">Lucas, 23 ans</h3>
+                  <span class="text-[11px] text-blue-600">LinkedIn</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-500 mb-1.5">Étudiant en école de commerce, oral dans 3 semaines. Cherchait des conseils gratuits.</p>
+              <p class="text-[11px] text-red-500 italic">Pas de blog ni de contenu gratuit sur le site. Budget étudiant = 0.</p>
+            </article>
+
+            <!-- Fatou -->
+            <article class="border border-neutral-200 bg-neutral-50/50 rounded-xl p-3.5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-lg">👗</span>
+                <div>
+                  <h3 class="font-semibold text-neutral-800 text-xs">Fatou, 33 ans</h3>
+                  <span class="text-[11px] text-blue-600">Google Maps</span>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-500 mb-1.5">Responsable boutique, réunion de zone ratée. Son amie lui a dit "fais-toi coacher".</p>
+              <p class="text-[11px] text-red-500 italic">"Dirigeants et experts" — se dit que ce n'est pas pour elle. Pas de tarif.</p>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ Panel 2 — Améliorations ═══ -->
+    <section class="tab-panel min-w-full w-full snap-start snap-always shrink-0">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+
+        <h2 class="font-heading font-bold text-primary-950 text-2xl md:text-3xl mb-2">Améliorations proposées</h2>
+        <p class="text-neutral-600 mb-8 max-w-2xl">
+          Basées sur les parcours simulés des 20 visiteurs. Classées par impact sur les prises de contact.
+        </p>
+
+        <!-- Le plus important -->
+        <div class="mb-10">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+            <h3 class="font-heading font-semibold text-primary-950 text-lg">Le plus important</h3>
+          </div>
+          <div class="space-y-4">
+
+            <div class="bg-white border-2 border-red-200 rounded-xl p-5 shadow-sm">
+              <h4 class="font-semibold text-neutral-900 mb-2">Élargir le positionnement dans le titre d'accroche</h4>
+              <p class="text-sm text-neutral-600 mb-3">Le sous-titre dit "dirigeants et experts" — 9 visiteurs sur 20 ne se reconnaissent pas dans ces mots (managers, médecins, élus, pharmaciens, responsables boutique).</p>
+              <div class="bg-primary-50 rounded-lg px-3 py-2.5 flex items-start gap-2">
+                <svg class="w-4 h-4 text-primary-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                <p class="text-xs text-primary-800">Remplacer "dirigeants et experts" par "dirigeants, managers et professionnels" dans le Hero — via l'éditeur Keystatic, rubrique "Section Hero".</p>
+              </div>
+            </div>
+
+            <div class="bg-white border-2 border-red-200 rounded-xl p-5 shadow-sm">
+              <h4 class="font-semibold text-neutral-900 mb-2">Ajouter une indication de tarif</h4>
+              <p class="text-sm text-neutral-600 mb-3">13 visiteurs sur 20 cherchent un prix. Sans aucun repère, beaucoup imaginent que c'est hors budget et ne prennent pas contact.</p>
+              <div class="bg-primary-50 rounded-lg px-3 py-2.5 flex items-start gap-2">
+                <svg class="w-4 h-4 text-primary-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                <p class="text-xs text-primary-800">Ajouter dans la FAQ une question "Quels sont vos tarifs ?" avec une fourchette indicative (ex : "à partir de X € la séance, sur devis pour les entreprises").</p>
+              </div>
+            </div>
+
+            <div class="bg-white border-2 border-red-200 rounded-xl p-5 shadow-sm">
+              <h4 class="font-semibold text-neutral-900 mb-2">Diversifier les témoignages</h4>
+              <p class="text-sm text-neutral-600 mb-3">Les 3 témoignages actuels sont excellents mais couvrent un seul univers (corporate). 9 visiteurs auraient été rassurés par un profil plus proche du leur.</p>
+              <div class="bg-primary-50 rounded-lg px-3 py-2.5 flex items-start gap-2">
+                <svg class="w-4 h-4 text-primary-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                <p class="text-xs text-primary-800">Demander 2-3 témoignages à des profils variés : un manager intermédiaire, un indépendant/profession libérale, quelqu'un qui a préparé un oral non-corporate. Les ajouter dans Keystatic rubrique "Témoignages".</p>
+              </div>
+            </div>
+
+            <div class="bg-white border-2 border-red-200 rounded-xl p-5 shadow-sm">
+              <h4 class="font-semibold text-neutral-900 mb-2">Décrire concrètement une séance type</h4>
+              <p class="text-sm text-neutral-600 mb-3">5 visiteurs se demandent ce qui se passe en séance. Le mot "improvisation" fait peur à certains profils qui imaginent devoir "faire le clown".</p>
+              <div class="bg-primary-50 rounded-lg px-3 py-2.5 flex items-start gap-2">
+                <svg class="w-4 h-4 text-primary-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                <p class="text-xs text-primary-800">Ajouter une question FAQ : "Comment se déroule une séance ?" avec un déroulement type (diagnostic, exercices, mise en situation, debriefing). Ça rassure les profils analytiques.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Utile aussi -->
+        <div class="mb-10">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2.5 h-2.5 rounded-full bg-amber-500"></div>
+            <h3 class="font-heading font-semibold text-primary-950 text-lg">Utile aussi</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <div class="bg-white border border-neutral-200 rounded-xl p-4">
+              <h4 class="font-semibold text-neutral-900 text-sm mb-1.5">Mentionner les interventions pour le secteur public</h4>
+              <p class="text-xs text-neutral-600">Vous avez travaillé avec des ministères — le dire plus explicitement dans le parcours "À propos" attirerait les élus et les collectivités locales.</p>
+            </div>
+
+            <div class="bg-white border border-neutral-200 rounded-xl p-4">
+              <h4 class="font-semibold text-neutral-900 text-sm mb-1.5">Ajouter un contenu gratuit (article ou vidéo)</h4>
+              <p class="text-xs text-neutral-600">Vos posts LinkedIn attirent des visiteurs curieux. Un article de blog ou une vidéo courte sur le site les retiendrait et leur donnerait envie de revenir.</p>
+            </div>
+
+            <div class="bg-white border border-neutral-200 rounded-xl p-4">
+              <h4 class="font-semibold text-neutral-900 text-sm mb-1.5">Enrichir le formulaire de contact</h4>
+              <p class="text-xs text-neutral-600">Ajouter un champ optionnel "Contexte de votre demande" ou "Date de votre événement" aiderait les visiteurs à se sentir compris dès le premier contact.</p>
+            </div>
+
+            <div class="bg-white border border-neutral-200 rounded-xl p-4">
+              <h4 class="font-semibold text-neutral-900 text-sm mb-1.5">Reconsidérer le mot "Sexy" dans la méthode H2S</h4>
+              <p class="text-xs text-neutral-600">8 visiteurs sur 20 trouvent le mot gênant dans un contexte professionnel. Le concept est excellent — "Magnétique" ou "Captivant" passerait mieux sans perdre l'idée.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- À discuter ensemble -->
+        <div class="mb-8">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2.5 h-2.5 rounded-full bg-neutral-400"></div>
+            <h3 class="font-heading font-semibold text-primary-950 text-lg">À discuter ensemble</h3>
+          </div>
+          <div class="space-y-3">
+
+            <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-4 flex gap-3">
+              <span class="text-lg shrink-0">🎓</span>
+              <div>
+                <h4 class="font-semibold text-neutral-900 text-sm mb-0.5">Proposer un tarif réduit pour les étudiants/jeunes professionnels ?</h4>
+                <p class="text-xs text-neutral-600">Deux visiteurs (doctorante, étudiant) sont intéressés mais bloqués par le prix. C'est un choix de positionnement — à vous de décider si ce public vous intéresse.</p>
+              </div>
+            </div>
+
+            <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-4 flex gap-3">
+              <span class="text-lg shrink-0">📄</span>
+              <div>
+                <h4 class="font-semibold text-neutral-900 text-sm mb-0.5">Obtenir la certification Qualiopi ?</h4>
+                <p class="text-xs text-neutral-600">Les responsables formation en entreprise cherchent ce label pour faire prendre en charge les formations par les OPCO. C'est un investissement lourd mais qui ouvre le marché B2B.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer contact webmaster -->
+  <footer class="border-t border-neutral-200 bg-white py-4">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-sm text-neutral-500">
+        Besoin d'aide ?
+        <a href="mailto:marc@muller.im" class="text-accent-700 hover:underline font-medium">marc@muller.im</a>
+      </p>
+    </div>
+  </footer>
+
+</div>
+
+<style is:inline>
+  #panels { -ms-overflow-style: none; }
+  #panels::-webkit-scrollbar { display: none; }
+</style>
+
+<script is:inline>
+  const panels = document.getElementById('panels');
+  const tabs = document.querySelectorAll('.tab-btn');
+  const sections = panels.querySelectorAll('.tab-panel');
+
+  function activateTab(index) {
+    tabs.forEach((b, i) => {
+      if (i === index) {
+        b.classList.remove('text-neutral-500');
+        b.classList.add('text-primary-700', 'bg-primary-50');
+      } else {
+        b.classList.remove('text-primary-700', 'bg-primary-50');
+        b.classList.add('text-neutral-500');
+      }
+    });
+  }
+
+  tabs.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      sections[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      activateTab(i);
+    });
+  });
+
+  let scrollTimeout;
+  panels.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      const index = Math.round(panels.scrollLeft / panels.offsetWidth);
+      activateTab(index);
+    }, 50);
+  }, { passive: true });
+</script>
+
+</BaseLayout>
