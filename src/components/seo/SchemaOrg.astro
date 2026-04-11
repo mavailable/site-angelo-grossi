@@ -1,116 +1,38 @@
 ---
 /**
  * Schema.org JSON-LD — Toutes les données structurées pour la homepage
- * Source: seo.md
+ * Source : src/data/schemas.ts (doctrine C1 wf-00-cms §7)
+ *
+ * Ce composant est un simple injecteur : toute la logique Schema.org vit
+ * dans src/data/schemas.ts (helpers centralises testables et reutilisables).
  */
-import { getSiteInfo, getServices, getFaq } from '@data/content';
+import { getSiteInfo } from '@data/content';
+import {
+  getProfessionalServiceSchema,
+  getWebsiteSchema,
+  getFAQPageSchema,
+  getBreadcrumbSchema,
+  getSpeakableSchema,
+} from '@data/schemas';
 
 const site = getSiteInfo();
-const services = getServices();
-const faqs = getFaq();
 
-// ProfessionalService (schéma principal)
-const professionalService = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Angelo Grossi — Coach prise de parole en public",
-  "description": "Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique combinant coaching professionnel et improvisation théâtrale pour aider dirigeants et experts à incarner leur parole.",
-  "url": site.siteUrl,
-  "telephone": "+33769389281",
-  "email": site.email,
-  "image": `${site.siteUrl}/images/og-image.jpg`,
-  "founder": {
-    "@type": "Person",
-    "name": "Angelo Grossi",
-    "jobTitle": "Coach certifié en prise de parole en public",
-    "description": "Ancien cadre marketing (25 ans chez Siemens, Unify, Atos), comédien improvisateur depuis 15 ans, coach certifié RNCP 7. Créateur de la méthode ThéâtroCoaching.",
-    "knowsAbout": [
-      "Prise de parole en public",
-      "Coaching de dirigeants",
-      "Improvisation théâtrale",
-      "Communication non-verbale",
-      "Présence scénique"
-    ],
-    "hasCredential": {
-      "@type": "EducationalOccupationalCredential",
-      "credentialCategory": "certification",
-      "name": "Coach consultant certifié RNCP 7",
-      "educationalLevel": "Master / MBA",
-      "recognizedBy": {
-        "@type": "Organization",
-        "name": "LINKUP COACHING"
-      }
-    },
-    "sameAs": [site.linkedin]
-  },
-  "areaServed": [
-    { "@type": "AdministrativeArea", "name": "Île-de-France" },
-    { "@type": "Country", "name": "France" }
-  ],
-  "priceRange": "€€",
-  "address": {
-    "@type": "PostalAddress",
-    "addressRegion": "Île-de-France",
-    "addressCountry": "FR"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Services de coaching prise de parole",
-    "itemListElement": services.map(s => ({
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": s.title,
-        "description": s.description.slice(0, 200)
-      }
-    }))
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "bestRating": "5",
-    "worstRating": "1",
-    "ratingCount": "3",
-    "reviewCount": "3"
-  },
-  "sameAs": [site.linkedin]
-};
-
-// FAQPage
-const faqPage = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(f => ({
-    "@type": "Question",
-    "name": f.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": f.answer
-    }
-  }))
-};
-
-// WebSite
-const webSite = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Angelo Grossi — Coach prise de parole en public",
-  "url": site.siteUrl,
-  "description": "Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale. RDV découverte gratuit.",
-  "inLanguage": "fr-FR"
-};
-
-// BreadcrumbList
-const breadcrumb = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": site.siteUrl }
-  ]
-};
+// Schemas centralises
+const professionalService = getProfessionalServiceSchema();
+const faqPage = getFAQPageSchema();
+const webSite = getWebsiteSchema();
+const breadcrumb = getBreadcrumbSchema([
+  { name: 'Accueil', url: site.siteUrl },
+]);
+const speakable = getSpeakableSchema(
+  'Angelo Grossi — Coach prise de parole en public',
+  'Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale. RDV découverte gratuit.',
+  site.siteUrl
+);
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(professionalService)} />
-<script type="application/ld+json" set:html={JSON.stringify(faqPage)} />
+{faqPage && <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />}
 <script type="application/ld+json" set:html={JSON.stringify(webSite)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+<script type="application/ld+json" set:html={JSON.stringify(speakable)} />

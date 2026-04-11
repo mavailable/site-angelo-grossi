@@ -22,3 +22,63 @@ export const geo = {
   lat: 0,
   lon: 0,
 } as const;
+
+// ============================================================
+// Business metadata — fallbacks immuables (doctrine wf-00-cms §7, C1 SEO)
+// Le client edite name/phone/email via /admin (src/content/site-info/).
+// business.ts expose les champs non editables client + fallbacks.
+// ============================================================
+
+export const business = {
+  owner: 'Angelo Grossi',
+  phone: '+33769389281', // preserve du schema hardcode pre-C1
+  schemaType: 'ProfessionalService',
+} as const;
+
+// ============================================================
+// Data SEO technique (non editable par le client — doctrine wf-00-cms §7)
+// Extrait de SchemaOrg.astro pre-C1 pour centralisation dans schemas.ts.
+// ============================================================
+
+export const schemaData = {
+  // ProfessionalService (Coach)
+  businessName: 'Angelo Grossi — Coach prise de parole en public',
+  businessDescription:
+    'Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique combinant coaching professionnel et improvisation théâtrale pour aider dirigeants et experts à incarner leur parole.',
+  priceRange: '€€',
+
+  // Founder (Angelo)
+  founderJobTitle: 'Coach certifié en prise de parole en public',
+  founderDescription:
+    'Ancien cadre marketing (25 ans chez Siemens, Unify, Atos), comédien improvisateur depuis 15 ans, coach certifié RNCP 7. Créateur de la méthode ThéâtroCoaching.',
+  founderKnowsAbout: [
+    'Prise de parole en public',
+    'Coaching de dirigeants',
+    'Improvisation théâtrale',
+    'Communication non-verbale',
+    'Présence scénique',
+  ],
+  founderCredential: {
+    category: 'certification',
+    name: 'Coach consultant certifié RNCP 7',
+    level: 'Master / MBA',
+    recognizedBy: 'LINKUP COACHING',
+  },
+
+  // areaServed (Île-de-France + France)
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Île-de-France' },
+    { '@type': 'Country', name: 'France' },
+  ],
+
+  // Address (pas d'adresse physique publique, juste region + country)
+  address: {
+    addressRegion: 'Île-de-France',
+    addressCountry: 'FR',
+  },
+
+  // WebSite
+  websiteName: 'Angelo Grossi — Coach prise de parole en public',
+  websiteDescription:
+    'Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale. RDV découverte gratuit.',
+} as const;
