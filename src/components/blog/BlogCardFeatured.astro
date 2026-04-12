@@ -27,14 +27,22 @@ const readTime = Math.ceil(wordCount / 200);
 
 <article class="blog-article group bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:shadow-lg transition-all duration-300" data-category={post.category}>
   <div class="grid grid-cols-1 md:grid-cols-3">
-    <!-- Panneau décoratif latéral -->
-    <div class="relative bg-primary-900 p-6 md:p-8 flex flex-col justify-center overflow-hidden">
-      <!-- Formes décoratives -->
-      <div class="absolute top-4 right-4 size-20 rounded-full bg-accent-500/10" aria-hidden="true"></div>
-      <div class="absolute bottom-8 left-6 size-12 rounded-full bg-secondary-500/10" aria-hidden="true"></div>
-      <div class="absolute top-1/2 right-8 size-8 rounded-full bg-accent-500/15" aria-hidden="true"></div>
+    <!-- Panneau latéral : photo ou décoratif -->
+    <div class="relative bg-primary-900 p-6 md:p-8 flex flex-col justify-end overflow-hidden min-h-[200px]">
+      {post.cover_image ? (
+        <>
+          <img src={post.cover_image} alt={post.title} class="absolute inset-0 w-full h-full object-cover object-top" loading="lazy" />
+          <div class="absolute inset-0 bg-primary-950/50" aria-hidden="true"></div>
+        </>
+      ) : (
+        <>
+          <div class="absolute top-4 right-4 size-20 rounded-full bg-accent-500/10" aria-hidden="true"></div>
+          <div class="absolute bottom-8 left-6 size-12 rounded-full bg-secondary-500/10" aria-hidden="true"></div>
+          <div class="absolute top-1/2 right-8 size-8 rounded-full bg-accent-500/15" aria-hidden="true"></div>
+        </>
+      )}
 
-      <span class="relative inline-flex items-center gap-1.5 bg-accent-500/20 text-accent-300 text-xs font-medium px-3 py-1 rounded-full w-fit mb-4">
+      <span class="relative inline-flex items-center gap-1.5 bg-accent-500/20 text-accent-300 text-xs font-medium px-3 py-1 rounded-full w-fit mb-4 backdrop-blur-sm">
         Dernier article
       </span>
       <p class="relative font-heading text-white/90 text-sm">

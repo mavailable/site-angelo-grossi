@@ -93,6 +93,7 @@ export interface BlogPost {
   date: string;
   category: string;
   slug: string;
+  cover_image?: string;
   content: string;
   _sources?: {
     verbatims_used: string[];
