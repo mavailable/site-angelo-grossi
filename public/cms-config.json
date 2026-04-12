@@ -1,11 +1,10 @@
 {
   "colors": {
-    "primary": "#1e1e28",
-    "accent": "#ed9813",
-    "dark": "#1e1e28"
+    "primary": "#2563eb",
+    "accent": "#059669",
+    "dark": "#0f172a"
   },
   "pageNames": {
-    "/": "Accueil",
-    "/blog": "Blog"
+    "/": "Accueil"
   }
 }

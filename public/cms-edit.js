@@ -146,17 +146,6 @@
         el.addEventListener('keydown', el._cmsHandlers.keydown);
       }
 
-      if (type === 'richtext') {
-        originalValues[field] = el.innerHTML || '';
-        el.setAttribute('contenteditable', 'true');
-        el.classList.add('cms-editable');
-        el._cmsHandlers = { focus: handleFocus, blur: handleBlur, input: handleRichtextInput, keydown: handleKeydown };
-        el.addEventListener('focus', el._cmsHandlers.focus);
-        el.addEventListener('blur', el._cmsHandlers.blur);
-        el.addEventListener('input', el._cmsHandlers.input);
-        el.addEventListener('keydown', el._cmsHandlers.keydown);
-      }
-
       if (type === 'image') {
         originalValues[field] = el.getAttribute('src') || '';
         addImageOverlay(el, field);
@@ -182,7 +171,7 @@
 
     document.querySelectorAll('[data-cms-field]').forEach(function (el) {
       var type = el.getAttribute('data-cms-type') || 'text';
-      if (type === 'text' || type === 'richtext') {
+      if (type === 'text') {
         el.removeAttribute('contenteditable');
         el.classList.remove('cms-editable', 'cms-editable-focus');
         if (el._cmsHandlers) {
@@ -215,7 +204,6 @@
       if (!el) continue;
       var type = el.getAttribute('data-cms-type') || 'text';
       if (type === 'text') el.textContent = originalValues[field];
-      if (type === 'richtext') el.innerHTML = originalValues[field];
       if (type === 'image') el.setAttribute('src', originalValues[field]);
     }
     // Restaurer couleurs
@@ -255,50 +243,6 @@
       delete modifications[field];
     }
     updateToolbarCount();
-  }
-
-  function handleRichtextInput(e) {
-    var el = e.target;
-    var field = el.getAttribute('data-cms-field');
-    var newHtml = el.innerHTML || '';
-    if (newHtml !== originalValues[field]) {
-      // Convertir HTML en Markdown pour stockage JSON
-      modifications[field] = htmlToMarkdown(newHtml);
-    } else {
-      delete modifications[field];
-    }
-    updateToolbarCount();
-  }
-
-  function htmlToMarkdown(html) {
-    var temp = document.createElement('div');
-    temp.innerHTML = html;
-    var md = '';
-    function walk(node) {
-      if (node.nodeType === 3) { md += node.textContent; return; }
-      if (node.nodeType !== 1) return;
-      var tag = node.tagName.toLowerCase();
-      if (tag === 'h2') { md += '\n\n## '; Array.from(node.childNodes).forEach(walk); md += '\n\n'; }
-      else if (tag === 'h3') { md += '\n\n### '; Array.from(node.childNodes).forEach(walk); md += '\n\n'; }
-      else if (tag === 'p') { md += '\n\n'; Array.from(node.childNodes).forEach(walk); }
-      else if (tag === 'strong' || tag === 'b') { md += '**'; Array.from(node.childNodes).forEach(walk); md += '**'; }
-      else if (tag === 'em' || tag === 'i') { md += '*'; Array.from(node.childNodes).forEach(walk); md += '*'; }
-      else if (tag === 'a') { md += '['; Array.from(node.childNodes).forEach(walk); md += '](' + (node.getAttribute('href') || '') + ')'; }
-      else if (tag === 'br') { md += '\n'; }
-      else if (tag === 'ul' || tag === 'ol') { md += '\n'; Array.from(node.childNodes).forEach(walk); md += '\n'; }
-      else if (tag === 'li') {
-        var parent = node.parentElement;
-        var isOl = parent && parent.tagName.toLowerCase() === 'ol';
-        var idx = Array.from(parent.children).indexOf(node) + 1;
-        md += isOl ? '\n' + idx + '. ' : '\n- ';
-        Array.from(node.childNodes).forEach(walk);
-      }
-      else if (tag === 'blockquote') { md += '\n\n> '; Array.from(node.childNodes).forEach(walk); md += '\n'; }
-      else if (tag === 'hr') { md += '\n\n---\n\n'; }
-      else { Array.from(node.childNodes).forEach(walk); }
-    }
-    Array.from(temp.childNodes).forEach(walk);
-    return md.replace(/\n{3,}/g, '\n\n').trim();
   }
 
   function handleKeydown(e) {
@@ -605,8 +549,8 @@
     var colors = [
       { key: 'primaryColor', label: 'Couleur principale', cssVar: '--color-primary-500' },
       { key: 'accentColor', label: 'Couleur accent', cssVar: '--color-accent-500' },
-      { key: 'darkBg', label: 'Fond sombre', cssVar: '--color-primary-950' },
-      { key: 'bodyText', label: 'Texte corps', cssVar: '--color-neutral-800' },
+      { key: 'darkBg', label: 'Fond sombre', cssVar: '--color-dark-grey' },
+      { key: 'bodyText', label: 'Texte corps', cssVar: '--color-body-dark' },
     ];
 
     colors.forEach(function (c) {
@@ -691,7 +635,7 @@
     radiusSlider.addEventListener('input', function () {
       radiusValue.textContent = radiusSlider.value + 'px';
       themeModifications.borderRadius = radiusSlider.value;
-      document.querySelectorAll('a[class*="rounded"], button[class*="rounded"]').forEach(function (btn) {
+      document.querySelectorAll('.btn-gradient, .btn-outline-light, .btn-primary, .btn-secondary').forEach(function (btn) {
         btn.style.borderRadius = radiusSlider.value + 'px';
       });
       updateToolbarCount();
@@ -722,7 +666,7 @@
         });
         radiusSlider.value = themeOriginal.borderRadius || '8';
         radiusValue.textContent = (themeOriginal.borderRadius || '8') + 'px';
-        document.querySelectorAll('a[class*="rounded"], button[class*="rounded"]').forEach(function (btn) {
+        document.querySelectorAll('.btn-gradient, .btn-outline-light, .btn-primary, .btn-secondary').forEach(function (btn) {
           btn.style.borderRadius = '';
         });
         updateToolbarCount();
@@ -778,8 +722,8 @@
     var mappings = {
       primaryColor: '--color-primary-500',
       accentColor: '--color-accent-500',
-      darkBg: '--color-primary-950',
-      bodyText: '--color-neutral-800',
+      darkBg: '--color-dark-grey',
+      bodyText: '--color-body-dark',
     };
     for (var key in mappings) {
       if (theme[key]) {
