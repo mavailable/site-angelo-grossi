@@ -62,13 +62,13 @@ const readTime = Math.ceil(wordCount / 200);
         </time>
       </div>
 
-      <h3 class="font-heading font-bold text-xl md:text-2xl text-primary-950 mb-3 group-hover:text-accent-700 transition-colors" data-cms-field={`blog.${post._slug}.title`} data-cms-type="text">
+      <h3 class="font-heading font-bold text-xl md:text-2xl text-primary-950 mb-3 group-hover:text-accent-700 transition-colors" data-cms-field={`blog:${post.slug}.title`} data-cms-type="text">
         <a href={`/blog/${post.slug}/`} class="block">
           {post.title}
         </a>
       </h3>
 
-      <p class="text-neutral-600 leading-relaxed mb-5" data-cms-field={`blog.${post._slug}.description`} data-cms-type="text">
+      <p class="text-neutral-600 leading-relaxed mb-5" data-cms-field={`blog:${post.slug}.description`} data-cms-type="text">
         {post.description}
       </p>
 
