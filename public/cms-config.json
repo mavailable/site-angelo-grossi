@@ -1,15 +1,11 @@
 {
   "colors": {
-    "primary": "#72728b",
+    "primary": "#1e1e28",
     "accent": "#ed9813",
     "dark": "#1e1e28"
   },
   "pageNames": {
     "/": "Accueil",
-    "/blog": "Blog",
-    "/mentions-legales": "Mentions legales",
-    "/politique-confidentialite": "Confidentialite",
-    "/merci": "Merci",
-    "/404": "Page 404"
+    "/blog": "Blog"
   }
 }
