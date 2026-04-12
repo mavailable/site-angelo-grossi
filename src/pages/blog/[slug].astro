@@ -90,7 +90,7 @@ const blogPostingSchema = {
     {post.cover_image ? (
       <>
         <img src={post.cover_image} alt={post.title} class="absolute inset-0 w-full h-full object-cover object-top" loading="eager" fetchpriority="high" />
-        <div class="absolute inset-0 bg-primary-950/75" aria-hidden="true"></div>
+        <div class="absolute inset-0 bg-primary-950/50" aria-hidden="true"></div>
       </>
     ) : (
       <>
