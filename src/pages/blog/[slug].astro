@@ -86,19 +86,9 @@ const blogPostingSchema = {
   <Header slot="header" />
 
   <!-- Header article -->
-  <section class="relative pt-12 pb-16 md:pt-16 md:pb-20 overflow-hidden">
-    {post.cover_image ? (
-      <>
-        <img src={post.cover_image} alt={post.title} class="absolute inset-0 w-full h-full object-cover object-top" loading="eager" fetchpriority="high" />
-        <div class="absolute inset-0 bg-primary-950/50" aria-hidden="true"></div>
-      </>
-    ) : (
-      <>
-        <div class="absolute inset-0 bg-primary-950" aria-hidden="true"></div>
-        <div class="absolute top-10 right-10 size-32 rounded-full bg-accent-500/5" aria-hidden="true"></div>
-        <div class="absolute bottom-10 left-20 size-20 rounded-full bg-secondary-500/5" aria-hidden="true"></div>
-      </>
-    )}
+  <section class="bg-primary-950 pt-12 pb-16 md:pt-16 md:pb-20 relative overflow-hidden">
+    <div class="absolute top-10 right-10 size-32 rounded-full bg-accent-500/5" aria-hidden="true"></div>
+    <div class="absolute bottom-10 left-20 size-20 rounded-full bg-secondary-500/5" aria-hidden="true"></div>
 
     <div class="max-w-3xl mx-auto px-4 sm:px-6 relative">
       <div class="flex items-center gap-3 mb-6">
@@ -124,6 +114,19 @@ const blogPostingSchema = {
       </div>
     </div>
   </section>
+
+  <!-- Cover image -->
+  {post.cover_image && (
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 -mt-8">
+      <img
+        src={post.cover_image}
+        alt={post.title}
+        class="w-full rounded-xl shadow-lg aspect-[21/9] object-cover object-top"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  )}
 
   <!-- Breadcrumb -->
   <nav class="max-w-3xl mx-auto px-4 sm:px-6 py-4" aria-label="Fil d'Ariane">
