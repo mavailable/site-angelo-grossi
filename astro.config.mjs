@@ -11,7 +11,7 @@ export default defineConfig({
   adapter: cloudflare(),
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/api/') && !page.includes('/merci') && !page.includes('/aide'),
+      filter: (page) => !page.includes('/api/') && !page.includes('/merci') && !page.includes('/aide') && !page.includes('/admin'),
       i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR' } },
     }),
     react(),

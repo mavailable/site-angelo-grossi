@@ -1,0 +1,34 @@
+{
+  "ideas": [
+    {
+      "title": "Comment préparer une prise de parole en 48h quand on n'a pas le temps",
+      "source": "FAQ site — question fréquente sur le nombre de séances",
+      "status": "a-faire",
+      "notes": "Angle conseil pratique, format court, adapté au public cadres pressés"
+    },
+    {
+      "title": "Ce que 25 ans en entreprise m'ont appris sur les présentations ratées",
+      "source": "brief.md — parcours Siemens/Unify/Atos, centaines de présentations observées",
+      "status": "a-faire",
+      "notes": "Récit coulisses, anecdotes corporate, ton décalé"
+    },
+    {
+      "title": "Non, bien parler en public ne veut pas dire être extraverti",
+      "source": "FAQ site — idée reçue fréquente chez les prospects introvertis",
+      "status": "a-faire",
+      "notes": "Format myth-busting, casser le lien extraversion/éloquence"
+    },
+    {
+      "title": "Le jour où un directeur général a pleuré en coaching",
+      "source": "suggestion Marc — récit émotionnel si Angelo valide une anecdote terrain",
+      "status": "a-faire",
+      "notes": "Demander à Angelo en vocal. Fort potentiel émotionnel."
+    },
+    {
+      "title": "Coaching en visio vs présentiel : ce qui change (et ce qui ne change pas)",
+      "source": "FAQ site — question sur le format des séances",
+      "status": "a-faire",
+      "notes": "Angle pratique, rassurer les prospects hors Île-de-France"
+    }
+  ]
+}

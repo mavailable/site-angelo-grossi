@@ -1,0 +1,178 @@
+---
+export const prerender = true;
+
+import { marked } from 'marked';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import BlogCard from '@components/blog/BlogCard.astro';
+import Button from '@components/ui/Button.astro';
+import { getBlogPosts, getSiteInfo } from '@data/content';
+import { business } from '@data/business';
+
+export function getStaticPaths() {
+  const posts = getBlogPosts();
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const site = getSiteInfo();
+const siteUrl = site.siteUrl || 'https://angelogrossi.com';
+
+const htmlContent = marked(post.content);
+const wordCount = post.content.split(/\s+/).length;
+const readTime = Math.ceil(wordCount / 200);
+
+const dateFormatted = new Date(post.date).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const categoryColors: Record<string, { bg: string; text: string; dot: string }> = {
+  'Récits de parcours': { bg: 'bg-primary-100', text: 'text-primary-800', dot: 'bg-primary-500' },
+  'Prise de parole': { bg: 'bg-secondary-100', text: 'text-secondary-800', dot: 'bg-secondary-500' },
+  'Coaching & méthode': { bg: 'bg-accent-100', text: 'text-accent-800', dot: 'bg-accent-500' },
+};
+
+const colors = categoryColors[post.category] || { bg: 'bg-neutral-100', text: 'text-neutral-700', dot: 'bg-neutral-500' };
+
+// Articles liés (2 plus récents hors article courant)
+const allPosts = getBlogPosts();
+const relatedPosts = allPosts.filter(p => p.slug !== post.slug).slice(0, 2);
+
+// Schema.org BlogPosting
+const blogPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.description,
+  "datePublished": new Date(post.date).toISOString(),
+  "dateModified": new Date(post.date).toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": business.owner,
+    "jobTitle": "Coach certifié en prise de parole en public",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": site.name,
+    "url": siteUrl,
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${siteUrl}/blog/${post.slug}`,
+  },
+  "wordCount": wordCount,
+  "inLanguage": "fr",
+};
+---
+
+<BaseLayout
+  title={`${post.title} — Blog Angelo Grossi`}
+  description={post.description}
+>
+  <Fragment slot="head">
+    <meta property="og:type" content="article" />
+    <meta property="article:published_time" content={new Date(post.date).toISOString()} />
+    <meta property="article:author" content={business.owner} />
+    <script type="application/ld+json" set:html={JSON.stringify(blogPostingSchema)} />
+  </Fragment>
+
+  <Header slot="header" />
+
+  <!-- Header article -->
+  <section class="bg-primary-950 pt-12 pb-16 md:pt-16 md:pb-20 relative overflow-hidden">
+    <!-- Motifs décoratifs -->
+    <div class="absolute top-10 right-10 size-32 rounded-full bg-accent-500/5" aria-hidden="true"></div>
+    <div class="absolute bottom-10 left-20 size-20 rounded-full bg-secondary-500/5" aria-hidden="true"></div>
+
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 relative">
+      <div class="flex items-center gap-3 mb-6">
+        <span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${colors.bg} ${colors.text}`}>
+          <span class={`size-1.5 rounded-full ${colors.dot}`} aria-hidden="true"></span>
+          {post.category}
+        </span>
+        <span class="text-neutral-400 text-sm">{readTime} min de lecture</span>
+      </div>
+
+      <h1 class="font-heading font-bold text-2xl md:text-4xl text-white mb-6 leading-tight">
+        {post.title}
+      </h1>
+
+      <div class="flex items-center gap-3">
+        <div class="size-10 rounded-full bg-accent-500/20 flex items-center justify-center">
+          <span class="text-accent-400 font-heading font-bold text-sm">AG</span>
+        </div>
+        <div>
+          <p class="text-white text-sm font-medium">{business.owner}</p>
+          <time datetime={post.date} class="text-neutral-400 text-xs">{dateFormatted}</time>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="max-w-3xl mx-auto px-4 sm:px-6 py-4" aria-label="Fil d'Ariane">
+    <ol class="flex items-center gap-2 text-sm text-neutral-400 list-none m-0 p-0">
+      <li><a href="/" class="hover:text-primary-700 transition-colors">Accueil</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/blog/" class="hover:text-primary-700 transition-colors">Blog</a></li>
+      <li aria-hidden="true">/</li>
+      <li class="text-primary-700 font-medium truncate max-w-[200px]" aria-current="page">{post.title}</li>
+    </ol>
+  </nav>
+
+  <!-- Corps article -->
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+    <div class="prose text-base md:text-lg" set:html={htmlContent} />
+  </article>
+
+  <!-- Carte auteur -->
+  <section class="max-w-3xl mx-auto px-4 sm:px-6 pb-12">
+    <div class="bg-primary-50 rounded-xl p-6 flex items-start gap-4">
+      <div class="size-14 shrink-0 rounded-full bg-primary-900 flex items-center justify-center">
+        <span class="text-accent-400 font-heading font-bold text-lg">AG</span>
+      </div>
+      <div>
+        <p class="font-heading font-semibold text-primary-950">{business.owner}</p>
+        <p class="text-sm text-neutral-600 mb-2">Coach certifié RNCP 7 en prise de parole en public</p>
+        <p class="text-sm text-neutral-500 leading-relaxed">
+          Ancien cadre marketing (25 ans chez Siemens, Unify, Atos), comédien improvisateur depuis 15 ans. Créateur du ThéâtroCoaching.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles liés -->
+  {relatedPosts.length > 0 && (
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+      <h2 class="font-heading font-semibold text-xl text-primary-950 mb-6">À lire aussi</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {relatedPosts.map(p => (
+          <BlogCard post={p} />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Banner -->
+  <section class="bg-accent-500 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-heading font-bold text-2xl md:text-3xl text-primary-950 mb-4">
+        Envie d'incarner votre parole ?
+      </h2>
+      <p class="text-primary-950/80 mb-6 max-w-xl mx-auto">
+        Premier échange gratuit et sans engagement. 30 minutes pour faire le point sur vos besoins.
+      </p>
+      <Button dataCalLink={site.calUrl} variant="secondary" size="lg">
+        Je réserve mon RDV découverte
+      </Button>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>

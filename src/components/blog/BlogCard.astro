@@ -1,0 +1,58 @@
+---
+import type { BlogPost } from '@data/content';
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+
+const categoryColors: Record<string, { bg: string; text: string; dot: string }> = {
+  'Récits de parcours': { bg: 'bg-primary-50', text: 'text-primary-700', dot: 'bg-primary-500' },
+  'Prise de parole': { bg: 'bg-secondary-50', text: 'text-secondary-700', dot: 'bg-secondary-500' },
+  'Coaching & méthode': { bg: 'bg-accent-50', text: 'text-accent-700', dot: 'bg-accent-500' },
+};
+
+const colors = categoryColors[post.category] || { bg: 'bg-neutral-100', text: 'text-neutral-700', dot: 'bg-neutral-500' };
+
+const dateFormatted = new Date(post.date).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<article class="blog-article group bg-white rounded-xl border border-neutral-200 p-6 hover:border-primary-300 hover:shadow-md transition-all duration-200" data-category={post.category}>
+  <!-- Badge catégorie -->
+  <div class="flex items-center gap-2 mb-4">
+    <span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${colors.bg} ${colors.text}`}>
+      <span class={`size-1.5 rounded-full ${colors.dot}`} aria-hidden="true"></span>
+      {post.category}
+    </span>
+  </div>
+
+  <!-- Titre -->
+  <h3 class="font-heading font-semibold text-lg text-primary-950 mb-2 group-hover:text-accent-700 transition-colors">
+    <a href={`/blog/${post.slug}/`} class="block">
+      {post.title}
+    </a>
+  </h3>
+
+  <!-- Extrait -->
+  <p class="text-neutral-600 text-sm leading-relaxed line-clamp-3 mb-4">
+    {post.description}
+  </p>
+
+  <!-- Footer : date + lien -->
+  <div class="flex items-center justify-between pt-3 border-t border-neutral-100">
+    <time datetime={post.date} class="text-xs text-neutral-400">
+      {dateFormatted}
+    </time>
+    <a href={`/blog/${post.slug}/`} class="text-sm font-medium text-primary-700 hover:text-accent-600 transition-colors inline-flex items-center gap-1">
+      Lire
+      <svg class="size-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</article>

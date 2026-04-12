@@ -1,0 +1,167 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import BlogCardFeatured from '@components/blog/BlogCardFeatured.astro';
+import BlogCard from '@components/blog/BlogCard.astro';
+import Button from '@components/ui/Button.astro';
+import { getBlogPosts, getSiteInfo } from '@data/content';
+import { business } from '@data/business';
+
+const site = getSiteInfo();
+const allPosts = getBlogPosts();
+const [featuredPost, ...otherPosts] = allPosts;
+const categories = [...new Set(allPosts.map(post => post.category))];
+
+const siteUrl = site.siteUrl || 'https://angelogrossi.com';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": `Blog ${site.name}`,
+  "description": "Articles sur la prise de parole en public, le coaching et l'improvisation théâtrale.",
+  "url": `${siteUrl}/blog`,
+  "publisher": {
+    "@type": "Organization",
+    "name": site.name,
+  },
+  "blogPost": allPosts.map(p => ({
+    "@type": "BlogPosting",
+    "@id": `${siteUrl}/blog/${p.slug}`,
+  })),
+};
+---
+
+<BaseLayout
+  title="Blog | Prise de parole, coaching & improvisation — Angelo Grossi"
+  description="Récits de parcours, conseils pratiques et méthodes pour incarner votre prise de parole en public. Par Angelo Grossi, coach certifié RNCP 7."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+  </Fragment>
+
+  <Header slot="header" />
+
+  <!-- Hero blog -->
+  <section class="bg-primary-950 py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-accent-400 text-sm font-medium uppercase tracking-wider mb-3">Le blog</p>
+      <h1 class="font-heading font-bold text-3xl md:text-4xl text-white mb-4">
+        Prise de parole, coaching & improvisation
+      </h1>
+      <p class="text-neutral-300 text-lg max-w-2xl mx-auto">
+        Récits de terrain, méthodes et réflexions sur l'art d'incarner sa parole en public.
+      </p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="max-w-5xl mx-auto px-4 sm:px-6 py-4" aria-label="Fil d'Ariane">
+    <ol class="flex items-center gap-2 text-sm text-neutral-400 list-none m-0 p-0">
+      <li><a href="/" class="hover:text-primary-700 transition-colors">Accueil</a></li>
+      <li aria-hidden="true">/</li>
+      <li class="text-primary-700 font-medium" aria-current="page">Blog</li>
+    </ol>
+  </nav>
+
+  <!-- Filtres + Articles -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 pb-16 md:pb-24">
+    <!-- Filtres catégorie -->
+    <div class="flex flex-wrap gap-2 mb-10" role="tablist" aria-label="Filtrer par catégorie">
+      <button
+        class="filter-btn active bg-primary-700 text-white shadow-sm px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 min-h-[44px]"
+        data-filter="all"
+        role="tab"
+        aria-selected="true"
+      >
+        Tous les articles
+      </button>
+      {categories.map(cat => (
+        <button
+          class="filter-btn bg-white text-neutral-600 border border-neutral-200 hover:border-primary-300 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 min-h-[44px]"
+          data-filter={cat}
+          role="tab"
+          aria-selected="false"
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Article mis en avant -->
+    {featuredPost && (
+      <div class="mb-8">
+        <BlogCardFeatured post={featuredPost} />
+      </div>
+    )}
+
+    <!-- Grille articles -->
+    {otherPosts.length > 0 && (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {otherPosts.map(post => (
+          <BlogCard post={post} />
+        ))}
+      </div>
+    )}
+
+    <!-- État vide -->
+    <div id="empty-state" class="hidden text-center py-12">
+      <p class="text-neutral-500">Aucun article dans cette catégorie pour le moment.</p>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="bg-accent-500 py-12 md:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-heading font-bold text-2xl md:text-3xl text-primary-950 mb-4">
+        Prêt à incarner votre parole ?
+      </h2>
+      <p class="text-primary-950/80 mb-6 max-w-xl mx-auto">
+        Premier échange gratuit et sans engagement. 30 minutes pour faire le point sur vos besoins.
+      </p>
+      <Button dataCalLink={site.calUrl} variant="secondary" size="lg">
+        Je réserve mon RDV découverte
+      </Button>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</BaseLayout>
+
+<script>
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const articles = document.querySelectorAll('.blog-article');
+  const emptyState = document.getElementById('empty-state');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = (btn as HTMLElement).dataset.filter;
+
+      filterButtons.forEach(b => {
+        b.classList.remove('active', 'bg-primary-700', 'text-white', 'shadow-sm');
+        b.classList.add('bg-white', 'text-neutral-600', 'border', 'border-neutral-200');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active', 'bg-primary-700', 'text-white', 'shadow-sm');
+      btn.classList.remove('bg-white', 'text-neutral-600', 'border', 'border-neutral-200');
+      btn.setAttribute('aria-selected', 'true');
+
+      let visibleCount = 0;
+      articles.forEach(article => {
+        const el = article as HTMLElement;
+        if (filter === 'all' || el.dataset.category === filter) {
+          el.style.display = '';
+          visibleCount++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      if (emptyState) {
+        emptyState.classList.toggle('hidden', visibleCount > 0);
+      }
+    });
+  });
+</script>

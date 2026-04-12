@@ -1,0 +1,75 @@
+---
+import type { BlogPost } from '@data/content';
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+
+const categoryColors: Record<string, { bg: string; text: string; dot: string }> = {
+  'Récits de parcours': { bg: 'bg-primary-100', text: 'text-primary-700', dot: 'bg-primary-500' },
+  'Prise de parole': { bg: 'bg-secondary-100', text: 'text-secondary-700', dot: 'bg-secondary-500' },
+  'Coaching & méthode': { bg: 'bg-accent-100', text: 'text-accent-700', dot: 'bg-accent-500' },
+};
+
+const colors = categoryColors[post.category] || { bg: 'bg-neutral-100', text: 'text-neutral-700', dot: 'bg-neutral-500' };
+
+const dateFormatted = new Date(post.date).toLocaleDateString('fr-FR', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const wordCount = post.content.split(/\s+/).length;
+const readTime = Math.ceil(wordCount / 200);
+---
+
+<article class="blog-article group bg-white rounded-2xl border border-neutral-200 overflow-hidden hover:shadow-lg transition-all duration-300" data-category={post.category}>
+  <div class="grid grid-cols-1 md:grid-cols-3">
+    <!-- Panneau décoratif latéral -->
+    <div class="relative bg-primary-900 p-6 md:p-8 flex flex-col justify-center overflow-hidden">
+      <!-- Formes décoratives -->
+      <div class="absolute top-4 right-4 size-20 rounded-full bg-accent-500/10" aria-hidden="true"></div>
+      <div class="absolute bottom-8 left-6 size-12 rounded-full bg-secondary-500/10" aria-hidden="true"></div>
+      <div class="absolute top-1/2 right-8 size-8 rounded-full bg-accent-500/15" aria-hidden="true"></div>
+
+      <span class="relative inline-flex items-center gap-1.5 bg-accent-500/20 text-accent-300 text-xs font-medium px-3 py-1 rounded-full w-fit mb-4">
+        Dernier article
+      </span>
+      <p class="relative font-heading text-white/90 text-sm">
+        {readTime} min de lecture
+      </p>
+    </div>
+
+    <!-- Contenu -->
+    <div class="md:col-span-2 p-6 md:p-8 flex flex-col justify-center">
+      <div class="flex items-center gap-3 mb-3">
+        <span class={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${colors.bg} ${colors.text}`}>
+          <span class={`size-1.5 rounded-full ${colors.dot}`} aria-hidden="true"></span>
+          {post.category}
+        </span>
+        <time datetime={post.date} class="text-xs text-neutral-400">
+          {dateFormatted}
+        </time>
+      </div>
+
+      <h3 class="font-heading font-bold text-xl md:text-2xl text-primary-950 mb-3 group-hover:text-accent-700 transition-colors">
+        <a href={`/blog/${post.slug}/`} class="block">
+          {post.title}
+        </a>
+      </h3>
+
+      <p class="text-neutral-600 leading-relaxed mb-5">
+        {post.description}
+      </p>
+
+      <a href={`/blog/${post.slug}/`} class="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 hover:text-accent-600 transition-colors w-fit">
+        Lire l'article
+        <svg class="size-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>

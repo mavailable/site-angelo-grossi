@@ -87,6 +87,21 @@ export interface Faq {
   order: number;
 }
 
+export interface BlogPost {
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  slug: string;
+  content: string;
+  _sources?: {
+    verbatims_used: string[];
+    anecdotes: string[];
+    facts_verified: string[];
+    fabricated: string[];
+  };
+}
+
 // Getters
 export function getSiteInfo(): SiteInfo {
   return readJson<SiteInfo>('src/content/site-info/index.json');
@@ -121,4 +136,14 @@ export function getTestimonials(): Testimonial[] {
 export function getFaq(): Faq[] {
   return readCollection<Faq>('src/content/faq')
     .sort((a, b) => a.order - b.order);
+}
+
+export function getBlogPosts(): BlogPost[] {
+  return readCollection<BlogPost>('src/content/blog')
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getBlogPost(slug: string): BlogPost | undefined {
+  const posts = getBlogPosts();
+  return posts.find(p => p.slug === slug);
 }
