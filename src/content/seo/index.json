@@ -1,0 +1,45 @@
+{
+  "global": {
+    "siteName": "Angelo Grossi",
+    "separator": "\u2014",
+    "defaultOgImage": "/images/og-image.jpg"
+  },
+  "pages": {
+    "/": {
+      "title": "Coach prise de parole en public en Ile-de-France",
+      "description": "Coach certifie RNCP 7 en prise de parole en public en Ile-de-France. Approche unique alliant coaching professionnel et improvisation theatrale. RDV decouverte gratuit.",
+      "ogImage": "",
+      "noindex": false
+    },
+    "/blog": {
+      "title": "Blog",
+      "description": "Articles sur la prise de parole, le coaching et l'improvisation theatrale.",
+      "ogImage": "",
+      "noindex": false
+    },
+    "/mentions-legales": {
+      "title": "Mentions legales",
+      "description": "",
+      "ogImage": "",
+      "noindex": true
+    },
+    "/politique-confidentialite": {
+      "title": "Politique de confidentialite",
+      "description": "",
+      "ogImage": "",
+      "noindex": true
+    },
+    "/merci": {
+      "title": "Message envoye",
+      "description": "",
+      "ogImage": "",
+      "noindex": true
+    },
+    "/404": {
+      "title": "Page non trouvee",
+      "description": "",
+      "ogImage": "",
+      "noindex": true
+    }
+  }
+}

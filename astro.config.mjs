@@ -2,22 +2,19 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
-import keystatic from '@keystatic/astro';
-import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   site: 'https://angelogrossi.com',
-  output: 'server',
-  adapter: cloudflare(),
+  output: 'static',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/api/') && !page.includes('/merci') && !page.includes('/aide') && !page.includes('/admin'),
-      i18n: { defaultLocale: 'fr', locales: { fr: 'fr-FR' } },
+      filter: (page) =>
+        !/admin|merci|404/.test(page),
     }),
     react(),
-    keystatic(),
   ],
   compressHTML: true,
+  trailingSlash: 'always',
   build: {
     inlineStylesheets: 'auto',
   },

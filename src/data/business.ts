@@ -1,6 +1,6 @@
 /**
- * Technical business data — NOT editable via Keystatic
- * For editable content, see src/content/ (managed via Keystatic)
+ * Technical business data — NOT editable via CMS
+ * For editable content, see src/content/ (managed via /admin)
  */
 
 // Locale config (used by BaseLayout, astro.config, Schema.org)

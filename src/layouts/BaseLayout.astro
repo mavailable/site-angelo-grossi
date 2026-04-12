@@ -117,5 +117,15 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
       });
     });
   </script>
+
+  <!-- CMS inline editing (only for logged-in admin) -->
+  <script is:inline>
+    if (document.cookie.includes('cms_logged_in')) {
+      var s = document.createElement('script');
+      s.src = '/cms-edit.js';
+      s.defer = true;
+      document.body.appendChild(s);
+    }
+  </script>
 </body>
 </html>
