@@ -29,10 +29,10 @@ const section = getSections().services;
             <span class="font-heading font-bold text-accent-500/60 text-2xl">{String(i + 1).padStart(2, '0')}</span>
           </div>
           <div class="md:col-span-4">
-            <h3 class="font-heading font-semibold text-primary-950 text-xl md:text-2xl group-hover:text-accent-700 transition-colors">{service.title}</h3>
+            <h3 class="font-heading font-semibold text-primary-950 text-xl md:text-2xl group-hover:text-accent-700 transition-colors" data-cms-field={`services.${service._slug}.title`} data-cms-type="text">{service.title}</h3>
           </div>
           <div class="md:col-span-7">
-            <p class="text-neutral-600 leading-relaxed">{service.description}</p>
+            <p class="text-neutral-600 leading-relaxed" data-cms-field={`services.${service._slug}.description`} data-cms-type="text">{service.description}</p>
           </div>
         </article>
       ))}
