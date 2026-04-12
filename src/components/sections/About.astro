@@ -35,7 +35,7 @@ const about = getAbout();
       <!-- Text -->
       <article class="lg:col-span-7">
         <SectionEyebrow text={about.eyebrow} />
-        <h2 class="font-heading font-bold text-primary-950 text-3xl md:text-4xl leading-tight mb-8">
+        <h2 class="font-heading font-bold text-primary-950 text-3xl md:text-4xl leading-tight mb-8" data-cms-field="about.title" data-cms-type="text">
           {about.title}
         </h2>
         <div class="space-y-5">
@@ -43,7 +43,7 @@ const about = getAbout();
             <p class:list={[
               'leading-relaxed',
               i === 0 ? 'text-neutral-800 text-lg' : 'text-neutral-600'
-            ]}>{p}</p>
+            ]} data-cms-field={`about.paragraphs[${i}]`} data-cms-type="text">{p}</p>
           ))}
         </div>
       </article>

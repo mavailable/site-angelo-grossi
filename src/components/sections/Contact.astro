@@ -21,18 +21,18 @@ const site = getSiteInfo();
       <div class="relative">
         <div class="w-10 h-[2px] bg-accent-500 mb-6" aria-hidden="true"></div>
         <SectionEyebrow text={contact.eyebrow} variant="light" />
-        <h2 class="font-heading font-bold text-white text-3xl md:text-4xl mb-4">
+        <h2 class="font-heading font-bold text-white text-3xl md:text-4xl mb-4" data-cms-field="contact.title" data-cms-type="text">
           {contact.title}
         </h2>
-        <p class="text-neutral-300 leading-relaxed mb-8">
+        <p class="text-neutral-300 leading-relaxed mb-8" data-cms-field="contact.subtitle" data-cms-type="text">
           {contact.subtitle}
         </p>
 
         <!-- CTA Cal.com — popup modal -->
         {contact.ctaCalText && (
           <div class="bg-primary-900/60 rounded-xl p-6 border border-primary-800/50 mb-6">
-            <p class="text-white font-semibold mb-2">{contact.rdvTitle}</p>
-            <p class="text-neutral-400 text-sm mb-4">{contact.rdvDescription}</p>
+            <p class="text-white font-semibold mb-2" data-cms-field="contact.rdvTitle" data-cms-type="text">{contact.rdvTitle}</p>
+            <p class="text-neutral-400 text-sm mb-4" data-cms-field="contact.rdvDescription" data-cms-type="text">{contact.rdvDescription}</p>
             <Button dataCalLink={contact.ctaCalLink} variant="primary" size="md" dataTrack="cta">
               {contact.ctaCalText}
             </Button>

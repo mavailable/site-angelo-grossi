@@ -23,18 +23,18 @@ const site = getSiteInfo();
         <!-- Decorative line -->
         <div class="w-12 h-[2px] bg-accent-500 mb-8 mx-auto lg:mx-0" aria-hidden="true"></div>
 
-        <h1 class="font-heading font-bold text-white text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] tracking-tight mb-8">
+        <h1 class="font-heading font-bold text-white text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] tracking-tight mb-8" data-cms-field="hero.title" data-cms-type="text">
           {hero.title}
         </h1>
 
         <div class="border-l-2 border-accent-500/60 pl-5 mb-10">
-          <p class="text-neutral-300 text-lg md:text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
+          <p class="text-neutral-300 text-lg md:text-xl leading-relaxed max-w-lg mx-auto lg:mx-0" data-cms-field="hero.subtitle" data-cms-type="text">
             {hero.subtitle}
           </p>
         </div>
 
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 justify-center lg:justify-start mb-6">
-          <Button dataCalLink={site.calUrl} variant="primary" size="md" dataTrack="cta">
+          <Button dataCalLink={site.calUrl} variant="primary" size="md" dataTrack="cta" data-cms-field="hero.ctaText" data-cms-type="text">
             {hero.ctaText}
           </Button>
           {hero.ctaSecondaryText && (
@@ -45,7 +45,7 @@ const site = getSiteInfo();
         </div>
 
         {hero.reassurance && (
-          <p class="text-neutral-500 text-sm">
+          <p class="text-neutral-500 text-sm" data-cms-field="hero.reassurance" data-cms-type="text">
             {hero.reassurance}
           </p>
         )}

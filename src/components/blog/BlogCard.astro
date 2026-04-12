@@ -32,14 +32,14 @@ const dateFormatted = new Date(post.date).toLocaleDateString('fr-FR', {
   </div>
 
   <!-- Titre -->
-  <h3 class="font-heading font-semibold text-lg text-primary-950 mb-2 group-hover:text-accent-700 transition-colors">
+  <h3 class="font-heading font-semibold text-lg text-primary-950 mb-2 group-hover:text-accent-700 transition-colors" data-cms-field={`blog.${post._slug}.title`} data-cms-type="text">
     <a href={`/blog/${post.slug}/`} class="block">
       {post.title}
     </a>
   </h3>
 
   <!-- Extrait -->
-  <p class="text-neutral-600 text-sm leading-relaxed line-clamp-3 mb-4">
+  <p class="text-neutral-600 text-sm leading-relaxed line-clamp-3 mb-4" data-cms-field={`blog.${post._slug}.description`} data-cms-type="text">
     {post.description}
   </p>
 

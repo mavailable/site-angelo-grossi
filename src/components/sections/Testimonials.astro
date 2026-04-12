@@ -27,12 +27,12 @@ const others = testimonials.slice(1);
           <svg class="w-10 h-10 text-accent-500/40 mb-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/>
           </svg>
-          <blockquote class="text-white text-lg md:text-xl leading-relaxed mb-6 max-w-3xl">
+          <blockquote class="text-white text-lg md:text-xl leading-relaxed mb-6 max-w-3xl" data-cms-field={`testimonials:${featured._slug}.quote`} data-cms-type="text">
             {featured.quote}
           </blockquote>
           <footer>
-            <p class="font-semibold text-accent-300">{featured.name}</p>
-            <p class="text-neutral-500 text-sm">{featured.role}</p>
+            <p class="font-semibold text-accent-300" data-cms-field={`testimonials:${featured._slug}.name`} data-cms-type="text">{featured.name}</p>
+            <p class="text-neutral-500 text-sm" data-cms-field={`testimonials:${featured._slug}.role`} data-cms-type="text">{featured.role}</p>
           </footer>
         </div>
       </article>
@@ -42,14 +42,14 @@ const others = testimonials.slice(1);
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {others.map((t) => (
           <article class="border border-neutral-200 rounded-lg p-6 md:p-8">
-            <blockquote class="text-neutral-700 leading-relaxed mb-5">
+            <blockquote class="text-neutral-700 leading-relaxed mb-5" data-cms-field={`testimonials:${t._slug}.quote`} data-cms-type="text">
               {t.quote}
             </blockquote>
             <footer class="flex items-center gap-3">
               <div class="w-8 h-[2px] bg-accent-500/40"></div>
               <div>
-                <p class="font-semibold text-primary-950 text-sm">{t.name}</p>
-                <p class="text-neutral-500 text-xs">{t.role}</p>
+                <p class="font-semibold text-primary-950 text-sm" data-cms-field={`testimonials:${t._slug}.name`} data-cms-type="text">{t.name}</p>
+                <p class="text-neutral-500 text-xs" data-cms-field={`testimonials:${t._slug}.role`} data-cms-type="text">{t.role}</p>
               </div>
             </footer>
           </article>
