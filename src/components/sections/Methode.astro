@@ -16,10 +16,10 @@ const steps = methode.steps;
   <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
     <div class="text-center max-w-2xl mx-auto mb-16">
       <SectionEyebrow text={methode.eyebrow} variant="light" />
-      <h2 class="font-heading font-bold text-white text-3xl md:text-4xl leading-tight mb-5">
+      <h2 class="font-heading font-bold text-white text-3xl md:text-4xl leading-tight mb-5" data-cms-field="sections.methode.title" data-cms-type="text">
         {methode.title}
       </h2>
-      <p class="text-neutral-300 leading-relaxed">
+      <p class="text-neutral-300 leading-relaxed" data-cms-field="sections.methode.description" data-cms-type="text">
         {methode.description}
       </p>
     </div>
@@ -31,8 +31,8 @@ const steps = methode.steps;
           <span class="block font-heading font-bold text-6xl md:text-7xl text-accent-500/20 group-hover:text-accent-500/40 transition-colors leading-none mb-2" aria-hidden="true">
             {step.letter}
           </span>
-          <h3 class="font-heading font-semibold text-accent-300 text-xl mb-4">{step.label}</h3>
-          <p class="text-neutral-400 text-sm leading-relaxed">{step.text}</p>
+          <h3 class="font-heading font-semibold text-accent-300 text-xl mb-4" data-cms-field={`sections.methode.steps[${steps.indexOf(step)}].label`} data-cms-type="text">{step.label}</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed" data-cms-field={`sections.methode.steps[${steps.indexOf(step)}].text`} data-cms-type="text">{step.text}</p>
         </div>
       ))}
     </div>
