@@ -66,7 +66,7 @@ const cmsConfig: CmsConfig = {
         ctaCalText: { type: 'text', label: 'Texte bouton Cal.com' },
         ctaCalLink: { type: 'text', label: 'Lien Cal.com' },
         submitText: { type: 'text', label: 'Texte bouton formulaire' },
-        rgpdText: { type: 'text', label: 'Mention RGPD', multiline: true },
+        web3formsKey: { type: 'text', label: 'Cle Web3Forms (formulaire)', description: 'Collez votre cle pour recevoir vos formulaires directement. Guide : marcm.fr/aide/web3forms' },
       },
     },
 

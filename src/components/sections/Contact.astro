@@ -4,11 +4,21 @@
  * Layout : texte + CTA Calendly à gauche, formulaire Web3Forms à droite
  */
 import { getContact, getSiteInfo } from '@data/content';
+import { web3formsKey as fallbackKey } from '@data/business';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 import Button from '@components/ui/Button.astro';
+import fs from 'node:fs';
 
 const contact = getContact();
 const site = getSiteInfo();
+
+// Web3Forms cascade: CMS content → env var → cle Marc (defaut agence)
+let cmsKey = '';
+try {
+  const raw = fs.readFileSync('src/content/contact/index.json', 'utf-8');
+  cmsKey = JSON.parse(raw).web3formsKey || '';
+} catch {}
+const web3formsKey = cmsKey || fallbackKey;
 ---
 
 <section id="contact" class="relative bg-primary-950 py-16 md:py-24 overflow-hidden" data-cms-field="contact" data-cms-type="singleton">
@@ -64,7 +74,7 @@ const site = getSiteInfo();
       <div class="relative bg-white rounded-xl p-6 md:p-8">
         <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
           <!-- Web3Forms config -->
-          <input type="hidden" name="access_key" value={import.meta.env.WEB3FORMS_KEY || 'YOUR_ACCESS_KEY'} />
+          <input type="hidden" name="access_key" value={web3formsKey} />
           <input type="hidden" name="redirect" value="https://angelogrossi.com/merci" />
           <input type="hidden" name="from_name" value="Angelo Grossi — Site web" />
           <input type="hidden" name="subject" value="Nouveau message depuis angelogrossi.com" />
