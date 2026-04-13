@@ -67,6 +67,7 @@ const cmsConfig: CmsConfig = {
         ctaCalLink: { type: 'text', label: 'Lien Cal.com' },
         submitText: { type: 'text', label: 'Texte bouton formulaire' },
         rgpdText: { type: 'text', label: 'Mention RGPD', multiline: true },
+        web3formsKey: { type: 'text', label: 'Cle Web3Forms (formulaire)', description: 'Creez votre cle gratuite sur web3forms.com puis collez-la ici pour recevoir vos formulaires directement.' },
       },
     },
 
