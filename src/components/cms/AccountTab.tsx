@@ -142,53 +142,6 @@ function SignatureSection({ config }: { config: CmsConfig }) {
   );
 }
 
-// ─── Cal.com Signature Section ────────────────────────────────────────────────
-
-function CalComSignatureSection({ config }: { config: CmsConfig }) {
-  const site = config.site;
-  const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
-
-  const calUrl = site?.calUrl;
-  if (!calUrl) return null;
-
-  const signatures = [
-    {
-      label: 'Minimaliste',
-      text: `Disponible sur Cal.com : ${calUrl}`,
-    },
-    {
-      label: 'Avec CTA',
-      text: `Prenons RDV :\n${calUrl}`,
-    },
-  ];
-
-  const handleCopy = useCallback((idx: number, text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopiedIdx(idx);
-      setTimeout(() => setCopiedIdx(null), 2000);
-    });
-  }, []);
-
-  return (
-    <section style={styles.section}>
-      <h2 style={styles.sectionTitle}>Signature Cal.com</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-        {signatures.map((sig, idx) => (
-          <div key={idx} style={styles.sigCard}>
-            <div style={styles.sigCardHeader}>
-              <span style={styles.sigCardLabel}>{sig.label}</span>
-              <button onClick={() => handleCopy(idx, sig.text)} style={styles.copyBtn}>
-                {copiedIdx === idx ? 'Copie !' : 'Copier'}
-              </button>
-            </div>
-            <pre style={styles.sigPreview}>{sig.text}</pre>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
 // ─── Kit de Lancement Section ─────────────────────────────────────────────────
 
 function KitLancementSection({ config }: { config: CmsConfig }) {
@@ -297,7 +250,6 @@ export function AccountTab({ config, onLogout }: AccountTabProps) {
         <>
           <LinkSection config={config} />
           <SignatureSection config={config} />
-          <CalComSignatureSection config={config} />
           <KitLancementSection config={config} />
         </>
       )}
