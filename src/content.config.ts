@@ -138,6 +138,35 @@ const faq = defineCollection({
   }),
 });
 
+const interventions = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: 'src/content/interventions' }),
+  schema: z.object({
+    client_name: z.string(),
+    sector: z.string().optional(),
+    type: z.string().optional(),
+    duration: z.string().optional(),
+    context: z.string().optional(),
+    outcome: z.string().optional(),
+    confidential: z.boolean().default(false),
+    order: z.number().default(0),
+  }),
+});
+
+const prochainsEvenements = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: 'src/content/prochains-evenements' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    date_start: z.string(),
+    date_end: z.string().optional(),
+    location: z.string().optional(),
+    link_registration: z.string().optional(),
+    event_type: z.string().optional(),
+    max_participants: z.number().optional(),
+    order: z.number().default(0),
+  }),
+});
+
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.json', base: 'src/content/blog' }),
   schema: z.object({
@@ -184,6 +213,8 @@ export const collections = {
   'blog-ideas': blogIdeas,
   services,
   testimonials,
+  interventions,
+  'prochains-evenements': prochainsEvenements,
   faq,
   blog,
   seo,

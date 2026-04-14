@@ -94,6 +94,29 @@ export interface Faq {
   order: number;
 }
 
+export interface Intervention {
+  client_name: string;
+  sector?: string;
+  type?: string;
+  duration?: string;
+  context?: string;
+  outcome?: string;
+  confidential?: boolean;
+  order: number;
+}
+
+export interface UpcomingEvent {
+  title: string;
+  description?: string;
+  date_start: string;
+  date_end?: string;
+  location?: string;
+  link_registration?: string;
+  event_type?: string;
+  max_participants?: number;
+  order: number;
+}
+
 export interface BlogPost {
   title: string;
   description: string;
@@ -148,6 +171,22 @@ export function getTestimonials() {
 export function getFaq() {
   return readCollection<Faq>('src/content/faq')
     .sort((a, b) => a.order - b.order);
+}
+
+export function getInterventions() {
+  return readCollection<Intervention>('src/content/interventions')
+    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+}
+
+export function getUpcomingEvents() {
+  const now = new Date();
+  return readCollection<UpcomingEvent>('src/content/prochains-evenements')
+    .filter(e => {
+      if (!e.date_start) return false;
+      const d = new Date(e.date_start);
+      return !isNaN(d.getTime()) && d >= now;
+    })
+    .sort((a, b) => new Date(a.date_start).getTime() - new Date(b.date_start).getTime());
 }
 
 export function getBlogPosts() {

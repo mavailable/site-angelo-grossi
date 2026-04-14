@@ -1,0 +1,63 @@
+---
+/**
+ * Interventions B2B — References clients entreprises.
+ * Masque le nom si confidential=true et affiche uniquement le secteur.
+ * Section masquee si collection vide.
+ */
+import { getInterventions } from '@data/content';
+import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
+
+// Filtre : n'affiche que les interventions renseignees (context ou outcome).
+// Les placeholders vides restent editables dans /admin mais cachees en front.
+const interventions = getInterventions().filter(
+  (i) => (i.context && i.context.trim()) || (i.outcome && i.outcome.trim())
+);
+---
+
+{interventions.length > 0 && (
+  <section id="interventions" class="bg-neutral-50 py-20 md:py-28" data-cms-field="interventions" data-cms-type="collection">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-2xl mb-14">
+        <SectionEyebrow text="Ils m'ont fait confiance" />
+        <h2 class="font-heading font-bold text-primary-950 text-3xl md:text-4xl leading-tight">
+          Interventions en entreprise
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {interventions.map((item) => {
+          const displayName = item.confidential ? item.sector || 'Client confidentiel' : item.client_name;
+          return (
+            <article class="bg-white border border-neutral-200 rounded-lg p-6 hover:border-accent-500 transition-colors">
+              <div class="flex items-start justify-between gap-2 mb-3">
+                <h3 class="font-heading font-semibold text-primary-950 text-lg" data-cms-field={`interventions:${item._slug}.client_name`} data-cms-type="text">
+                  {displayName}
+                </h3>
+                {item.sector && !item.confidential && (
+                  <span class="inline-block text-xs font-medium text-accent-700 bg-accent-50 px-2 py-1 rounded whitespace-nowrap">
+                    {item.sector}
+                  </span>
+                )}
+              </div>
+              {item.type && (
+                <p class="text-sm text-neutral-500 mb-3">
+                  {item.type}{item.duration ? ` · ${item.duration}` : ''}
+                </p>
+              )}
+              {item.context && (
+                <p class="text-sm text-neutral-700 leading-relaxed mb-2" data-cms-field={`interventions:${item._slug}.context`} data-cms-type="text">
+                  {item.context}
+                </p>
+              )}
+              {item.outcome && (
+                <p class="text-sm text-neutral-600 italic leading-relaxed" data-cms-field={`interventions:${item._slug}.outcome`} data-cms-type="text">
+                  {item.outcome}
+                </p>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+)}

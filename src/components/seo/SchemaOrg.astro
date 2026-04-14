@@ -13,6 +13,7 @@ import {
   getFAQPageSchema,
   getBreadcrumbSchema,
   getSpeakableSchema,
+  getEventsSchemas,
 } from '@data/schemas';
 
 const site = getSiteInfo();
@@ -29,6 +30,7 @@ const speakable = getSpeakableSchema(
   'Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale. RDV découverte gratuit.',
   site.siteUrl
 );
+const eventsSchemas = getEventsSchemas();
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(professionalService)} />
@@ -36,3 +38,6 @@ const speakable = getSpeakableSchema(
 <script type="application/ld+json" set:html={JSON.stringify(webSite)} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
 <script type="application/ld+json" set:html={JSON.stringify(speakable)} />
+{eventsSchemas.map((ev) => (
+  <script type="application/ld+json" set:html={JSON.stringify(ev)} />
+))}

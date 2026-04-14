@@ -13,6 +13,8 @@ import StickyMobileCta from '@components/layout/StickyMobileCta.astro';
 import Hero from '@components/sections/Hero.astro';
 import SocialProof from '@components/sections/SocialProof.astro';
 import Services from '@components/sections/Services.astro';
+import Interventions from '@components/sections/Interventions.astro';
+import UpcomingEvents from '@components/sections/UpcomingEvents.astro';
 import Methode from '@components/sections/Methode.astro';
 import About from '@components/sections/About.astro';
 import CtaBanner from '@components/sections/CtaBanner.astro';
@@ -42,8 +44,14 @@ import SchemaOrg from '@components/seo/SchemaOrg.astro';
   <!-- Fond: blanc -->
   <Services />
 
+  <!-- Fond: neutral-50 — auto-masque si aucune intervention renseignee -->
+  <Interventions />
+
   <!-- Fond: secondary-950 (bordeaux sombre) — rupture visuelle forte -->
   <Methode />
+
+  <!-- Auto-masque si aucun evenement a venir -->
+  <UpcomingEvents />
 
   <!-- Fond: neutral-50 (gris clair) -->
   <About />

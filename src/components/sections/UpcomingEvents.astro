@@ -1,0 +1,72 @@
+---
+/**
+ * Prochains evenements — Auto-masque si collection vide (ou tout passe).
+ * Filtre deja applique dans getUpcomingEvents() : date_start >= now.
+ */
+import { getUpcomingEvents } from '@data/content';
+import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
+import Button from '@components/ui/Button.astro';
+
+const events = getUpcomingEvents();
+
+function formatDate(iso: string): string {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString('fr-FR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  } catch {
+    return iso;
+  }
+}
+---
+
+{events.length > 0 && (
+  <section id="evenements" class="bg-primary-50 py-20 md:py-28" data-cms-field="prochains-evenements" data-cms-type="collection">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <SectionEyebrow text="Agenda" />
+        <h2 class="font-heading font-bold text-primary-950 text-3xl md:text-4xl leading-tight">
+          Prochains évènements
+        </h2>
+      </div>
+
+      <div class="space-y-6 max-w-3xl mx-auto">
+        {events.map((ev) => (
+          <article class="bg-white border border-neutral-200 rounded-lg p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start">
+            <div class="md:w-48 flex-shrink-0">
+              <div class="inline-block text-xs font-semibold text-accent-700 bg-accent-50 px-2 py-1 rounded mb-2">
+                {ev.event_type || 'Evènement'}
+              </div>
+              <div class="text-sm font-medium text-primary-950">
+                {formatDate(ev.date_start)}
+              </div>
+              {ev.location && (
+                <div class="text-sm text-neutral-600 mt-1">{ev.location}</div>
+              )}
+            </div>
+            <div class="flex-1">
+              <h3 class="font-heading font-semibold text-primary-950 text-xl mb-2" data-cms-field={`prochains-evenements:${ev._slug}.title`} data-cms-type="text">
+                {ev.title}
+              </h3>
+              {ev.description && (
+                <p class="text-neutral-700 leading-relaxed mb-4" data-cms-field={`prochains-evenements:${ev._slug}.description`} data-cms-type="text">
+                  {ev.description}
+                </p>
+              )}
+              {ev.link_registration && (
+                <Button href={ev.link_registration} variant="primary" dataTrack="event-register">
+                  S'inscrire
+                </Button>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

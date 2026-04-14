@@ -12,7 +12,7 @@
  */
 
 import { business, locale, schemaData } from '@data/business';
-import { getSiteInfo, getServices, getFaq } from '@data/content';
+import { getSiteInfo, getServices, getFaq, getUpcomingEvents, type UpcomingEvent } from '@data/content';
 
 export interface Breadcrumb {
   name: string;
@@ -159,6 +159,65 @@ export function getBreadcrumbSchema(items: Breadcrumb[]): object {
 // ============================================================
 // getSpeakableSchema — Speakable (pur, selecteurs CSS standards)
 // ============================================================
+
+// ============================================================
+// getEventSchema — Schema.org Event (pour prochains-evenements)
+// ============================================================
+
+export function getEventSchema(event: UpcomingEvent): object {
+  const site = getSiteInfo();
+  const schema: Record<string, any> = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: event.title,
+    startDate: event.date_start,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: event.location && /visio|online|webinaire/i.test(event.location)
+      ? 'https://schema.org/OnlineEventAttendanceMode'
+      : 'https://schema.org/OfflineEventAttendanceMode',
+    organizer: {
+      '@type': 'Person',
+      name: business.owner,
+      url: site.siteUrl,
+    },
+  };
+
+  if (event.date_end) schema.endDate = event.date_end;
+  if (event.description) schema.description = event.description;
+
+  if (event.location) {
+    const isOnline = /visio|online|webinaire/i.test(event.location);
+    schema.location = isOnline
+      ? { '@type': 'VirtualLocation', url: site.siteUrl }
+      : {
+          '@type': 'Place',
+          name: event.location,
+          address: {
+            '@type': 'PostalAddress',
+            addressRegion: schemaData.address.addressRegion,
+            addressCountry: schemaData.address.addressCountry,
+          },
+        };
+  }
+
+  if (event.link_registration) {
+    schema.offers = {
+      '@type': 'Offer',
+      url: event.link_registration,
+      availability: 'https://schema.org/InStock',
+    };
+  }
+
+  if (event.max_participants) {
+    schema.maximumAttendeeCapacity = event.max_participants;
+  }
+
+  return schema;
+}
+
+export function getEventsSchemas(): object[] {
+  return getUpcomingEvents().map(getEventSchema);
+}
 
 export function getSpeakableSchema(
   title: string,

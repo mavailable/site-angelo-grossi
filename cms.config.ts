@@ -238,6 +238,74 @@ const cmsConfig: CmsConfig = {
       },
     },
 
+    interventions: {
+      label: 'Interventions B2B',
+      description: 'References clients entreprises (masquer le nom si confidentiel)',
+      path: 'src/content/interventions',
+      slugField: 'client_name',
+      labelField: 'client_name',
+      fields: {
+        client_name: { type: 'text', label: 'Nom du client', required: true },
+        sector: {
+          type: 'select',
+          label: 'Secteur',
+          options: [
+            { label: 'Finance', value: 'Finance' },
+            { label: 'IT', value: 'IT' },
+            { label: 'Industrie', value: 'Industrie' },
+            { label: 'Sante', value: 'Sante' },
+            { label: 'Secteur public', value: 'Secteur public' },
+            { label: 'Autre', value: 'Autre' },
+          ],
+          defaultValue: 'Autre',
+        },
+        type: {
+          type: 'select',
+          label: 'Type de mission',
+          options: [
+            { label: 'Conference', value: 'Conference' },
+            { label: 'Atelier', value: 'Atelier' },
+            { label: 'Coaching dirigeant', value: 'Coaching dirigeant' },
+            { label: 'Formation', value: 'Formation' },
+          ],
+          defaultValue: 'Atelier',
+        },
+        duration: { type: 'text', label: 'Duree (ex: 2 jours, 3 mois)' },
+        context: { type: 'text', label: 'Contexte de la mission', multiline: true },
+        outcome: { type: 'text', label: 'Resultat observable', multiline: true },
+        confidential: { type: 'boolean', label: 'Confidentiel (masquer le nom)', defaultValue: false },
+        order: { type: 'number', label: "Ordre d'affichage", defaultValue: 0 },
+      },
+    },
+
+    'prochains-evenements': {
+      label: 'Prochains evenements',
+      description: 'Ateliers, webinaires et formations a venir (section masquee si vide)',
+      path: 'src/content/prochains-evenements',
+      slugField: 'title',
+      labelField: 'title',
+      fields: {
+        title: { type: 'text', label: 'Titre', required: true },
+        description: { type: 'text', label: 'Description', multiline: true },
+        date_start: { type: 'text', label: 'Date de debut (ISO: 2026-05-10T18:00)', required: true },
+        date_end: { type: 'text', label: 'Date de fin (ISO)' },
+        location: { type: 'text', label: 'Lieu (ou "Visio")' },
+        link_registration: { type: 'text', label: "Lien d'inscription" },
+        event_type: {
+          type: 'select',
+          label: "Type d'evenement",
+          options: [
+            { label: 'Atelier', value: 'Atelier' },
+            { label: 'Webinaire', value: 'Webinaire' },
+            { label: 'Formation', value: 'Formation' },
+          ],
+          defaultValue: 'Atelier',
+        },
+        max_participants: { type: 'number', label: 'Nombre max de participants' },
+        order: { type: 'number', label: "Ordre d'affichage", defaultValue: 0 },
+      },
+    },
+
     faq: {
       label: 'FAQ',
       description: 'Questions frequentes',
