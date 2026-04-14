@@ -67,16 +67,6 @@ const sections = defineCollection({
       title: z.string(),
       ctaText: z.string(),
     }),
-    methode: z.object({
-      eyebrow: z.string(),
-      title: z.string(),
-      description: z.string(),
-      steps: z.array(z.object({
-        letter: z.string(),
-        label: z.string(),
-        text: z.string(),
-      })),
-    }),
     testimonials: z.object({
       eyebrow: z.string(),
       title: z.string(),
@@ -90,6 +80,20 @@ const sections = defineCollection({
       location: z.string(),
       copyright: z.string(),
     }),
+  }),
+});
+
+const methodeH2s = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: 'src/content/methode-h2s' }),
+  schema: z.object({
+    eyebrow: z.string(),
+    title: z.string(),
+    description: z.string(),
+    steps: z.array(z.object({
+      letter: z.string(),
+      label: z.string(),
+      text: z.string(),
+    })),
   }),
 });
 
@@ -173,6 +177,7 @@ const seo = defineCollection({
 export const collections = {
   'site-info': siteInfo,
   hero,
+  'methode-h2s': methodeH2s,
   about,
   contact,
   sections,

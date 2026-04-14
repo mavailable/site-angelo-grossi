@@ -60,6 +60,31 @@ const cmsConfig: CmsConfig = {
       },
     },
 
+    'methode-h2s': {
+      label: 'Methode H2S',
+      description: 'Votre approche signature Happy / Healthy / Sexy',
+      path: 'src/content/methode-h2s/index.json',
+      fields: {
+        eyebrow: { type: 'text', label: 'Surtitre' },
+        title: { type: 'text', label: 'Titre' },
+        description: { type: 'text', label: 'Description', multiline: true },
+        steps: {
+          type: 'array',
+          label: 'Etapes H-H-S',
+          itemLabel: 'fields.label',
+          item: {
+            type: 'object',
+            label: 'Etape',
+            fields: {
+              letter: { type: 'text', label: 'Lettre' },
+              label: { type: 'text', label: 'Mot-cle' },
+              text: { type: 'text', label: 'Description', multiline: true },
+            },
+          },
+        },
+      },
+    },
+
     about: {
       label: 'A propos',
       description: 'Presentation du fondateur',
@@ -105,29 +130,6 @@ const cmsConfig: CmsConfig = {
             eyebrow: { type: 'text', label: 'Surtitre' },
             title: { type: 'text', label: 'Titre' },
             ctaText: { type: 'text', label: 'Texte bouton CTA' },
-          },
-        },
-        methode: {
-          type: 'object',
-          label: 'Methode H2S',
-          fields: {
-            eyebrow: { type: 'text', label: 'Surtitre' },
-            title: { type: 'text', label: 'Titre' },
-            description: { type: 'text', label: 'Description', multiline: true },
-            steps: {
-              type: 'array',
-              label: 'Etapes H-H-S',
-              itemLabel: 'fields.label',
-              item: {
-                type: 'object',
-                label: 'Etape',
-                fields: {
-                  letter: { type: 'text', label: 'Lettre' },
-                  label: { type: 'text', label: 'Mot-cle' },
-                  text: { type: 'text', label: 'Description', multiline: true },
-                },
-              },
-            },
           },
         },
         testimonials: {

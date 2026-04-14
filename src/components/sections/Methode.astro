@@ -2,37 +2,37 @@
 /**
  * Méthode H2S — Ambiance théâtrale, fond secondary-950
  */
-import { getSections } from '@data/content';
+import { getMethodeH2S } from '@data/content';
 import SectionEyebrow from '@components/ui/SectionEyebrow.astro';
 
-const methode = getSections().methode;
+const methode = getMethodeH2S();
 const steps = methode.steps;
 ---
 
-<section id="methode" class="relative bg-secondary-950 py-20 md:py-28 overflow-hidden" data-cms-field="sections" data-cms-type="singleton">
+<section id="methode" class="relative bg-secondary-950 py-20 md:py-28 overflow-hidden" data-cms-field="methode-h2s" data-cms-type="singleton">
   <!-- Subtle warm glow -->
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-secondary-800 rounded-full blur-[200px] opacity-30" aria-hidden="true"></div>
 
   <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
     <div class="text-center max-w-2xl mx-auto mb-16">
       <SectionEyebrow text={methode.eyebrow} variant="light" />
-      <h2 class="font-heading font-bold text-white text-3xl md:text-4xl leading-tight mb-5" data-cms-field="sections.methode.title" data-cms-type="text">
+      <h2 class="font-heading font-bold text-white text-3xl md:text-4xl leading-tight mb-5" data-cms-field="methode-h2s.title" data-cms-type="text">
         {methode.title}
       </h2>
-      <p class="text-neutral-300 leading-relaxed" data-cms-field="sections.methode.description" data-cms-type="text">
+      <p class="text-neutral-300 leading-relaxed" data-cms-field="methode-h2s.description" data-cms-type="text">
         {methode.description}
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-secondary-800/30 max-w-4xl mx-auto">
-      {steps.map((step) => (
+      {steps.map((step, idx) => (
         <div class="bg-secondary-950 p-8 md:p-10 text-center group">
           <!-- Big letter as design element -->
           <span class="block font-heading font-bold text-6xl md:text-7xl text-accent-500/20 group-hover:text-accent-500/40 transition-colors leading-none mb-2" aria-hidden="true">
             {step.letter}
           </span>
-          <h3 class="font-heading font-semibold text-accent-300 text-xl mb-4" data-cms-field={`sections.methode.steps[${steps.indexOf(step)}].label`} data-cms-type="text">{step.label}</h3>
-          <p class="text-neutral-400 text-sm leading-relaxed" data-cms-field={`sections.methode.steps[${steps.indexOf(step)}].text`} data-cms-type="text">{step.text}</p>
+          <h3 class="font-heading font-semibold text-accent-300 text-xl mb-4" data-cms-field={`methode-h2s.steps[${idx}].label`} data-cms-type="text">{step.label}</h3>
+          <p class="text-neutral-400 text-sm leading-relaxed" data-cms-field={`methode-h2s.steps[${idx}].text`} data-cms-type="text">{step.text}</p>
         </div>
       ))}
     </div>

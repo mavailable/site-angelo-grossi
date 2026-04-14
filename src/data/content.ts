@@ -63,15 +63,16 @@ export interface Contact {
 
 export interface Sections {
   services: { eyebrow: string; title: string; ctaText: string };
-  methode: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    steps: { letter: string; label: string; text: string }[];
-  };
   testimonials: { eyebrow: string; title: string };
   faq: { eyebrow: string; title: string };
   footer: { description: string; location: string; copyright: string };
+}
+
+export interface MethodeH2S {
+  eyebrow: string;
+  title: string;
+  description: string;
+  steps: { letter: string; label: string; text: string }[];
 }
 
 export interface Service {
@@ -128,6 +129,10 @@ export function getContact(): Contact {
 
 export function getSections(): Sections {
   return readJson<Sections>('src/content/sections/index.json');
+}
+
+export function getMethodeH2S(): MethodeH2S {
+  return readJson<MethodeH2S>('src/content/methode-h2s/index.json');
 }
 
 export function getServices() {
