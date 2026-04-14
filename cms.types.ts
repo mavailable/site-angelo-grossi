@@ -98,6 +98,10 @@ export interface CmsSiteConfig {
   previewUrl?: string;
   gbpUrl?: string;
   reviewUrl?: string;
+  calUrl?: string;
+  tagline?: string;
+  facebookUrl?: string;
+  linkedinUrl?: string;
   clientType?: string;
   umamiShareUrl?: string;
   umamiSiteId?: string;

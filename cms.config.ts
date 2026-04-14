@@ -13,6 +13,9 @@ const cmsConfig: CmsConfig = {
     siteUrl: 'https://angelogrossi.com',
     previewUrl: 'https://site-angelo-grossi.pages.dev',
     clientType: 'freelance-consultant',
+    tagline: 'Coach prise de parole — Île-de-France',
+    linkedinUrl: 'https://www.linkedin.com/in/angelogrossi/',
+    calUrl: 'https://cal.com/angelogrossi/30min',
     umamiShareUrl: 'https://cloud.umami.is/share/NTGvxb2enRcpfjDM/angelogrossi.com',
     umamiSiteId: 'ec1c2b36-814d-4b4f-b449-19466a09cc52',
     contactMarc: {
