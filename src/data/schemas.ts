@@ -27,6 +27,22 @@ export function getProfessionalServiceSchema(): object {
   const site = getSiteInfo();
   const services = getServices();
 
+  // Collecte dynamique des reseaux sociaux depuis site-info
+  const socialLinks = [
+    site.linkedin,
+    site.facebookUrl,
+    site.instagramUrl,
+    site.twitterUrl,
+  ].filter((url): url is string => Boolean(url && url.trim()));
+
+  // areaServed : prefere la valeur editable si presente, sinon fallback schemaData
+  const areaServed = site.areaServed
+    ? [
+        { '@type': 'AdministrativeArea', name: site.areaServed },
+        { '@type': 'Country', name: 'France' },
+      ]
+    : schemaData.areaServed;
+
   const schema: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': business.schemaType,
@@ -52,16 +68,16 @@ export function getProfessionalServiceSchema(): object {
           name: schemaData.founderCredential.recognizedBy,
         },
       },
-      sameAs: [site.linkedin],
+      sameAs: socialLinks,
     },
-    areaServed: schemaData.areaServed,
+    areaServed,
     priceRange: schemaData.priceRange,
     address: {
       '@type': 'PostalAddress',
       addressRegion: schemaData.address.addressRegion,
       addressCountry: schemaData.address.addressCountry,
     },
-    sameAs: [site.linkedin],
+    sameAs: socialLinks,
   };
 
   // hasOfferCatalog depuis services CMS

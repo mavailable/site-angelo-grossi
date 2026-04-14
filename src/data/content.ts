@@ -22,9 +22,15 @@ export interface SiteInfo {
   email: string;
   city: string;
   region: string;
-  linkedin: string;
+  linkedin?: string;
+  facebookUrl?: string;
+  instagramUrl?: string;
+  twitterUrl?: string;
   siteUrl: string;
-  calUrl: string;
+  calUrl?: string;
+  tagline?: string;
+  availabilityNote?: string;
+  areaServed?: string;
 }
 
 export interface Hero {

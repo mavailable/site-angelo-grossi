@@ -10,9 +10,15 @@ const siteInfo = defineCollection({
     email: z.string(),
     city: z.string(),
     region: z.string(),
-    linkedin: z.string(),
+    linkedin: z.string().optional(),
+    facebookUrl: z.string().optional(),
+    instagramUrl: z.string().optional(),
+    twitterUrl: z.string().optional(),
     siteUrl: z.string(),
-    calUrl: z.string(),
+    calUrl: z.string().optional(),
+    tagline: z.string().optional(),
+    availabilityNote: z.string().optional(),
+    areaServed: z.string().optional(),
   }),
 });
 
