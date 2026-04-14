@@ -1,0 +1,4 @@
+{
+  "title": "XSS 2",
+  "content": "<iframe src=evil></iframe>"
+}
