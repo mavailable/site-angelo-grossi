@@ -123,7 +123,7 @@ const cmsConfig: CmsConfig = {
 
     sections: {
       label: 'Titres des sections',
-      description: 'Surtitres, titres et textes des blocs Services, Methode, Temoignages, FAQ, Footer',
+      description: 'Surtitres, titres et textes des blocs Services, Temoignages, FAQ, Footer',
       path: 'src/content/sections/index.json',
       fields: {
         services: {
