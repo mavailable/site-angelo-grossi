@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 
-import { marked } from 'marked';
+import { marked } from 'marked';  // safety net transitoire Phase 8 (+2 semaines) — purge prevue 2026-04-28
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
@@ -22,8 +22,11 @@ const { post } = Astro.props;
 const site = getSiteInfo();
 const siteUrl = site.siteUrl || 'https://angelogrossi.com';
 
-const htmlContent = marked(post.content);
-const wordCount = post.content.split(/\s+/).length;
+// Migration 2026-04-14 : content stocke en HTML only dans les JSON.
+// Safety net detecteur MD-or-HTML garde 2 semaines (Phase 8 purge 2026-04-28).
+const body = post.content || '';
+const htmlContent = body.trimStart().startsWith('<') ? body : await marked(body);
+const wordCount = body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
 const readTime = Math.ceil(wordCount / 200);
 
 const dateFormatted = new Date(post.date).toLocaleDateString('fr-FR', {
