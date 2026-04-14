@@ -124,6 +124,8 @@ const blogPostingSchema = {
         class="w-full rounded-xl shadow-lg aspect-[21/9] object-cover object-top"
         loading="eager"
         fetchpriority="high"
+        data-cms-field={`blog:${post.slug}.cover_image`}
+        data-cms-type="image"
       />
     </div>
   )}

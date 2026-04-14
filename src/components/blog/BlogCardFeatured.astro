@@ -31,7 +31,7 @@ const readTime = Math.ceil(wordCount / 200);
     <div class="relative bg-primary-900 p-6 md:p-8 flex flex-col justify-end overflow-hidden min-h-[200px]">
       {post.cover_image ? (
         <>
-          <img src={post.cover_image} alt={post.title} class="absolute inset-0 w-full h-full object-cover object-top" loading="lazy" />
+          <img src={post.cover_image} alt={post.title} class="absolute inset-0 w-full h-full object-cover object-top" loading="lazy" data-cms-field={`blog:${post.slug}.cover_image`} data-cms-type="image" />
           <div class="absolute inset-0 bg-primary-950/50" aria-hidden="true"></div>
         </>
       ) : (
