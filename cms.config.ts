@@ -5,6 +5,23 @@ const cmsConfig: CmsConfig = {
   branch: 'dev',
   siteName: 'Angelo Grossi',
 
+  site: {
+    ownerName: 'Angelo Grossi',
+    phone: '+33769389281',
+    phoneDisplay: '07 69 38 92 81',
+    email: 'contact@angelogrossi.com',
+    siteUrl: 'https://angelogrossi.com',
+    previewUrl: 'https://site-angelo-grossi.pages.dev',
+    clientType: 'freelance-consultant',
+    umamiShareUrl: 'https://cloud.umami.is/share/NTGvxb2enRcpfjDM/angelogrossi.com',
+    umamiSiteId: 'ec1c2b36-814d-4b4f-b449-19466a09cc52',
+    contactMarc: {
+      phone: '06 88 76 66 48',
+      whatsapp: '33688766648',
+      email: 'marc@muller.im',
+    },
+  },
+
   singletons: {
     'site-info': {
       label: 'Informations generales',
