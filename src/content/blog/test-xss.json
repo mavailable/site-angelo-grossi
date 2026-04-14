@@ -1,4 +1,0 @@
-{
-  "title": "XSS test",
-  "content": "<script>alert(1)</script>"
-}
