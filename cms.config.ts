@@ -1,9 +1,14 @@
-import type { CmsConfig } from './cms.types';
+import type { CmsConfig } from '@marc/cms-engine/types';
 
 const cmsConfig: CmsConfig = {
   repo: 'mavailable/site-angelo-grossi',
   branch: 'dev',
   siteName: 'Angelo Grossi',
+
+  // Modules du moteur montés dans /admin (AdminIsland les importe via le scaffold).
+  // marketing : parité avec l'inline (endpoint marketing-plan présent ; onglet gaté
+  // par marketing.enabled, absent ici, donc invisible tant que non activé).
+  modules: ['marketing'],
 
   site: {
     ownerName: 'Angelo Grossi',
