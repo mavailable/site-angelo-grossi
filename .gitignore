@@ -13,6 +13,8 @@ node_modules/
 
 # CMS engine : éditeur inline synchronisé du package au build (cms-engine-sync-assets)
 public/cms-edit.js
+# Assets module table-order copiés au build par sync-assets (v0.11+), même module non déclaré
+public/table-order/
 
 # Shims functions générés au build par cms-engine-scaffold (moteur dans node_modules, PI)
 functions/api/cms/
