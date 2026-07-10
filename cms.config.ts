@@ -5,6 +5,34 @@ const cmsConfig: CmsConfig = {
   branch: 'dev',
   siteName: 'Angelo Grossi',
 
+  // Branding admin (>= v0.13.0) : variante CLAIRE de la marque théâtrale (Noir
+  // Scène / Bordeaux Rideau / Or Projecteur / Gris Coulisse). Accent = bordeaux
+  // Rideau (secondary), encres = navy Scène (primary), neutres = Coulisse.
+  // Typo du site : Sora (titres), DM Sans (corps).
+  // Ratios WCAG (admin-theme-validate.py, seuil AA 4.5 / ink 7.0 / muted3 WARN 2.5) :
+  //   accent #a3324d / surface = 6.45:1   / bg = 6.03:1
+  //   accentDeep #882c43 / accentSoft = 7.27:1
+  //   ink #1e1e28 / surface = 15.84:1   inkSoft #414150 = 9.61:1
+  //   muted #605a55 = 6.52:1   muted2 #726b65 = 5.03:1   muted3 #9d958e = 2.83:1 (WARN OK)
+  adminTheme: {
+    accent: '#a3324d',
+    accentDeep: '#882c43',
+    accentSoft: '#fbeaed',
+    accentBorder: '#f7d5dc',
+    ink: '#1e1e28',
+    inkSoft: '#414150',
+    muted: '#605a55',
+    muted2: '#726b65',
+    muted3: '#9d958e',
+    line: '#e2e0de',
+    lineSoft: '#f0efee',
+    borderInput: '#cdc9c5',
+    surface: '#fbfaf9',
+    bg: '#f4f2f0',
+    fontBody: "'DM Sans', -apple-system, system-ui, sans-serif",
+    fontHeading: "'Sora', system-ui, sans-serif",
+  },
+
   // Modules du moteur montés dans /admin (AdminIsland les importe via le scaffold).
   // marketing : parité avec l'inline (endpoint marketing-plan présent ; onglet gaté
   // par marketing.enabled, absent ici, donc invisible tant que non activé).
