@@ -63,6 +63,7 @@ const cmsConfig: CmsConfig = {
       label: 'Informations generales',
       description: 'Nom, telephone, email, reseaux sociaux',
       path: 'src/content/site-info/index.json',
+      group: 'reglages',
       fields: {
         name: { type: 'text', label: 'Nom commercial', required: true },
         phone: { type: 'text', label: 'Telephone' },
@@ -85,6 +86,7 @@ const cmsConfig: CmsConfig = {
       label: 'Section Hero',
       description: "Titre, sous-titre et boutons d'appel a l'action",
       path: 'src/content/hero/index.json',
+      group: 'accueil',
       fields: {
         title: { type: 'text', label: 'Titre H1', required: true },
         subtitle: { type: 'text', label: 'Sous-titre', multiline: true },
@@ -100,6 +102,7 @@ const cmsConfig: CmsConfig = {
       label: 'Methode H2S',
       description: 'Votre approche signature Happy / Healthy / Sexy',
       path: 'src/content/methode-h2s/index.json',
+      group: 'accueil',
       fields: {
         eyebrow: { type: 'text', label: 'Surtitre' },
         title: { type: 'text', label: 'Titre' },
@@ -125,6 +128,7 @@ const cmsConfig: CmsConfig = {
       label: 'A propos',
       description: 'Presentation du fondateur',
       path: 'src/content/about/index.json',
+      group: 'a-propos',
       fields: {
         eyebrow: { type: 'text', label: 'Surtitre' },
         title: { type: 'text', label: 'Titre de section' },
@@ -141,6 +145,7 @@ const cmsConfig: CmsConfig = {
       label: 'Section Contact',
       description: 'Formulaire et reservation',
       path: 'src/content/contact/index.json',
+      group: 'contact',
       fields: {
         eyebrow: { type: 'text', label: 'Surtitre' },
         title: { type: 'text', label: 'Titre' },
@@ -158,6 +163,7 @@ const cmsConfig: CmsConfig = {
       label: 'Titres des sections',
       description: 'Surtitres, titres et textes des blocs Services, Temoignages, FAQ, Footer',
       path: 'src/content/sections/index.json',
+      group: 'accueil',
       fields: {
         services: {
           type: 'object',
@@ -200,6 +206,7 @@ const cmsConfig: CmsConfig = {
       label: 'Idees articles blog',
       description: 'Pipeline de sujets a rediger',
       path: 'src/content/blog-ideas/index.json',
+      group: 'reglages',
       fields: {
         ideas: {
           type: 'array',
@@ -232,6 +239,7 @@ const cmsConfig: CmsConfig = {
       label: 'SEO / Referencement',
       description: 'Nom du site et image de partage reseaux sociaux',
       path: 'src/content/seo/index.json',
+      group: 'reglages',
       fields: {
         global: {
           type: 'object',
