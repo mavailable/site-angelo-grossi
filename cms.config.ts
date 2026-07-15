@@ -39,6 +39,10 @@ const cmsConfig: CmsConfig = {
   modules: ['marketing'],
 
   site: {
+    // Webmaster (agence) — valeurs explicites (les composants /admin n'ont plus de
+    // defaut code en dur). helpUrl par defaut du parc agence.
+    webmasterName: 'Marc',
+    helpUrl: 'https://marcm.fr/aide/web3forms/',
     ownerName: 'Angelo Grossi',
     phone: '+33769389281',
     phoneDisplay: '07 69 38 92 81',
