@@ -55,6 +55,7 @@ const cmsConfig: CmsConfig = {
     calUrl: 'https://cal.com/angelogrossi/30min',
     umamiShareUrl: 'https://cloud.umami.is/share/NTGvxb2enRcpfjDM/angelogrossi.com',
     umamiSiteId: 'ec1c2b36-814d-4b4f-b449-19466a09cc52',
+    umamiProxyUrl: 'https://umami-proxy.marc-f10.workers.dev',
     contactMarc: {
       phone: '06 88 76 66 48',
       whatsapp: '33688766648',
