@@ -1,45 +1,45 @@
 {
   "global": {
-    "siteName": "Angelo Grossi",
-    "separator": "\u2014",
+    "siteName": "",
+    "separator": "",
     "defaultOgImage": "/images/og-image.jpg"
   },
   "pages": {
     "/": {
-      "title": "Coach prise de parole en public en Ile-de-France",
-      "description": "Coach certifie RNCP 7 en prise de parole en public en Ile-de-France. Approche unique alliant coaching professionnel et improvisation theatrale. RDV decouverte gratuit.",
+      "title": "Angelo Grossi — Coach prise de parole | Île-de-France",
+      "description": "Coach certifié RNCP 7 en prise de parole en public en Île-de-France. Approche unique mêlant coaching et improvisation théâtrale. RDV découverte gratuit.",
       "ogImage": "",
       "noindex": false
     },
+    "/404": {
+      "title": "Page introuvable — Angelo Grossi",
+      "description": "Cette page n'existe pas. Retournez à l'accueil pour découvrir les services de coaching en prise de parole.",
+      "ogImage": "",
+      "noindex": true
+    },
     "/blog": {
-      "title": "Blog",
-      "description": "Articles sur la prise de parole, le coaching et l'improvisation theatrale.",
+      "title": "Blog | Prise de parole, coaching & improvisation — Angelo Grossi",
+      "description": "Récits de parcours, conseils pratiques et méthodes pour incarner votre prise de parole en public. Par Angelo Grossi, coach certifié RNCP 7.",
       "ogImage": "",
       "noindex": false
     },
     "/mentions-legales": {
-      "title": "Mentions legales",
-      "description": "",
+      "title": "Mentions légales — Angelo Grossi",
+      "description": "Mentions légales du site angelogrossi.com — Coach en prise de parole en public.",
+      "ogImage": "",
+      "noindex": false
+    },
+    "/merci": {
+      "title": "Merci — Angelo Grossi",
+      "description": "Votre message a bien été envoyé. Angelo Grossi vous répondra sous 24 heures.",
       "ogImage": "",
       "noindex": true
     },
     "/politique-confidentialite": {
-      "title": "Politique de confidentialite",
-      "description": "",
+      "title": "Politique de confidentialité — Angelo Grossi",
+      "description": "Politique de confidentialité du site angelogrossi.com. Traitement des données personnelles et droits RGPD.",
       "ogImage": "",
-      "noindex": true
-    },
-    "/merci": {
-      "title": "Message envoye",
-      "description": "",
-      "ogImage": "",
-      "noindex": true
-    },
-    "/404": {
-      "title": "Page non trouvee",
-      "description": "",
-      "ogImage": "",
-      "noindex": true
+      "noindex": false
     }
   }
 }

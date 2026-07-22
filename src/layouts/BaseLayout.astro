@@ -19,11 +19,23 @@ import '../styles/global.css';
 import CmsEditLoader from '@marc/cms-engine/astro';
 import { getSiteInfo } from '@data/content';
 import { locale } from '@data/business';
+import { getPageSeo } from '@data/seo';
 const site = getSiteInfo();
+// ─── SEO editable par le client via /admin -> ecran « SEO » (#/seo) ────────
+// Titre / description / image OG / noindex PAR ROUTE, depuis le singleton `seo`.
+// Champ vide -> valeur passee par la page : les ARTICLES de blog gardent donc
+// leur SEO derive du contenu (ils ne sont pas dans le fichier). La case noindex
+// fait foi pour les routes declarees, sinon le reglage serait un leurre.
+// Doctrine : wf-00-cms §7bis.
+const pageSeo = getPageSeo(Astro.url.pathname);
+const resolvedTitle = pageSeo?.title || title;
+const resolvedDescription = pageSeo?.description || description;
+const resolvedOgImage = pageSeo?.ogImage || ogImage;
+const resolvedNoindex = pageSeo ? (pageSeo.noindex ?? noindex) : noindex;
 const ogLocale = locale.localeCode.replace('-', '_');
 const siteUrl = site.siteUrl || 'https://angelogrossi.com';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).href;
-const ogImageUrl = new URL(ogImage, siteUrl).href;
+const ogImageUrl = new URL(resolvedOgImage, siteUrl).href;
 ---
 
 <!DOCTYPE html>
@@ -31,17 +43,17 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
+  <title>{resolvedTitle}</title>
+  <meta name="description" content={resolvedDescription} />
   <link rel="canonical" href={canonicalUrl} />
-  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  {resolvedNoindex && <meta name="robots" content="noindex, nofollow" />}
 
   <!-- Préchargement police heading (critique pour LCP) -->
   <link rel="preload" href="/fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Open Graph -->
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
+  <meta property="og:title" content={resolvedTitle} />
+  <meta property="og:description" content={resolvedDescription} />
   <meta property="og:image" content={ogImageUrl} />
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:type" content="website" />
@@ -50,8 +62,8 @@ const ogImageUrl = new URL(ogImage, siteUrl).href;
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
+  <meta name="twitter:title" content={resolvedTitle} />
+  <meta name="twitter:description" content={resolvedDescription} />
   <meta name="twitter:image" content={ogImageUrl} />
 
   <!-- Favicon + Apple Touch + Webmanifest -->
