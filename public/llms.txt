@@ -5,9 +5,18 @@
 > Ancien cadre marketing (25 ans chez Siemens, Unify, Atos), comédien improvisateur depuis 15 ans.
 > Interventions en présentiel (Île-de-France) et en visio (France entière). Sur rendez-vous uniquement.
 
-## Page principale
+## Pages
 
-- [Accueil](https://angelogrossi.com): Présentation de l'activité de coaching en prise de parole, services proposés, témoignages clients, méthode H2S et formulaire de contact.
+- [Accueil](https://angelogrossi.com/): Présentation de l'activité de coaching en prise de parole, services proposés, témoignages clients, méthode H2S et formulaire de contact.
+- [Blog](https://angelogrossi.com/blog/): Articles sur la prise de parole, l'improvisation théâtrale et la méthode H2S.
+- [Mentions légales](https://angelogrossi.com/mentions-legales/): Éditeur, hébergeur, propriété intellectuelle.
+- [Politique de confidentialité](https://angelogrossi.com/politique-confidentialite/): Traitement des données personnelles.
+
+## Articles du blog
+
+- [Le jour où j'ai vu ce que les autres voyaient vraiment](https://angelogrossi.com/blog/le-jour-ou-j-ai-vu-ce-que-les-autres-voyaient/): À 23 ans, Angelo ne pouvait pas parler devant deux personnes. Une formation filmée dans un château du Val-d'Oise a tout changé.
+- [La méthode H2S : 3 états d'esprit pour incarner votre parole](https://angelogrossi.com/blog/methode-h2s-3-etats-esprit-incarner-parole/): Happy, Healthy, Sexy — trois états d'esprit à activer avant chaque prise de parole, et comment cette méthode transforme l'exercice.
+- [Pourquoi l'improvisation théâtrale fait de meilleurs orateurs](https://angelogrossi.com/blog/pourquoi-l-improvisation-theatrale-fait-de-meilleurs-orateurs/): Écouter, lâcher prise, être présent — comment 15 ans de scène transforment les réflexes d'un orateur.
 
 ## Services proposés
 
