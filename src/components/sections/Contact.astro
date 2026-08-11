@@ -75,7 +75,7 @@ const web3formsKey = cmsKey || fallbackKey;
         <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
           <!-- Web3Forms config -->
           <input type="hidden" name="access_key" value={web3formsKey} />
-          <input type="hidden" name="redirect" value="https://angelogrossi.com/merci" />
+          <input type="hidden" name="redirect" value="https://angelogrossi.com/merci/" />
           <input type="hidden" name="from_name" value="Angelo Grossi — Site web" />
           <input type="hidden" name="subject" value="Nouveau message depuis angelogrossi.com" />
 
@@ -120,7 +120,7 @@ const web3formsKey = cmsKey || fallbackKey;
 
           <p class="text-neutral-700 text-xs leading-relaxed">
             {contact.rgpdText.split('politique de confidentialité')[0]}
-            <a href="/politique-confidentialite" class="underline hover:text-primary-950 transition-colors">politique de confidentialité</a>.
+            <a href="/politique-confidentialite/" class="underline hover:text-primary-950 transition-colors">politique de confidentialité</a>.
             {contact.rgpdText.split('politique de confidentialité')[1]?.replace(/^\.?\s*/, '') || ''}
           </p>
         </form>
