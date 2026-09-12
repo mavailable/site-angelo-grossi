@@ -12,7 +12,7 @@ export const locale = {
 
 // Legal info (not client-editable)
 export const legal = {
-  siret: '', // À compléter — en attente du client
+  siret: '87963197600013',
   rcs: '',
   tva: '',
 } as const;
