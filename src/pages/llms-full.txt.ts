@@ -31,7 +31,7 @@ export async function GET() {
 - **Téléphone** : ${info.phone}
 - **E-mail** : ${info.email}
 ${info.linkedin ? `- **LinkedIn** : ${info.linkedin}\n` : ''}- **Site web** : ${url('/')}
-${info.calUrl ? `- **Réservation RDV découverte** : https://app.cal.eu/${info.calUrl}\n` : ''}${info.availabilityNote ? `- **Disponibilité** : ${info.availabilityNote}\n` : ''}
+${info.calUrl ? `- **Réservation RDV découverte** : https://cal.com/${info.calUrl}\n` : ''}${info.availabilityNote ? `- **Disponibilité** : ${info.availabilityNote}\n` : ''}
 ## Pages
 
 ${pagesPrincipales()}

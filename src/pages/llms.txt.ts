@@ -31,7 +31,7 @@ ${services}
 - E-mail : ${info.email}
 - Ville : ${info.city}, ${info.region}
 - Zone d'intervention : ${info.areaServed}
-${info.availabilityNote ? `- Disponibilité : ${info.availabilityNote}\n` : ''}${info.calUrl ? `- Rendez-vous découverte : https://app.cal.eu/${info.calUrl}\n` : ''}${info.linkedin ? `- LinkedIn : ${info.linkedin}\n` : ''}`;
+${info.availabilityNote ? `- Disponibilité : ${info.availabilityNote}\n` : ''}${info.calUrl ? `- Rendez-vous découverte : https://cal.com/${info.calUrl}\n` : ''}${info.linkedin ? `- LinkedIn : ${info.linkedin}\n` : ''}`;
 
   return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 }
