@@ -2,7 +2,7 @@ import type { CmsConfig } from '@marc/cms-engine/types';
 
 const cmsConfig: CmsConfig = {
   repo: 'mavailable/site-angelo-grossi',
-  branch: 'dev',
+  branch: 'master',
   siteName: 'Angelo Grossi',
 
   // Branding admin (>= v0.13.0) : variante CLAIRE de la marque théâtrale (Noir
