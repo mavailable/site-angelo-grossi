@@ -75,6 +75,10 @@ export interface MethodeH2S {
   steps: { letter: string; label: string; text: string }[];
 }
 
+export interface ChiffresCles {
+  items: { value: string; label: string; detail: string }[];
+}
+
 export interface Service {
   title: string;
   description: string;
@@ -156,6 +160,10 @@ export function getSections(): Sections {
 
 export function getMethodeH2S(): MethodeH2S {
   return readJson<MethodeH2S>('src/content/methode-h2s/index.json');
+}
+
+export function getChiffresCles(): ChiffresCles {
+  return readJson<ChiffresCles>('src/content/chiffres-cles/index.json');
 }
 
 export function getServices() {

@@ -103,6 +103,30 @@ const cmsConfig: CmsConfig = {
       },
     },
 
+    'chiffres-cles': {
+      label: 'Chiffres clés',
+      description: "Bandeau de 3 chiffres affiché juste sous le grand titre de l'accueil",
+      path: 'src/content/chiffres-cles/index.json',
+      group: 'accueil',
+      fields: {
+        items: {
+          type: 'array',
+          label: 'Chiffres du bandeau (3 côte à côte)',
+          itemLabel: 'value',
+          itemName: 'Chiffre',
+          item: {
+            type: 'object',
+            label: 'Chiffre',
+            fields: {
+              value: { type: 'text', label: 'Chiffre, en grand (ex. 25 ans)' },
+              label: { type: 'text', label: 'Texte sous le chiffre' },
+              detail: { type: 'text', label: 'Précision, en petit' },
+            },
+          },
+        },
+      },
+    },
+
     'methode-h2s': {
       label: 'Methode H2S',
       description: 'Votre approche signature Happy / Healthy / Sexy',

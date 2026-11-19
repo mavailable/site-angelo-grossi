@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "value": "25 ans",
+      "label": "d'expérience en entreprise",
+      "detail": "Siemens, Unify, Atos"
+    },
+    {
+      "value": "15 ans",
+      "label": "de pratique théâtrale",
+      "detail": "Improvisation & mise en scène"
+    },
+    {
+      "value": "RNCP 7",
+      "label": "Certification coaching",
+      "detail": "Niveau Master"
+    }
+  ]
+}

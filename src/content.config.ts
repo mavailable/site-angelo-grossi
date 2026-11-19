@@ -97,6 +97,18 @@ const methodeH2s = defineCollection({
   }),
 });
 
+// Bandeau chiffres clés sous le Hero (SocialProof.astro)
+const chiffresCles = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: 'src/content/chiffres-cles' }),
+  schema: z.object({
+    items: z.array(z.object({
+      value: z.string(),
+      label: z.string(),
+      detail: z.string(),
+    })),
+  }),
+});
+
 const blogIdeas = defineCollection({
   loader: glob({ pattern: '**/*.json', base: 'src/content/blog-ideas' }),
   schema: z.object({
@@ -207,6 +219,7 @@ export const collections = {
   'site-info': siteInfo,
   hero,
   'methode-h2s': methodeH2s,
+  'chiffres-cles': chiffresCles,
   about,
   contact,
   sections,

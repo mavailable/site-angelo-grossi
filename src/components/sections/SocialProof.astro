@@ -1,27 +1,25 @@
 ---
 /**
  * SocialProof — Bande chiffres clés, fond sombre pour continuité avec le Hero
+ * Contenu : singleton CMS chiffres-cles (/admin > Page d'accueil > Chiffres clés)
  */
+import { getChiffresCles } from '@data/content';
+
+const items = getChiffresCles().items ?? [];
 ---
 
+{items.length > 0 && (
 <section class="bg-primary-950 border-t border-primary-800/50 py-10 md:py-14" aria-label="Chiffres clés">
   <div class="max-w-4xl mx-auto px-4 sm:px-6">
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0">
-      <div class="text-center sm:border-r sm:border-primary-800/50 px-6">
-        <p class="font-heading font-bold text-3xl md:text-4xl text-accent-400 mb-1">25 ans</p>
-        <p class="text-neutral-400 text-sm">d'expérience en entreprise</p>
-        <p class="text-neutral-400 text-xs mt-0.5">Siemens, Unify, Atos</p>
-      </div>
-      <div class="text-center sm:border-r sm:border-primary-800/50 px-6">
-        <p class="font-heading font-bold text-3xl md:text-4xl text-accent-400 mb-1">15 ans</p>
-        <p class="text-neutral-400 text-sm">de pratique théâtrale</p>
-        <p class="text-neutral-400 text-xs mt-0.5">Improvisation &amp; mise en scène</p>
-      </div>
-      <div class="text-center px-6">
-        <p class="font-heading font-bold text-3xl md:text-4xl text-accent-400 mb-1">RNCP 7</p>
-        <p class="text-neutral-400 text-sm">Certification coaching</p>
-        <p class="text-neutral-400 text-xs mt-0.5">Niveau Master</p>
-      </div>
+      {items.map((item, idx) => (
+        <div class={idx < items.length - 1 ? 'text-center sm:border-r sm:border-primary-800/50 px-6' : 'text-center px-6'}>
+          <p class="font-heading font-bold text-3xl md:text-4xl text-accent-400 mb-1" data-cms-field={`chiffres-cles.items[${idx}].value`} data-cms-type="text">{item.value}</p>
+          <p class="text-neutral-400 text-sm" data-cms-field={`chiffres-cles.items[${idx}].label`} data-cms-type="text">{item.label}</p>
+          <p class="text-neutral-400 text-xs mt-0.5" data-cms-field={`chiffres-cles.items[${idx}].detail`} data-cms-type="text">{item.detail}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
+)}
